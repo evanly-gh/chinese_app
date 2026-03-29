@@ -1,6 +1,7 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView, FlatList, ActivityIndicator } from 'react-native';
+import React, { useCallback } from 'react';
+import { StyleSheet, View, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from 'expo-router';
 import { ThemedView } from '../../components/common/ThemedView';
 import { ThemedText } from '../../components/common/ThemedText';
 import { ProgressBar } from '../../components/common/ProgressBar';
@@ -8,13 +9,14 @@ import { useProgress } from '../../hooks/useProgress';
 import { useSettings } from '../../hooks/useSettings';
 import { Colors } from '../../theme/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { VocabCard } from '../../types/vocab';
 
 export default function ProgressScreen() {
   const scheme = useColorScheme();
   const colors = Colors[scheme];
-  const { data, loading } = useProgress();
+  const { data, loading, reload } = useProgress();
   const { settings } = useSettings();
+
+  useFocusEffect(useCallback(() => { reload(); }, [reload]));
 
   if (loading) {
     return (
@@ -43,6 +45,10 @@ export default function ProgressScreen() {
             <ThemedView variant="card" style={styles.statCard}>
               <ThemedText style={[styles.statNumber, { color: colors.tint }]}>{data.todayCount}</ThemedText>
               <ThemedText type="secondary" style={styles.statLabel}>Today</ThemedText>
+            </ThemedView>
+            <ThemedView variant="card" style={styles.statCard}>
+              <ThemedText style={[styles.statNumber, { color: colors.tint }]}>{data.mastered}</ThemedText>
+              <ThemedText type="secondary" style={styles.statLabel}>Mastered</ThemedText>
             </ThemedView>
             <ThemedView variant="card" style={styles.statCard}>
               <ThemedText style={[styles.statNumber, { color: colors.tint }]}>{data.completionPct}%</ThemedText>
@@ -93,6 +99,13 @@ export default function ProgressScreen() {
                 <View key={card.id} style={[styles.weakCard, { borderBottomColor: colors.border }]}>
                   <ThemedText style={styles.weakHanzi}>{card.simplified}</ThemedText>
                   <ThemedText type="secondary" style={styles.weakPinyin}>{card.pinyin}</ThemedText>
+                  {card.lapses > 0 && (
+                    <View style={[styles.efBadge, { backgroundColor: colors.hard + '20', marginRight: 4 }]}>
+                      <ThemedText style={[styles.efText, { color: colors.hard }]}>
+                        {card.lapses}✗
+                      </ThemedText>
+                    </View>
+                  )}
                   <View style={[styles.efBadge, { backgroundColor: colors.again + '20' }]}>
                     <ThemedText style={[styles.efText, { color: colors.again }]}>
                       {card.efactor.toFixed(1)}

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { ThemedView } from '../../components/common/ThemedView';
 import { ThemedText } from '../../components/common/ThemedText';
 import { StreakBadge } from '../../components/common/StreakBadge';
@@ -16,8 +16,10 @@ export default function HomeScreen() {
   const scheme = useColorScheme();
   const colors = Colors[scheme];
   const { streak } = useStreak();
-  const { data } = useProgress();
+  const { data, reload } = useProgress();
   const { settings } = useSettings();
+
+  useFocusEffect(useCallback(() => { reload(); }, [reload]));
 
   const todayProgress = data ? data.todayCount / settings.dailyGoal : 0;
   const goalMet = data ? data.todayCount >= settings.dailyGoal : false;

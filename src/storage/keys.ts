@@ -5,4 +5,5 @@ export const KEYS = {
   STREAK:           '@cl:streak',
   SCHEMA_VERSION:   '@cl:schema_version',
   ONBOARDED:        '@cl:onboarded',
+  TEST_RESULTS:     '@cl:test_results',
 } as const;

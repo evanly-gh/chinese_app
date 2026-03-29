@@ -116,6 +116,61 @@ export default function SettingsScreen() {
             </ThemedText>
           </ThemedView>
 
+          {/* Learning */}
+          <ThemedView variant="card" style={styles.card}>
+            <ThemedText style={styles.sectionTitle}>Learning</ThemedText>
+            <SettingRow
+              label="Show Pinyin"
+              sublabel="Display pinyin below characters"
+              right={
+                <Switch
+                  value={settings.showPinyin}
+                  onValueChange={v => updateSetting('showPinyin', v)}
+                  trackColor={{ true: colors.tint }}
+                  thumbColor="#FFFFFF"
+                />
+              }
+            />
+            <SettingRow
+              label="Listening Exercises"
+              sublabel="Include audio-first exercise types"
+              right={
+                <Switch
+                  value={settings.listenExercisesEnabled}
+                  onValueChange={v => updateSetting('listenExercisesEnabled', v)}
+                  trackColor={{ true: colors.tint }}
+                  thumbColor="#FFFFFF"
+                />
+              }
+            />
+            <ThemedText style={styles.rowLabel}>Working Set Size</ThemedText>
+            <ThemedText type="secondary" style={styles.rowSublabel}>
+              How many words you actively study at once before unlocking new ones
+            </ThemedText>
+            <View style={styles.goalRow}>
+              {[5, 10, 15, 20].map(size => (
+                <TouchableOpacity
+                  key={size}
+                  onPress={() => updateSetting('workingSetSize', size)}
+                  style={[
+                    styles.goalChip,
+                    settings.workingSetSize === size && { backgroundColor: colors.tint },
+                    { borderColor: settings.workingSetSize === size ? colors.tint : colors.border },
+                  ]}
+                >
+                  <ThemedText
+                    style={[
+                      styles.goalChipText,
+                      settings.workingSetSize === size && styles.levelChipTextActive,
+                    ]}
+                  >
+                    {size}
+                  </ThemedText>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </ThemedView>
+
           {/* Toggles */}
           <ThemedView variant="card" style={styles.card}>
             <ThemedText style={styles.sectionTitle}>Preferences</ThemedText>
@@ -173,7 +228,7 @@ export default function SettingsScreen() {
           </ThemedView>
 
           <ThemedText type="secondary" style={styles.footer}>
-            HSK 1–3: 500 words included · HSK 4–9 coming soon
+            HSK 1–5 included · HSK 6–9 coming soon
           </ThemedText>
         </ScrollView>
       </SafeAreaView>

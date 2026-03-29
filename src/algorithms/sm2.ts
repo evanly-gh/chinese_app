@@ -11,9 +11,32 @@ function ratingToGrade(rating: DifficultyRating): number {
   }
 }
 
-export function applySM2(state: SRSState, rating: DifficultyRating): SRSState {
+export const MASTERY_INTERVAL = 21;
+
+export function isMastered(state: SRSState): boolean {
+  return state.interval >= MASTERY_INTERVAL;
+}
+
+export function applySM2(
+  state: SRSState,
+  rating: DifficultyRating,
+  isFirstSeen: boolean = false,
+): SRSState {
   const grade = ratingToGrade(rating);
   const now = today();
+
+  // First-time "easy/know" instantly masters the card
+  if (isFirstSeen && rating === 'easy') {
+    return {
+      ...state,
+      interval: MASTERY_INTERVAL,
+      repetition: 3,
+      efactor: 2.5,
+      lapses: 0,
+      dueDate: addDays(now, MASTERY_INTERVAL),
+      lastReviewDate: now,
+    };
+  }
 
   let { interval, repetition, efactor, lapses } = state;
 

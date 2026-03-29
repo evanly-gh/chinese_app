@@ -1,20 +1,145 @@
-import React from 'react';
-import { StyleSheet, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFocusEffect } from 'expo-router';
 import { ThemedView } from '../../components/common/ThemedView';
 import { ThemedText } from '../../components/common/ThemedText';
 import { FlashCard } from '../../components/study/FlashCard';
 import { DifficultyButtons } from '../../components/study/DifficultyButtons';
 import { SwipeDeck } from '../../components/study/SwipeDeck';
 import { SessionProgressBar } from '../../components/study/SessionProgressBar';
-import { useStudySession } from '../../hooks/useStudySession';
+import { SessionConfigModal } from '../../components/study/SessionConfigModal';
 import { Colors } from '../../theme/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useStudySession } from '../../hooks/useStudySession';
+import { useSettings } from '../../hooks/useSettings';
 import { DifficultyRating } from '../../types/review';
+import { FlashcardSessionConfig } from '../../types/settings';
+import { getCardsForLevel, getAllCardIds } from '../../data';
+import { getAllSRSStates } from '../../storage/cardStateStorage';
+import { getMasteredCards, getWorkingSet } from '../../utils/cardUtils';
+import { getLastTestResult } from '../../storage/testResultStorage';
+import ExercisesScreen from '../../screens/ExercisesScreen';
+import TestScreen from '../../screens/TestScreen';
 
-export default function StudyScreen() {
+type StudyMode = 'picker' | 'flashcards' | 'exercises' | 'test';
+
+// ─── Mode Picker ────────────────────────────────────────────────────────────
+
+interface ModeCardData {
+  title: string;
+  subtitle: string;
+  icon: string;
+  mode: Exclude<StudyMode, 'picker'>;
+  color: string;
+}
+
+function ModePickerScreen({
+  onSelect,
+}: {
+  onSelect: (mode: Exclude<StudyMode, 'picker'>) => void;
+}) {
   const scheme = useColorScheme();
   const colors = Colors[scheme];
+  const { settings } = useSettings();
+  const [workingInfo, setWorkingInfo] = useState<{ working: number; mastered: number } | null>(null);
+  const [lastTest, setLastTest] = useState<{ score: number; total: number } | null>(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      let active = true;
+      (async () => {
+        const cards = getCardsForLevel(settings.activeLevel);
+        const ids = getAllCardIds(settings.activeLevel);
+        const states = await getAllSRSStates(ids);
+        if (!active) return;
+        const mastered = getMasteredCards(cards, states).length;
+        const working = getWorkingSet(cards, states, settings.workingSetSize).length;
+        setWorkingInfo({ working, mastered });
+
+        const last = await getLastTestResult(settings.activeLevel);
+        if (last) setLastTest({ score: last.score, total: last.total });
+      })();
+      return () => { active = false; };
+    }, [settings.activeLevel, settings.workingSetSize]),
+  );
+
+  const modes: ModeCardData[] = [
+    {
+      title: 'Flashcards',
+      subtitle: workingInfo
+        ? `${workingInfo.working} in working set · ${workingInfo.mastered} mastered`
+        : 'Tap-to-flip spaced repetition',
+      icon: '🃏',
+      mode: 'flashcards',
+      color: colors.tint,
+    },
+    {
+      title: 'Exercises',
+      subtitle: 'Translation, fill-in-the-blank, bubble reorder & listening',
+      icon: '✏️',
+      mode: 'exercises',
+      color: colors.good,
+    },
+    {
+      title: 'Test',
+      subtitle: lastTest
+        ? `Last score: ${lastTest.score}/${lastTest.total}`
+        : 'Full HSK level assessment',
+      icon: '📝',
+      mode: 'test',
+      color: colors.hard,
+    },
+  ];
+
+  return (
+    <ThemedView style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.pickerContent}>
+          <ThemedText type="title" style={styles.pickerTitle}>Study</ThemedText>
+          <ThemedText type="secondary" style={styles.pickerSubtitle}>
+            HSK {settings.activeLevel}
+          </ThemedText>
+          {modes.map(m => (
+            <TouchableOpacity
+              key={m.mode}
+              onPress={() => onSelect(m.mode)}
+              style={[styles.modeCard, { borderLeftColor: m.color, borderLeftWidth: 4 }]}
+              activeOpacity={0.8}
+            >
+              <ThemedView variant="card" style={styles.modeCardInner}>
+                <ThemedText style={styles.modeIcon}>{m.icon}</ThemedText>
+                <View style={styles.modeText}>
+                  <ThemedText style={styles.modeTitle}>{m.title}</ThemedText>
+                  <ThemedText type="secondary" style={styles.modeSubtitle}>{m.subtitle}</ThemedText>
+                </View>
+                <ThemedText style={[styles.modeArrow, { color: m.color }]}>›</ThemedText>
+              </ThemedView>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </SafeAreaView>
+    </ThemedView>
+  );
+}
+
+// ─── Flashcard Mode ──────────────────────────────────────────────────────────
+
+function FlashcardMode({ onBack }: { onBack: () => void }) {
+  const scheme = useColorScheme();
+  const colors = Colors[scheme];
+  const { settings, updateSetting } = useSettings();
+  const [configVisible, setConfigVisible] = useState(true);
+  const [sessionConfig, setSessionConfig] = useState<FlashcardSessionConfig>(
+    settings.flashcardConfig,
+  );
+  const [sessionKey, setSessionKey] = useState(0);
+
   const {
     currentCard,
     stats,
@@ -24,11 +149,37 @@ export default function StudyScreen() {
     flipCard,
     rateCard,
     resetSession,
-  } = useStudySession();
+  } = useStudySession(sessionConfig, sessionKey);
 
-  const handleSwipe = (rating: DifficultyRating) => {
-    rateCard(rating);
-  };
+  const handleConfigStart = useCallback(
+    (cfg: FlashcardSessionConfig) => {
+      updateSetting('flashcardConfig', cfg);
+      setSessionConfig(cfg);
+      setConfigVisible(false);
+      setSessionKey(k => k + 1);
+    },
+    [updateSetting],
+  );
+
+  if (configVisible) {
+    return (
+      <>
+        <ThemedView style={styles.container}>
+          <SafeAreaView style={styles.safeArea}>
+            <TouchableOpacity onPress={onBack} style={styles.backButton}>
+              <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
+            </TouchableOpacity>
+          </SafeAreaView>
+        </ThemedView>
+        <SessionConfigModal
+          visible
+          config={sessionConfig}
+          onStart={handleConfigStart}
+          onDismiss={onBack}
+        />
+      </>
+    );
+  }
 
   if (loading) {
     return (
@@ -42,16 +193,25 @@ export default function StudyScreen() {
     return (
       <ThemedView style={styles.centered}>
         <SafeAreaView>
+          <TouchableOpacity onPress={onBack} style={styles.backButtonAbs}>
+            <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
+          </TouchableOpacity>
           <ThemedText style={styles.completeEmoji}>🎉</ThemedText>
           <ThemedText type="title" style={styles.completeTitle}>Session Complete!</ThemedText>
           <ThemedText type="secondary" style={styles.completeStats}>
             {stats.correct} / {stats.total} correct
           </ThemedText>
           <TouchableOpacity
-            onPress={resetSession}
+            onPress={() => { resetSession(); }}
             style={[styles.resetButton, { backgroundColor: colors.tint }]}
           >
             <ThemedText style={styles.resetButtonText}>Study More</ThemedText>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => { setConfigVisible(true); }}
+            style={[styles.resetButton, { backgroundColor: colors.border, marginTop: 10 }]}
+          >
+            <ThemedText style={styles.resetButtonText}>Change Settings</ThemedText>
           </TouchableOpacity>
         </SafeAreaView>
       </ThemedView>
@@ -61,7 +221,16 @@ export default function StudyScreen() {
   if (!currentCard) {
     return (
       <ThemedView style={styles.centered}>
-        <ThemedText type="secondary">No cards due today.</ThemedText>
+        <TouchableOpacity onPress={onBack} style={styles.backButtonAbs}>
+          <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
+        </TouchableOpacity>
+        <ThemedText type="secondary">No cards due for this configuration.</ThemedText>
+        <TouchableOpacity
+          onPress={() => setConfigVisible(true)}
+          style={[styles.resetButton, { backgroundColor: colors.tint, marginTop: 16 }]}
+        >
+          <ThemedText style={styles.resetButtonText}>Change Settings</ThemedText>
+        </TouchableOpacity>
       </ThemedView>
     );
   }
@@ -70,42 +239,86 @@ export default function StudyScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.top}>
+          <TouchableOpacity onPress={onBack} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+            <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
+          </TouchableOpacity>
           <SessionProgressBar completed={stats.completed} total={stats.total} />
         </View>
         <View style={styles.deckContainer}>
           <SwipeDeck
-            onSwipe={handleSwipe}
+            onSwipe={(rating: DifficultyRating) => rateCard(rating)}
             isFlipped={isFlipped}
             enabled={isFlipped}
           >
-            <FlashCard
-              card={currentCard}
-              isFlipped={isFlipped}
-              onFlip={flipCard}
-            />
+            <FlashCard card={currentCard} isFlipped={isFlipped} onFlip={flipCard} />
           </SwipeDeck>
         </View>
         <View style={styles.bottom}>
           {!isFlipped && (
             <ThemedText type="secondary" style={styles.swipeHint}>
-              Swipe ← Again · Swipe → Easy · Tap for more options
+              Swipe ← Don't Know · Swipe → Know · Tap for more options
             </ThemedText>
           )}
-          <DifficultyButtons onRate={rateCard} visible={isFlipped} />
+          <DifficultyButtons onRate={rateCard} visible={isFlipped} mode="flashcard" />
         </View>
       </SafeAreaView>
     </ThemedView>
   );
 }
 
+// ─── Root Study Tab ──────────────────────────────────────────────────────────
+
+export default function StudyTab() {
+  const [mode, setMode] = useState<StudyMode>('picker');
+
+  if (mode === 'flashcards') {
+    return <FlashcardMode onBack={() => setMode('picker')} />;
+  }
+  if (mode === 'exercises') {
+    return <ExercisesScreen onBack={() => setMode('picker')} />;
+  }
+  if (mode === 'test') {
+    return <TestScreen onBack={() => setMode('picker')} />;
+  }
+
+  return <ModePickerScreen onSelect={setMode} />;
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1, gap: 12 },
-  top: { paddingTop: 12 },
+  centered: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 32 },
+
+  // Picker
+  pickerContent: { flex: 1, padding: 20, gap: 16, justifyContent: 'center' },
+  pickerTitle: { fontSize: 28, marginBottom: 2 },
+  pickerSubtitle: { fontSize: 16, marginBottom: 8 },
+  modeCard: { borderRadius: 16, overflow: 'hidden' },
+  modeCardInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 18,
+    borderRadius: 16,
+    gap: 14,
+  },
+  modeIcon: { fontSize: 32 },
+  modeText: { flex: 1, gap: 3 },
+  modeTitle: { fontSize: 18, fontWeight: '700' },
+  modeSubtitle: { fontSize: 13 },
+  modeArrow: { fontSize: 28, fontWeight: '300' },
+
+  // Flashcard layout
+  top: { paddingTop: 12, paddingHorizontal: 16, gap: 8 },
   deckContainer: { flex: 1, paddingHorizontal: 20 },
   bottom: { minHeight: 100, justifyContent: 'flex-end', paddingBottom: 8 },
   swipeHint: { textAlign: 'center', fontSize: 12, paddingHorizontal: 20, marginBottom: 8 },
-  centered: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 32 },
+
+  // Back button
+  backButton: { padding: 16 },
+  backButtonAbs: { position: 'absolute', top: 16, left: 16 },
+  backText: { fontSize: 18, fontWeight: '600' },
+
+  // Complete screen
   completeEmoji: { fontSize: 64, textAlign: 'center' },
   completeTitle: { textAlign: 'center', marginTop: 8 },
   completeStats: { textAlign: 'center', fontSize: 18, marginTop: 4 },

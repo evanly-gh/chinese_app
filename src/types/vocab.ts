@@ -10,6 +10,10 @@ export interface VocabCard {
   exampleTraditional: string;
   examplePinyin: string;
   exampleEnglish: string;
+  example2Simplified?: string;
+  example2Traditional?: string;
+  example2Pinyin?: string;
+  example2English?: string;
 }
 
 export interface SRSState {

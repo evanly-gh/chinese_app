@@ -5,27 +5,38 @@ import { DifficultyRating } from '../../types/review';
 import { Colors } from '../../theme/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
+type ButtonMode = 'flashcard' | 'srs';
+
 interface DifficultyButtonsProps {
   onRate: (rating: DifficultyRating) => void;
   visible: boolean;
+  mode?: ButtonMode;
 }
 
-const BUTTONS: { label: string; rating: DifficultyRating; colorKey: keyof typeof Colors.light }[] = [
+const SRS_BUTTONS: { label: string; rating: DifficultyRating; colorKey: keyof typeof Colors.light }[] = [
   { label: 'Again', rating: 'again', colorKey: 'again' },
   { label: 'Hard', rating: 'hard', colorKey: 'hard' },
   { label: 'Good', rating: 'good', colorKey: 'good' },
   { label: 'Easy', rating: 'easy', colorKey: 'easy' },
 ];
 
-export function DifficultyButtons({ onRate, visible }: DifficultyButtonsProps) {
+const FLASHCARD_BUTTONS: { label: string; rating: DifficultyRating; colorKey: keyof typeof Colors.light }[] = [
+  { label: "Don't Know", rating: 'again', colorKey: 'again' },
+  { label: 'Unsure', rating: 'hard', colorKey: 'hard' },
+  { label: 'Know', rating: 'easy', colorKey: 'easy' },
+];
+
+export function DifficultyButtons({ onRate, visible, mode = 'flashcard' }: DifficultyButtonsProps) {
   const scheme = useColorScheme();
   const colors = Colors[scheme];
 
   if (!visible) return null;
 
+  const buttons = mode === 'flashcard' ? FLASHCARD_BUTTONS : SRS_BUTTONS;
+
   return (
     <View style={styles.container}>
-      {BUTTONS.map(({ label, rating, colorKey }) => (
+      {buttons.map(({ label, rating, colorKey }) => (
         <TouchableOpacity
           key={rating}
           onPress={() => onRate(rating)}

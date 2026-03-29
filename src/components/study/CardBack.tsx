@@ -24,12 +24,16 @@ export function CardBack({ card }: CardBackProps) {
   return (
     <View style={styles.container}>
       <ThemedText style={[styles.character, { color: colors.tint }]}>{hanzi}</ThemedText>
-      <ThemedText style={styles.pinyin}>{card.pinyin}</ThemedText>
+      {settings.showPinyin && (
+        <ThemedText style={styles.pinyin}>{card.pinyin}</ThemedText>
+      )}
       <ThemedText style={styles.english}>{card.english}</ThemedText>
       <View style={[styles.divider, { backgroundColor: colors.border }]} />
       <View style={styles.exampleContainer}>
         <ThemedText style={styles.exampleChinese}>{example}</ThemedText>
-        <ThemedText style={styles.examplePinyin}>{card.examplePinyin}</ThemedText>
+        {settings.showPinyin && (
+          <ThemedText style={styles.examplePinyin}>{card.examplePinyin}</ThemedText>
+        )}
         <ThemedText type="secondary" style={styles.exampleEnglish}>{card.exampleEnglish}</ThemedText>
       </View>
       <TouchableOpacity

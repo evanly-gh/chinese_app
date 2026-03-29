@@ -26,6 +26,9 @@ export function CardFront({ card }: CardFrontProps) {
         <ThemedText type="caption" style={{ color: colors.tint }}>HSK {card.level}</ThemedText>
       </View>
       <ThemedText style={styles.character}>{hanzi}</ThemedText>
+      {settings.showPinyin && (
+        <ThemedText style={[styles.pinyin, { color: colors.textSecondary }]}>{card.pinyin}</ThemedText>
+      )}
       <ThemedText type="secondary" style={styles.hint}>tap to reveal</ThemedText>
       <TouchableOpacity
         onPress={() => speak(hanzi)}
@@ -57,8 +60,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 4,
   },
+  pinyin: {
+    fontSize: 18,
+    marginTop: 8,
+    fontWeight: '400',
+  },
   hint: {
-    marginTop: 24,
+    marginTop: 16,
     fontSize: 14,
   },
   ttsButton: {
