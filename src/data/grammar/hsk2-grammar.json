@@ -1,0 +1,684 @@
+[
+  {
+    "id": "gr_hsk2_001",
+    "level": 2,
+    "title": "Comparison with 比 (bǐ)",
+    "pattern": "A + 比 + B + Adjective",
+    "explanation": "比 is used to make comparisons meaning 'A is more [adjective] than B'. The adjective comes after B. Do not add 更 (gèng) or 非常 after 比 comparisons.",
+    "examples": [
+      {
+        "simplified": "他比我高。",
+        "traditional": "他比我高。",
+        "pinyin": "Tā bǐ wǒ gāo.",
+        "english": "He is taller than me."
+      },
+      {
+        "simplified": "今天比昨天冷。",
+        "traditional": "今天比昨天冷。",
+        "pinyin": "Jīntiān bǐ zuótiān lěng.",
+        "english": "Today is colder than yesterday."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "苹果___橙子甜。",
+        "answer": "比",
+        "distractors": ["和", "跟", "对"],
+        "english": "Apples are sweeter than oranges."
+      },
+      {
+        "sentence": "她___我大两岁。",
+        "answer": "比",
+        "distractors": ["和", "跟", "是"],
+        "english": "She is two years older than me."
+      },
+      {
+        "sentence": "这个___那个便宜。",
+        "answer": "比",
+        "distractors": ["和", "是", "有"],
+        "english": "This one is cheaper than that one."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他比我跑得快。",
+        "wrong": ["他比我更快。", "他比我跑得很快。", "他比我非常快。"],
+        "english": "He runs faster than me."
+      },
+      {
+        "correct": "北京比上海冷。",
+        "wrong": ["北京和上海冷。", "北京比上海更冷。", "北京是上海冷。"],
+        "english": "Beijing is colder than Shanghai."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_002",
+    "level": 2,
+    "title": "A little with 一点儿 (yīdiǎnr)",
+    "pattern": "Verb + 一点儿 / Adjective + 一点儿 (in comparisons)",
+    "explanation": "一点儿 means 'a little' or 'a bit'. After a verb it means 'a little (of something)'. In comparisons it follows the adjective to mean 'a little more [adj]'.",
+    "examples": [
+      {
+        "simplified": "请说慢一点儿。",
+        "traditional": "請說慢一點兒。",
+        "pinyin": "Qǐng shuō màn yīdiǎnr.",
+        "english": "Please speak a little slower."
+      },
+      {
+        "simplified": "我喝了一点儿水。",
+        "traditional": "我喝了一點兒水。",
+        "pinyin": "Wǒ hē le yīdiǎnr shuǐ.",
+        "english": "I drank a little water."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这件衣服能便宜___吗？",
+        "answer": "一点儿",
+        "distractors": ["一些", "很多", "非常"],
+        "english": "Can this piece of clothing be a little cheaper?"
+      },
+      {
+        "sentence": "我肚子有___饿。",
+        "answer": "一点儿",
+        "distractors": ["很多", "非常", "太"],
+        "english": "I'm a little hungry."
+      },
+      {
+        "sentence": "请你说得快___。",
+        "answer": "一点儿",
+        "distractors": ["一下", "很多", "非常"],
+        "english": "Please speak a little faster."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "你能走慢一点儿吗？",
+        "wrong": ["你能走一点儿慢吗？", "你能慢一点儿走吗？", "你能走非常慢吗？"],
+        "english": "Can you walk a little slower?"
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_003",
+    "level": 2,
+    "title": "Excessiveness with 太...了 (tài...le)",
+    "pattern": "Subject + 太 + Adjective + 了",
+    "explanation": "太...了 means 'too...' or 'so...!' The 了 at the end is mandatory and intensifies the adjective. It can be used positively ('so great!') or negatively ('too expensive!').",
+    "examples": [
+      {
+        "simplified": "这个太贵了。",
+        "traditional": "這個太貴了。",
+        "pinyin": "Zhège tài guì le.",
+        "english": "This is too expensive."
+      },
+      {
+        "simplified": "太好了！",
+        "traditional": "太好了！",
+        "pinyin": "Tài hǎo le!",
+        "english": "That's great!"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这个问题___难了。",
+        "answer": "太",
+        "distractors": ["很", "非常", "真"],
+        "english": "This problem is too difficult."
+      },
+      {
+        "sentence": "今天太热___！",
+        "answer": "了",
+        "distractors": ["吗", "呢", "吧"],
+        "english": "Today is so hot!"
+      },
+      {
+        "sentence": "那部电影___好看了。",
+        "answer": "太",
+        "distractors": ["很", "非常", "比较"],
+        "english": "That movie is so good to watch."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这件衣服太小了。",
+        "wrong": ["这件衣服很太小。", "这件衣服太小。", "这件衣服小太了。"],
+        "english": "This piece of clothing is too small."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_004",
+    "level": 2,
+    "title": "Manner complements with 得 (de)",
+    "pattern": "Verb + 得 + Adjective/Complement",
+    "explanation": "得 links a verb to a complement that describes how the action is performed. The complement evaluates the manner or degree of the action.",
+    "examples": [
+      {
+        "simplified": "他说得很好。",
+        "traditional": "他說得很好。",
+        "pinyin": "Tā shuō de hěn hǎo.",
+        "english": "He speaks very well."
+      },
+      {
+        "simplified": "她跑得很快。",
+        "traditional": "她跑得很快。",
+        "pinyin": "Tā pǎo de hěn kuài.",
+        "english": "She runs very fast."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他写字写___很漂亮。",
+        "answer": "得",
+        "distractors": ["了", "过", "着"],
+        "english": "He writes characters very beautifully."
+      },
+      {
+        "sentence": "你唱歌唱___真好听！",
+        "answer": "得",
+        "distractors": ["了", "过", "着"],
+        "english": "You sing so beautifully!"
+      },
+      {
+        "sentence": "她做饭做___很快。",
+        "answer": "得",
+        "distractors": ["了", "过", "的"],
+        "english": "She cooks very quickly."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他中文说得很流利。",
+        "wrong": ["他中文说很流利得。", "他中文得说很流利。", "他中文说的很流利。"],
+        "english": "He speaks Chinese very fluently."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_005",
+    "level": 2,
+    "title": "Past experience with 过 (guò)",
+    "pattern": "Verb + 过 (+ Object)",
+    "explanation": "过 after a verb indicates a past experience, meaning 'have done [verb] before'. It focuses on whether an experience has been had, not when it happened. Negated with 没.",
+    "examples": [
+      {
+        "simplified": "我去过北京。",
+        "traditional": "我去過北京。",
+        "pinyin": "Wǒ qù guò Běijīng.",
+        "english": "I have been to Beijing before."
+      },
+      {
+        "simplified": "你吃过北京烤鸭吗？",
+        "traditional": "你吃過北京烤鴨嗎？",
+        "pinyin": "Nǐ chī guò Běijīng kǎoyā ma?",
+        "english": "Have you ever eaten Peking duck?"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我没学___中文。",
+        "answer": "过",
+        "distractors": ["了", "着", "得"],
+        "english": "I have never studied Chinese before."
+      },
+      {
+        "sentence": "他见___那个人吗？",
+        "answer": "过",
+        "distractors": ["了", "着", "得"],
+        "english": "Has he met that person before?"
+      },
+      {
+        "sentence": "她来___我家。",
+        "answer": "过",
+        "distractors": ["了", "着", "得"],
+        "english": "She has visited my home before."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我吃过那个餐厅的菜。",
+        "wrong": ["我吃了过那个餐厅的菜。", "我过吃那个餐厅的菜。", "我吃那个餐厅的菜过。"],
+        "english": "I have eaten at that restaurant before."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_006",
+    "level": 2,
+    "title": "Desire with 想 (xiǎng)",
+    "pattern": "Subject + 想 + Verb",
+    "explanation": "想 means 'want to' or 'would like to' when followed by a verb. It expresses a desire or intention. It can also mean 'to miss (someone/something)' or 'to think'.",
+    "examples": [
+      {
+        "simplified": "我想喝咖啡。",
+        "traditional": "我想喝咖啡。",
+        "pinyin": "Wǒ xiǎng hē kāfēi.",
+        "english": "I want to drink coffee."
+      },
+      {
+        "simplified": "她想去中国旅行。",
+        "traditional": "她想去中國旅行。",
+        "pinyin": "Tā xiǎng qù Zhōngguó lǚxíng.",
+        "english": "She wants to travel to China."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___学中文。",
+        "answer": "想",
+        "distractors": ["会", "能", "可以"],
+        "english": "I want to study Chinese."
+      },
+      {
+        "sentence": "他___买一辆自行车。",
+        "answer": "想",
+        "distractors": ["会", "能", "可以"],
+        "english": "He wants to buy a bicycle."
+      },
+      {
+        "sentence": "你___吃什么？",
+        "answer": "想",
+        "distractors": ["会", "能", "可以"],
+        "english": "What do you want to eat?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我想去看电影。",
+        "wrong": ["我想看电影去。", "想我去看电影。", "我去想看电影。"],
+        "english": "I want to go watch a movie."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_007",
+    "level": 2,
+    "title": "Ability/Future with 会 (huì)",
+    "pattern": "Subject + 会 + Verb",
+    "explanation": "会 has two main uses: (1) learned ability — 'can/know how to' for skills acquired through learning; (2) future possibility — 'will/would' to predict future events.",
+    "examples": [
+      {
+        "simplified": "我会说中文。",
+        "traditional": "我會說中文。",
+        "pinyin": "Wǒ huì shuō Zhōngwén.",
+        "english": "I can speak Chinese."
+      },
+      {
+        "simplified": "明天会下雨。",
+        "traditional": "明天會下雨。",
+        "pinyin": "Míngtiān huì xià yǔ.",
+        "english": "It will rain tomorrow."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "她___弹钢琴。",
+        "answer": "会",
+        "distractors": ["想", "能", "可以"],
+        "english": "She can play the piano."
+      },
+      {
+        "sentence": "他___游泳吗？",
+        "answer": "会",
+        "distractors": ["想", "能", "是"],
+        "english": "Can he swim?"
+      },
+      {
+        "sentence": "你学了这么久，应该___了。",
+        "answer": "会",
+        "distractors": ["想", "能", "可以"],
+        "english": "You've studied for so long, you should know how by now."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他会开车。",
+        "wrong": ["他想开车。", "他的会开车。", "他会的开车。"],
+        "english": "He can drive (knows how to drive)."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_008",
+    "level": 2,
+    "title": "Physical ability with 能 (néng)",
+    "pattern": "Subject + 能 + Verb",
+    "explanation": "能 expresses physical or circumstantial ability — being able to do something due to natural capacity or situation. It is different from 会 (learned skill) and 可以 (permission).",
+    "examples": [
+      {
+        "simplified": "我今天不能来。",
+        "traditional": "我今天不能來。",
+        "pinyin": "Wǒ jīntiān bù néng lái.",
+        "english": "I can't come today."
+      },
+      {
+        "simplified": "她腿受伤了，不能走路。",
+        "traditional": "她腿受傷了，不能走路。",
+        "pinyin": "Tā tuǐ shòushāng le, bù néng zǒulù.",
+        "english": "Her leg is injured; she can't walk."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我生病了，___去上班。",
+        "answer": "不能",
+        "distractors": ["不想", "不会", "不可以"],
+        "english": "I'm sick; I can't go to work."
+      },
+      {
+        "sentence": "你___吃这么多！",
+        "answer": "能",
+        "distractors": ["想", "会", "可以"],
+        "english": "You can eat this much!"
+      },
+      {
+        "sentence": "他___一天走十公里。",
+        "answer": "能",
+        "distractors": ["想", "会", "应该"],
+        "english": "He can walk ten kilometers a day."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我感冒了，不能去。",
+        "wrong": ["我感冒了，不会去。", "我感冒了，不想去。", "我感冒了，不可以去。"],
+        "english": "I have a cold; I can't go."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_009",
+    "level": 2,
+    "title": "Permission with 可以 (kěyǐ)",
+    "pattern": "Subject + 可以 + Verb",
+    "explanation": "可以 expresses permission ('may/can') or possibility based on circumstances. It is used to ask for or grant permission, and can also indicate something is acceptable or allowed.",
+    "examples": [
+      {
+        "simplified": "你可以进来。",
+        "traditional": "你可以進來。",
+        "pinyin": "Nǐ kěyǐ jìnlái.",
+        "english": "You may come in."
+      },
+      {
+        "simplified": "这里可以停车吗？",
+        "traditional": "這裡可以停車嗎？",
+        "pinyin": "Zhèlǐ kěyǐ tíng chē ma?",
+        "english": "Can you park here?"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这里不___吸烟。",
+        "answer": "可以",
+        "distractors": ["能", "会", "想"],
+        "english": "You may not smoke here."
+      },
+      {
+        "sentence": "我___问你一个问题吗？",
+        "answer": "可以",
+        "distractors": ["能", "会", "想"],
+        "english": "May I ask you a question?"
+      },
+      {
+        "sentence": "这本书你___借走。",
+        "answer": "可以",
+        "distractors": ["想", "会", "能"],
+        "english": "You can borrow this book."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "你可以用我的电话。",
+        "wrong": ["你会用我的电话。", "你可以的用我的电话。", "你用可以我的电话。"],
+        "english": "You can use my phone."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_010",
+    "level": 2,
+    "title": "Possessive and modifier 的 (de)",
+    "pattern": "Noun/Pronoun + 的 + Noun / Adjective + 的 + Noun",
+    "explanation": "的 links a modifier to the noun it modifies. It is used for possession ('my book'), descriptive modification ('red car'), and to form nominal phrases. Short, common phrases often omit 的.",
+    "examples": [
+      {
+        "simplified": "我的书",
+        "traditional": "我的書",
+        "pinyin": "wǒ de shū",
+        "english": "my book"
+      },
+      {
+        "simplified": "红色的苹果",
+        "traditional": "紅色的蘋果",
+        "pinyin": "hóngsè de píngguǒ",
+        "english": "a red apple"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这是我___手机。",
+        "answer": "的",
+        "distractors": ["地", "得", "了"],
+        "english": "This is my cell phone."
+      },
+      {
+        "sentence": "漂亮___花",
+        "answer": "的",
+        "distractors": ["地", "得", "了"],
+        "english": "beautiful flowers"
+      },
+      {
+        "sentence": "他是我___朋友。",
+        "answer": "的",
+        "distractors": ["地", "得", "着"],
+        "english": "He is my friend."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这是她的包。",
+        "wrong": ["这是她得包。", "这是她地包。", "这是她了包。"],
+        "english": "This is her bag."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_011",
+    "level": 2,
+    "title": "Suggestions and softening with 吧 (ba)",
+    "pattern": "Statement + 吧 / Suggestion + 吧",
+    "explanation": "吧 softens statements and questions. It is used to make suggestions ('let's...'), seek agreement ('right?'), or express assumption/uncertainty ('I suppose...').",
+    "examples": [
+      {
+        "simplified": "我们走吧！",
+        "traditional": "我們走吧！",
+        "pinyin": "Wǒmen zǒu ba!",
+        "english": "Let's go!"
+      },
+      {
+        "simplified": "你是学生吧？",
+        "traditional": "你是學生吧？",
+        "pinyin": "Nǐ shì xuésheng ba?",
+        "english": "You're a student, right?"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我们一起去___！",
+        "answer": "吧",
+        "distractors": ["吗", "呢", "了"],
+        "english": "Let's go together!"
+      },
+      {
+        "sentence": "你累了___？",
+        "answer": "吧",
+        "distractors": ["吗", "呢", "了"],
+        "english": "You're tired, right?"
+      },
+      {
+        "sentence": "你也认识他___？",
+        "answer": "吧",
+        "distractors": ["吗", "呢", "了"],
+        "english": "You know him too, I suppose?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我们明天出发吧。",
+        "wrong": ["我们明天吧出发。", "我们吧明天出发。", "吧我们明天出发。"],
+        "english": "Let's set off tomorrow."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_012",
+    "level": 2,
+    "title": "Or: 还是 vs 或者 (háishì vs huòzhě)",
+    "pattern": "A + 还是 + B (questions) / A + 或者 + B (statements)",
+    "explanation": "还是 is used in choice questions ('is it A or B?'). 或者 is used in statements to present alternatives ('A or B'). Do not swap them between questions and statements.",
+    "examples": [
+      {
+        "simplified": "你喝茶还是咖啡？",
+        "traditional": "你喝茶還是咖啡？",
+        "pinyin": "Nǐ hē chá háishì kāfēi?",
+        "english": "Do you drink tea or coffee?"
+      },
+      {
+        "simplified": "你可以坐公交车或者打车。",
+        "traditional": "你可以坐公交車或者打車。",
+        "pinyin": "Nǐ kěyǐ zuò gōngjiāochē huòzhě dǎ chē.",
+        "english": "You can take the bus or take a taxi."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "你要苹果___香蕉？",
+        "answer": "还是",
+        "distractors": ["或者", "和", "跟"],
+        "english": "Do you want apples or bananas?"
+      },
+      {
+        "sentence": "周末你可以来我家___我去你家。",
+        "answer": "或者",
+        "distractors": ["还是", "和", "但是"],
+        "english": "On the weekend you can come to my place or I'll go to yours."
+      },
+      {
+        "sentence": "你去___不去？",
+        "answer": "还是",
+        "distractors": ["或者", "和", "但是"],
+        "english": "Are you going or not?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "你喜欢唱歌还是跳舞？",
+        "wrong": ["你喜欢唱歌或者跳舞？", "你喜欢唱歌和跳舞？", "你喜欢唱歌但是跳舞？"],
+        "english": "Do you like singing or dancing?"
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_013",
+    "level": 2,
+    "title": "Again/another time with 再 (zài)",
+    "pattern": "Subject + 再 + Verb",
+    "explanation": "再 means 'again' for actions that will happen in the future, or 'more/another' for additional quantity. It is different from 又 (yòu), which refers to repetition of something that already happened.",
+    "examples": [
+      {
+        "simplified": "请再说一遍。",
+        "traditional": "請再說一遍。",
+        "pinyin": "Qǐng zài shuō yī biàn.",
+        "english": "Please say it again."
+      },
+      {
+        "simplified": "我想再吃一个。",
+        "traditional": "我想再吃一個。",
+        "pinyin": "Wǒ xiǎng zài chī yī gè.",
+        "english": "I want to eat one more."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "你能___写一遍吗？",
+        "answer": "再",
+        "distractors": ["又", "也", "还"],
+        "english": "Can you write it again?"
+      },
+      {
+        "sentence": "我想___喝一杯。",
+        "answer": "再",
+        "distractors": ["又", "也", "更"],
+        "english": "I want to drink one more glass."
+      },
+      {
+        "sentence": "我们___来一次吧。",
+        "answer": "再",
+        "distractors": ["又", "也", "还"],
+        "english": "Let's come again."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "下次再来吧。",
+        "wrong": ["下次又来吧。", "下次来再吧。", "再下次来吧。"],
+        "english": "Come again next time."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk2_014",
+    "level": 2,
+    "title": "Then/right away with 就 (jiù)",
+    "pattern": "Condition/Time + 就 + Verb",
+    "explanation": "就 has several uses: it indicates something happens quickly or sooner than expected ('right away'), links a condition to a consequence ('then'), or expresses immediacy. It always precedes the verb.",
+    "examples": [
+      {
+        "simplified": "他一回家就吃饭。",
+        "traditional": "他一回家就吃飯。",
+        "pinyin": "Tā yī huí jiā jiù chīfàn.",
+        "english": "As soon as he gets home, he eats."
+      },
+      {
+        "simplified": "我明天就去。",
+        "traditional": "我明天就去。",
+        "pinyin": "Wǒ míngtiān jiù qù.",
+        "english": "I'll go tomorrow (right away/as early as tomorrow)."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "你说，我___做。",
+        "answer": "就",
+        "distractors": ["才", "都", "也"],
+        "english": "You say it and I'll do it right away."
+      },
+      {
+        "sentence": "他下了课___回家了。",
+        "answer": "就",
+        "distractors": ["才", "都", "也"],
+        "english": "He went straight home after class."
+      },
+      {
+        "sentence": "如果下雨，我___不去了。",
+        "answer": "就",
+        "distractors": ["才", "都", "也"],
+        "english": "If it rains, I won't go."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他来了就走。",
+        "wrong": ["他就来了走。", "他来就了走。", "他来了走就。"],
+        "english": "He came and left right away."
+      },
+      {
+        "correct": "你努力，就会成功。",
+        "wrong": ["你努力，会就成功。", "就你努力，会成功。", "你努力就，会成功。"],
+        "english": "If you work hard, you will succeed."
+      }
+    ]
+  }
+]

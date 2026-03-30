@@ -1,0 +1,744 @@
+[
+  {
+    "id": "gr_hsk3_001",
+    "level": 3,
+    "title": "把 structure (bǎ)",
+    "pattern": "Subject + 把 + Object + Verb + Complement/Result",
+    "explanation": "把 moves the object before the verb to emphasize what was done to it or what happened to it. The verb must be followed by a complement or result — 把 cannot be used with bare verbs.",
+    "examples": [
+      {
+        "simplified": "她把书放在桌子上。",
+        "traditional": "她把書放在桌子上。",
+        "pinyin": "Tā bǎ shū fàng zài zhuōzi shàng.",
+        "english": "She put the book on the table."
+      },
+      {
+        "simplified": "他把作业做完了。",
+        "traditional": "他把作業做完了。",
+        "pinyin": "Tā bǎ zuòyè zuò wán le.",
+        "english": "He finished his homework."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "请___门关上。",
+        "answer": "把",
+        "distractors": ["被", "让", "叫"],
+        "english": "Please close the door."
+      },
+      {
+        "sentence": "他___那本书借给了我。",
+        "answer": "把",
+        "distractors": ["被", "让", "叫"],
+        "english": "He lent that book to me."
+      },
+      {
+        "sentence": "我___手机忘在家了。",
+        "answer": "把",
+        "distractors": ["被", "让", "对"],
+        "english": "I left my phone at home."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "她把衣服洗干净了。",
+        "wrong": ["她把衣服洗。", "她洗把衣服干净了。", "把她衣服洗干净了。"],
+        "english": "She washed the clothes clean."
+      },
+      {
+        "correct": "请把窗户打开。",
+        "wrong": ["请打开把窗户。", "请把打开窗户。", "请窗户把打开。"],
+        "english": "Please open the window."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_002",
+    "level": 3,
+    "title": "Passive voice with 被 (bèi)",
+    "pattern": "Subject (patient) + 被 + Agent + Verb + Complement",
+    "explanation": "被 marks the passive voice, meaning the subject receives the action rather than performs it. The verb typically needs a complement. 被 sentences often have a negative or undesirable connotation.",
+    "examples": [
+      {
+        "simplified": "他的钱包被偷了。",
+        "traditional": "他的錢包被偷了。",
+        "pinyin": "Tā de qiánbāo bèi tōu le.",
+        "english": "His wallet was stolen."
+      },
+      {
+        "simplified": "那本书被她借走了。",
+        "traditional": "那本書被她借走了。",
+        "pinyin": "Nà běn shū bèi tā jiè zǒu le.",
+        "english": "That book was borrowed by her."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我的作业___老师改了。",
+        "answer": "被",
+        "distractors": ["把", "让", "给"],
+        "english": "My homework was corrected by the teacher."
+      },
+      {
+        "sentence": "窗户___风吹开了。",
+        "answer": "被",
+        "distractors": ["把", "让", "叫"],
+        "english": "The window was blown open by the wind."
+      },
+      {
+        "sentence": "那封信___他撕掉了。",
+        "answer": "被",
+        "distractors": ["把", "让", "给"],
+        "english": "That letter was torn up by him."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "蛋糕被孩子们吃完了。",
+        "wrong": ["蛋糕把孩子们吃完了。", "被蛋糕孩子们吃完了。", "蛋糕孩子们被吃了完。"],
+        "english": "The cake was eaten up by the children."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_003",
+    "level": 3,
+    "title": "Although...but with 虽然...但是 (suīrán...dànshì)",
+    "pattern": "虽然 + Clause 1，但是 + Clause 2",
+    "explanation": "虽然...但是 means 'although...but' and expresses a concession followed by a contrasting point. Unlike English, Chinese requires both connectives (though 但是 alone is possible). The subjects can be in either clause.",
+    "examples": [
+      {
+        "simplified": "虽然他很忙，但是他还是来了。",
+        "traditional": "雖然他很忙，但是他還是來了。",
+        "pinyin": "Suīrán tā hěn máng, dànshì tā háishì lái le.",
+        "english": "Although he was busy, he still came."
+      },
+      {
+        "simplified": "虽然这道菜很贵，但是很好吃。",
+        "traditional": "雖然這道菜很貴，但是很好吃。",
+        "pinyin": "Suīrán zhè dào cài hěn guì, dànshì hěn hǎochī.",
+        "english": "Although this dish is expensive, it's delicious."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___他很累，但是他还在工作。",
+        "answer": "虽然",
+        "distractors": ["因为", "如果", "所以"],
+        "english": "Although he is very tired, he is still working."
+      },
+      {
+        "sentence": "虽然天气不好，___他们还是出发了。",
+        "answer": "但是",
+        "distractors": ["所以", "因为", "如果"],
+        "english": "Although the weather was bad, they still set off."
+      },
+      {
+        "sentence": "___路很远，但是风景很美。",
+        "answer": "虽然",
+        "distractors": ["因为", "所以", "如果"],
+        "english": "Although the road is long, the scenery is beautiful."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "虽然我不喜欢，但是我还是吃了。",
+        "wrong": ["因为我不喜欢，但是我还是吃了。", "虽然我不喜欢，所以我还是吃了。", "但是我不喜欢，虽然我还是吃了。"],
+        "english": "Although I didn't like it, I still ate it."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_004",
+    "level": 3,
+    "title": "Because...therefore with 因为...所以 (yīnwèi...suǒyǐ)",
+    "pattern": "因为 + Reason，所以 + Result",
+    "explanation": "因为...所以 means 'because...therefore'. Both connectives can be used together or separately. The clause with 因为 gives the reason; the clause with 所以 states the result.",
+    "examples": [
+      {
+        "simplified": "因为下雨，所以我们没去。",
+        "traditional": "因為下雨，所以我們沒去。",
+        "pinyin": "Yīnwèi xià yǔ, suǒyǐ wǒmen méi qù.",
+        "english": "Because it rained, we didn't go."
+      },
+      {
+        "simplified": "因为他努力学习，所以他成绩很好。",
+        "traditional": "因為他努力學習，所以他成績很好。",
+        "pinyin": "Yīnwèi tā nǔlì xuéxí, suǒyǐ tā chéngjì hěn hǎo.",
+        "english": "Because he studies hard, his grades are very good."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___我身体不好，所以没去上班。",
+        "answer": "因为",
+        "distractors": ["虽然", "如果", "但是"],
+        "english": "Because I was unwell, I didn't go to work."
+      },
+      {
+        "sentence": "因为他来晚了，___错过了飞机。",
+        "answer": "所以",
+        "distractors": ["但是", "虽然", "如果"],
+        "english": "Because he arrived late, he missed the plane."
+      },
+      {
+        "sentence": "___天气很冷，所以我穿了很多衣服。",
+        "answer": "因为",
+        "distractors": ["虽然", "如果", "所以"],
+        "english": "Because the weather is very cold, I put on a lot of clothes."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "因为他生病了，所以没来上课。",
+        "wrong": ["虽然他生病了，所以没来上课。", "因为他生病了，但是没来上课。", "所以他生病了，因为没来上课。"],
+        "english": "Because he was sick, he didn't come to class."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_005",
+    "level": 3,
+    "title": "If...then with 如果...就 (rúguǒ...jiù)",
+    "pattern": "如果 + Condition，(Subject) + 就 + Result",
+    "explanation": "如果...就 expresses a conditional relationship: 'if...then'. 如果 introduces the condition and 就 introduces the result. The subject often appears after 如果 or between the clauses.",
+    "examples": [
+      {
+        "simplified": "如果你有时间，就来我家吧。",
+        "traditional": "如果你有時間，就來我家吧。",
+        "pinyin": "Rúguǒ nǐ yǒu shíjiān, jiù lái wǒ jiā ba.",
+        "english": "If you have time, come to my place."
+      },
+      {
+        "simplified": "如果明天下雨，我就不去了。",
+        "traditional": "如果明天下雨，我就不去了。",
+        "pinyin": "Rúguǒ míngtiān xià yǔ, wǒ jiù bù qù le.",
+        "english": "If it rains tomorrow, I won't go."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___你不去，我也不去。",
+        "answer": "如果",
+        "distractors": ["虽然", "因为", "所以"],
+        "english": "If you don't go, I won't go either."
+      },
+      {
+        "sentence": "如果你需要帮助，___告诉我。",
+        "answer": "就",
+        "distractors": ["才", "都", "也"],
+        "english": "If you need help, just tell me."
+      },
+      {
+        "sentence": "___他不来，我们就开始吧。",
+        "answer": "如果",
+        "distractors": ["虽然", "因为", "所以"],
+        "english": "If he doesn't come, let's start."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "如果你饿了，就去吃饭吧。",
+        "wrong": ["如果你饿了，去就吃饭吧。", "你如果饿了就，去吃饭吧。", "就如果你饿了，去吃饭吧。"],
+        "english": "If you're hungry, go eat."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_006",
+    "level": 3,
+    "title": "Resultative complements: 好, 完, 到 (hǎo, wán, dào)",
+    "pattern": "Verb + 好/完/到",
+    "explanation": "Resultative complements attach directly to verbs to show the result of an action. 好 means 'done well/properly'; 完 means 'finished/done completely'; 到 means 'achieved/reached (the goal)'.",
+    "examples": [
+      {
+        "simplified": "他做好了准备。",
+        "traditional": "他做好了準備。",
+        "pinyin": "Tā zuò hǎo le zhǔnbèi.",
+        "english": "He finished the preparations well."
+      },
+      {
+        "simplified": "我吃完了。",
+        "traditional": "我吃完了。",
+        "pinyin": "Wǒ chī wán le.",
+        "english": "I've finished eating."
+      },
+      {
+        "simplified": "你找到了吗？",
+        "traditional": "你找到了嗎？",
+        "pinyin": "Nǐ zhǎo dào le ma?",
+        "english": "Did you find it?"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "作业写___了吗？",
+        "answer": "完",
+        "distractors": ["好", "到", "了"],
+        "english": "Have you finished writing the homework?"
+      },
+      {
+        "sentence": "饭做___了，可以吃了。",
+        "answer": "好",
+        "distractors": ["完", "到", "了"],
+        "english": "The food is done, we can eat."
+      },
+      {
+        "sentence": "我没买___票。",
+        "answer": "到",
+        "distractors": ["好", "完", "了"],
+        "english": "I couldn't get (buy) the ticket."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他写完了报告。",
+        "wrong": ["他完写了报告。", "他写了完报告。", "他写报告完了。"],
+        "english": "He finished writing the report."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_007",
+    "level": 3,
+    "title": "Directional complements: 上, 下, 来, 去 (shàng, xià, lái, qù)",
+    "pattern": "Verb + 上/下/来/去",
+    "explanation": "Directional complements indicate the direction of an action relative to the speaker. 来 (toward speaker) and 去 (away from speaker) pair with movement verbs. 上 (upward/onto) and 下 (downward/off) indicate direction on a surface.",
+    "examples": [
+      {
+        "simplified": "他走上来了。",
+        "traditional": "他走上來了。",
+        "pinyin": "Tā zǒu shàng lái le.",
+        "english": "He walked up (toward me)."
+      },
+      {
+        "simplified": "请坐下。",
+        "traditional": "請坐下。",
+        "pinyin": "Qǐng zuò xià.",
+        "english": "Please sit down."
+      },
+      {
+        "simplified": "老师走进来了。",
+        "traditional": "老師走進來了。",
+        "pinyin": "Lǎoshī zǒu jìn lái le.",
+        "english": "The teacher walked in."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他走___楼去了。",
+        "answer": "上",
+        "distractors": ["下", "来", "去"],
+        "english": "He went upstairs."
+      },
+      {
+        "sentence": "孩子们跑___来了。",
+        "answer": "过",
+        "distractors": ["上", "下", "了"],
+        "english": "The children came running over."
+      },
+      {
+        "sentence": "她把书拿___来了。",
+        "answer": "出",
+        "distractors": ["上", "下", "进"],
+        "english": "She took the book out."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他跑上楼去了。",
+        "wrong": ["他跑楼上去了。", "他上跑楼去了。", "他跑去楼上了。"],
+        "english": "He ran upstairs."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_008",
+    "level": 3,
+    "title": "More and more with 越来越 (yuèláiyuè)",
+    "pattern": "Subject + 越来越 + Adjective/Verb",
+    "explanation": "越来越 means 'more and more' and describes a gradual change or increasing degree. It is placed directly before the adjective or stative verb. No additional 了 is needed after the adjective.",
+    "examples": [
+      {
+        "simplified": "天气越来越冷了。",
+        "traditional": "天氣越來越冷了。",
+        "pinyin": "Tiānqì yuèláiyuè lěng le.",
+        "english": "The weather is getting colder and colder."
+      },
+      {
+        "simplified": "他的中文越来越好。",
+        "traditional": "他的中文越來越好。",
+        "pinyin": "Tā de Zhōngwén yuèláiyuè hǎo.",
+        "english": "His Chinese is getting better and better."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这个城市___来___热闹。",
+        "answer": "越",
+        "distractors": ["更", "非常", "很"],
+        "english": "This city is becoming more and more lively."
+      },
+      {
+        "sentence": "她学习___来越努力。",
+        "answer": "越",
+        "distractors": ["更", "非常", "很"],
+        "english": "She is studying harder and harder."
+      },
+      {
+        "sentence": "物价越来越___了。",
+        "answer": "高",
+        "distractors": ["的高", "很高", "高的"],
+        "english": "Prices are getting higher and higher."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他越来越忙了。",
+        "wrong": ["他越越来忙了。", "他来越越忙了。", "他越忙越来了。"],
+        "english": "He is getting busier and busier."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_009",
+    "level": 3,
+    "title": "As soon as with 一...就 (yī...jiù)",
+    "pattern": "Subject + 一 + Verb 1，就 + Verb 2",
+    "explanation": "一...就 means 'as soon as [Verb 1], [Verb 2]' or 'the moment [Verb 1], immediately [Verb 2]'. It emphasizes the immediacy of the second action following the first.",
+    "examples": [
+      {
+        "simplified": "他一到家就睡觉。",
+        "traditional": "他一到家就睡覺。",
+        "pinyin": "Tā yī dào jiā jiù shuìjiào.",
+        "english": "As soon as he gets home, he goes to sleep."
+      },
+      {
+        "simplified": "我一看到她就认出来了。",
+        "traditional": "我一看到她就認出來了。",
+        "pinyin": "Wǒ yī kàn dào tā jiù rèn chū lái le.",
+        "english": "As soon as I saw her, I recognized her."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "她___吃完饭就去运动。",
+        "answer": "一",
+        "distractors": ["也", "都", "就"],
+        "english": "As soon as she finishes eating, she goes to exercise."
+      },
+      {
+        "sentence": "我一听到这个消息___很高兴。",
+        "answer": "就",
+        "distractors": ["才", "都", "也"],
+        "english": "As soon as I heard this news, I was very happy."
+      },
+      {
+        "sentence": "他___下课就离开了。",
+        "answer": "一",
+        "distractors": ["就", "才", "也"],
+        "english": "As soon as class ended, he left."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我一回家就开始做作业。",
+        "wrong": ["我一就回家开始做作业。", "我回家一就开始做作业。", "我一回家开始就做作业。"],
+        "english": "As soon as I get home, I start doing homework."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_010",
+    "level": 3,
+    "title": "Besides/except with 除了...以外 (chúle...yǐwài)",
+    "pattern": "除了 + Noun/Clause + 以外，Subject + 都/也 + Verb",
+    "explanation": "除了...以外 has two meanings depending on context: (1) 'except for' — everything else (use 都); (2) 'in addition to / besides' — plus something else (use 也/还). Context determines the meaning.",
+    "examples": [
+      {
+        "simplified": "除了他以外，我们都去了。",
+        "traditional": "除了他以外，我們都去了。",
+        "pinyin": "Chúle tā yǐwài, wǒmen dōu qù le.",
+        "english": "Except for him, we all went."
+      },
+      {
+        "simplified": "除了中文，她也会说日文。",
+        "traditional": "除了中文，她也會說日文。",
+        "pinyin": "Chúle Zhōngwén, tā yě huì shuō Rìwén.",
+        "english": "Besides Chinese, she can also speak Japanese."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___英语以外，他还会说法语。",
+        "answer": "除了",
+        "distractors": ["因为", "虽然", "如果"],
+        "english": "Besides English, he can also speak French."
+      },
+      {
+        "sentence": "除了这道菜以外，别的我___喜欢。",
+        "answer": "都",
+        "distractors": ["也", "就", "才"],
+        "english": "Except for this dish, I like everything else."
+      },
+      {
+        "sentence": "___他们两个以外，大家都同意了。",
+        "answer": "除了",
+        "distractors": ["因为", "虽然", "所以"],
+        "english": "Except for those two, everyone agreed."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "除了苹果以外，她也喜欢香蕉。",
+        "wrong": ["苹果除了以外，她也喜欢香蕉。", "除了苹果，她以外也喜欢香蕉。", "除了以外苹果，她也喜欢香蕉。"],
+        "english": "Besides apples, she also likes bananas."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_011",
+    "level": 3,
+    "title": "Toward/regarding with 对 (duì)",
+    "pattern": "Subject + 对 + Object + Adjective/Verb",
+    "explanation": "对 means 'toward', 'to', or 'regarding'. It is used to indicate the target or recipient of a feeling, attitude, or action. Common in phrases like 对...感兴趣 (interested in), 对...有用 (useful for).",
+    "examples": [
+      {
+        "simplified": "她对中国文化很感兴趣。",
+        "traditional": "她對中國文化很感興趣。",
+        "pinyin": "Tā duì Zhōngguó wénhuà hěn gǎn xìngqù.",
+        "english": "She is very interested in Chinese culture."
+      },
+      {
+        "simplified": "他对我很好。",
+        "traditional": "他對我很好。",
+        "pinyin": "Tā duì wǒ hěn hǎo.",
+        "english": "He is very kind to me."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "你___这件事怎么看？",
+        "answer": "对",
+        "distractors": ["给", "跟", "向"],
+        "english": "What do you think about this matter?"
+      },
+      {
+        "sentence": "学语言___你很有帮助。",
+        "answer": "对",
+        "distractors": ["给", "跟", "向"],
+        "english": "Learning a language is very helpful for you."
+      },
+      {
+        "sentence": "她___孩子们很有耐心。",
+        "answer": "对",
+        "distractors": ["给", "跟", "从"],
+        "english": "She is very patient with children."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他对工作非常认真。",
+        "wrong": ["他给工作非常认真。", "他工作对非常认真。", "对他工作非常认真。"],
+        "english": "He is very serious about his work."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_012",
+    "level": 3,
+    "title": "For/to with 给 (gěi)",
+    "pattern": "Subject + 给 + Recipient + Verb + Object / Subject + Verb + 给 + Recipient + Object",
+    "explanation": "给 means 'to give' or 'for (someone)'. It can precede the verb as a preposition ('do something for/to someone') or follow the verb as a directional complement ('give to').",
+    "examples": [
+      {
+        "simplified": "我给你发一封邮件。",
+        "traditional": "我給你發一封郵件。",
+        "pinyin": "Wǒ gěi nǐ fā yī fēng yóujiàn.",
+        "english": "I'll send you an email."
+      },
+      {
+        "simplified": "她把礼物送给了他。",
+        "traditional": "她把禮物送給了他。",
+        "pinyin": "Tā bǎ lǐwù sòng gěi le tā.",
+        "english": "She gave the gift to him."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "请___我一杯水。",
+        "answer": "给",
+        "distractors": ["对", "向", "跟"],
+        "english": "Please give me a glass of water."
+      },
+      {
+        "sentence": "他___我打了一个电话。",
+        "answer": "给",
+        "distractors": ["对", "向", "跟"],
+        "english": "He called me."
+      },
+      {
+        "sentence": "妈妈___我做了早饭。",
+        "answer": "给",
+        "distractors": ["对", "向", "跟"],
+        "english": "Mom made breakfast for me."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他给我带来了一个好消息。",
+        "wrong": ["他对我带来了一个好消息。", "他给带来我了一个好消息。", "他带来给我了一个好消息。"],
+        "english": "He brought me good news."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_013",
+    "level": 3,
+    "title": "Distance from with 离 (lí)",
+    "pattern": "Place A + 离 + Place B + 远/近/Distance",
+    "explanation": "离 means 'away from' and is used to express the distance between two places or things. The distance or descriptor (far/close) comes after both places.",
+    "examples": [
+      {
+        "simplified": "我家离学校很近。",
+        "traditional": "我家離學校很近。",
+        "pinyin": "Wǒ jiā lí xuéxiào hěn jìn.",
+        "english": "My home is very close to school."
+      },
+      {
+        "simplified": "这里离机场大约三十公里。",
+        "traditional": "這裡離機場大約三十公里。",
+        "pinyin": "Zhèlǐ lí jīchǎng dàyuē sānshí gōnglǐ.",
+        "english": "This place is about 30 kilometers from the airport."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "公司___我家不太远。",
+        "answer": "离",
+        "distractors": ["在", "到", "从"],
+        "english": "The company is not too far from my home."
+      },
+      {
+        "sentence": "这个超市___地铁站很近。",
+        "answer": "离",
+        "distractors": ["在", "到", "从"],
+        "english": "This supermarket is very close to the subway station."
+      },
+      {
+        "sentence": "北京___上海有一千多公里。",
+        "answer": "离",
+        "distractors": ["在", "到", "从"],
+        "english": "Beijing is more than a thousand kilometers from Shanghai."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我家离公司很近。",
+        "wrong": ["我家到公司很近。", "我家在公司很近。", "我家从公司很近。"],
+        "english": "My home is very close to the company."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_014",
+    "level": 3,
+    "title": "From...to with 从...到 (cóng...dào)",
+    "pattern": "从 + Start + 到 + End + Verb",
+    "explanation": "从...到 means 'from...to' and can describe time spans ('from Monday to Friday') or distances ('from here to there'). The verb or main predicate follows after 到.",
+    "examples": [
+      {
+        "simplified": "他从北京到上海坐了五个小时的火车。",
+        "traditional": "他從北京到上海坐了五個小時的火車。",
+        "pinyin": "Tā cóng Běijīng dào Shànghǎi zuò le wǔ gè xiǎoshí de huǒchē.",
+        "english": "He took a five-hour train from Beijing to Shanghai."
+      },
+      {
+        "simplified": "我们从早上九点到下午五点上班。",
+        "traditional": "我們從早上九點到下午五點上班。",
+        "pinyin": "Wǒmen cóng zǎoshang jiǔ diǎn dào xiàwǔ wǔ diǎn shàngbān.",
+        "english": "We work from 9 in the morning to 5 in the afternoon."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___这里到学校要走十分钟。",
+        "answer": "从",
+        "distractors": ["在", "离", "向"],
+        "english": "It takes ten minutes to walk from here to school."
+      },
+      {
+        "sentence": "他___周一到周五都要上课。",
+        "answer": "从",
+        "distractors": ["在", "离", "对"],
+        "english": "He has class from Monday to Friday."
+      },
+      {
+        "sentence": "从北京___上海有多远？",
+        "answer": "到",
+        "distractors": ["在", "离", "来"],
+        "english": "How far is it from Beijing to Shanghai?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他从家走到公司只要二十分钟。",
+        "wrong": ["他在家走到公司只要二十分钟。", "他从家到走公司只要二十分钟。", "他家从走到公司只要二十分钟。"],
+        "english": "It only takes him twenty minutes to walk from home to the company."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk3_015",
+    "level": 3,
+    "title": "Put...at/in with 把...放在 (bǎ...fàng zài)",
+    "pattern": "Subject + 把 + Object + 放在 + Location",
+    "explanation": "把...放在 is a specific and highly productive 把 pattern meaning 'to put [something] at/in [location]'. 放 means 'to place' and 在 introduces the location. This pattern exemplifies the 把 structure with a clear result.",
+    "examples": [
+      {
+        "simplified": "请把书包放在椅子上。",
+        "traditional": "請把書包放在椅子上。",
+        "pinyin": "Qǐng bǎ shūbāo fàng zài yǐzi shàng.",
+        "english": "Please put your backpack on the chair."
+      },
+      {
+        "simplified": "他把钥匙放在桌子上了。",
+        "traditional": "他把鑰匙放在桌子上了。",
+        "pinyin": "Tā bǎ yàoshi fàng zài zhuōzi shàng le.",
+        "english": "He put his keys on the table."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "请把手机___在口袋里。",
+        "answer": "放",
+        "distractors": ["是", "有", "做"],
+        "english": "Please put your phone in your pocket."
+      },
+      {
+        "sentence": "他把行李___在床上了。",
+        "answer": "放在",
+        "distractors": ["是在", "有在", "做到"],
+        "english": "He placed his luggage on the bed."
+      },
+      {
+        "sentence": "你把碗放___柜子里吧。",
+        "answer": "在",
+        "distractors": ["到", "了", "着"],
+        "english": "Put the bowls in the cupboard."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我把钱包放在抽屉里了。",
+        "wrong": ["我放把钱包在抽屉里了。", "我把钱包在放抽屉里了。", "把我钱包放在抽屉里了。"],
+        "english": "I put my wallet in the drawer."
+      },
+      {
+        "correct": "请把这些文件放在我的办公桌上。",
+        "wrong": ["请放这些文件在我的办公桌上。", "请把这些文件在我的办公桌上放。", "请在把这些文件放我的办公桌上。"],
+        "english": "Please put these documents on my desk."
+      }
+    ]
+  }
+]

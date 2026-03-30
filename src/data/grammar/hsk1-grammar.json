@@ -1,0 +1,588 @@
+[
+  {
+    "id": "gr_hsk1_001",
+    "level": 1,
+    "title": "Identity with 是 (shì)",
+    "pattern": "Subject + 是 + Noun",
+    "explanation": "是 is the main linking verb meaning 'is/am/are'. It connects a subject to a noun that identifies it. 是 is not used with adjectives.",
+    "examples": [
+      {
+        "simplified": "我是学生。",
+        "traditional": "我是學生。",
+        "pinyin": "Wǒ shì xuésheng.",
+        "english": "I am a student."
+      },
+      {
+        "simplified": "她是老师。",
+        "traditional": "她是老師。",
+        "pinyin": "Tā shì lǎoshī.",
+        "english": "She is a teacher."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他___医生。",
+        "answer": "是",
+        "distractors": ["有", "在", "很"],
+        "english": "He is a doctor."
+      },
+      {
+        "sentence": "这___我的书。",
+        "answer": "是",
+        "distractors": ["有", "在", "也"],
+        "english": "This is my book."
+      },
+      {
+        "sentence": "我们___朋友。",
+        "answer": "是",
+        "distractors": ["有", "很", "都"],
+        "english": "We are friends."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他是中国人。",
+        "wrong": ["他很中国人。", "他有中国人。", "他的中国人。"],
+        "english": "He is Chinese."
+      },
+      {
+        "correct": "我是老师。",
+        "wrong": ["我很老师。", "我在老师。", "我有老师。"],
+        "english": "I am a teacher."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_002",
+    "level": 1,
+    "title": "Possession and existence with 有 (yǒu)",
+    "pattern": "Subject + 有 + Object",
+    "explanation": "有 means 'to have' when expressing possession, or 'there is/are' when expressing existence. It is negated with 没, never with 不.",
+    "examples": [
+      {
+        "simplified": "我有一本书。",
+        "traditional": "我有一本書。",
+        "pinyin": "Wǒ yǒu yī běn shū.",
+        "english": "I have a book."
+      },
+      {
+        "simplified": "桌子上有一杯水。",
+        "traditional": "桌子上有一杯水。",
+        "pinyin": "Zhuōzi shàng yǒu yī bēi shuǐ.",
+        "english": "There is a glass of water on the table."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___两个姐姐。",
+        "answer": "有",
+        "distractors": ["是", "在", "很"],
+        "english": "I have two older sisters."
+      },
+      {
+        "sentence": "教室里___很多学生。",
+        "answer": "有",
+        "distractors": ["是", "在", "都"],
+        "english": "There are many students in the classroom."
+      },
+      {
+        "sentence": "他___一个苹果。",
+        "answer": "有",
+        "distractors": ["是", "很", "在"],
+        "english": "He has an apple."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "她有一只猫。",
+        "wrong": ["她是一只猫。", "她在一只猫。", "她很一只猫。"],
+        "english": "She has a cat."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_003",
+    "level": 1,
+    "title": "Negation with 不 (bù)",
+    "pattern": "Subject + 不 + Verb/Adjective",
+    "explanation": "不 negates most verbs and all adjectives. It means 'not' or 'don't'. When followed by a 4th-tone syllable, 不 changes to 2nd tone (bú).",
+    "examples": [
+      {
+        "simplified": "我不去。",
+        "traditional": "我不去。",
+        "pinyin": "Wǒ bù qù.",
+        "english": "I'm not going."
+      },
+      {
+        "simplified": "他不是学生。",
+        "traditional": "他不是學生。",
+        "pinyin": "Tā bú shì xuésheng.",
+        "english": "He is not a student."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___去学校。",
+        "answer": "不",
+        "distractors": ["没", "也", "都"],
+        "english": "I am not going to school."
+      },
+      {
+        "sentence": "她___喜欢咖啡。",
+        "answer": "不",
+        "distractors": ["没", "很", "非常"],
+        "english": "She doesn't like coffee."
+      },
+      {
+        "sentence": "这个苹果___好吃。",
+        "answer": "不",
+        "distractors": ["没", "是", "很"],
+        "english": "This apple is not tasty."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我不喝茶。",
+        "wrong": ["我没喝茶。", "我不了喝茶。", "我的不喝茶。"],
+        "english": "I don't drink tea."
+      },
+      {
+        "correct": "他不高兴。",
+        "wrong": ["他没高兴。", "他是不高兴。", "他不的高兴。"],
+        "english": "He is not happy."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_004",
+    "level": 1,
+    "title": "Negation of 有 and past actions with 没 (méi)",
+    "pattern": "Subject + 没 + 有/Verb",
+    "explanation": "没 (méi) negates 有 (to have/exist) and is also used to negate past actions, indicating something did not happen or has not happened yet.",
+    "examples": [
+      {
+        "simplified": "我没有钱。",
+        "traditional": "我沒有錢。",
+        "pinyin": "Wǒ méiyǒu qián.",
+        "english": "I don't have money."
+      },
+      {
+        "simplified": "他没去。",
+        "traditional": "他沒去。",
+        "pinyin": "Tā méi qù.",
+        "english": "He didn't go."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___有时间。",
+        "answer": "没",
+        "distractors": ["不", "也", "都"],
+        "english": "I don't have time."
+      },
+      {
+        "sentence": "她___吃早饭。",
+        "answer": "没",
+        "distractors": ["不", "很", "是"],
+        "english": "She didn't eat breakfast."
+      },
+      {
+        "sentence": "他___有弟弟。",
+        "answer": "没",
+        "distractors": ["不", "也", "在"],
+        "english": "He doesn't have a younger brother."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我没有书。",
+        "wrong": ["我不有书。", "我没是书。", "我有没书。"],
+        "english": "I don't have a book."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_005",
+    "level": 1,
+    "title": "Yes/no questions with 吗 (ma)",
+    "pattern": "Statement + 吗？",
+    "explanation": "Adding 吗 to the end of a statement turns it into a yes/no question. The word order does not change. This is different from English, which uses inversion.",
+    "examples": [
+      {
+        "simplified": "你是学生吗？",
+        "traditional": "你是學生嗎？",
+        "pinyin": "Nǐ shì xuésheng ma?",
+        "english": "Are you a student?"
+      },
+      {
+        "simplified": "你喜欢中国菜吗？",
+        "traditional": "你喜歡中國菜嗎？",
+        "pinyin": "Nǐ xǐhuān Zhōngguó cài ma?",
+        "english": "Do you like Chinese food?"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "你有时间___？",
+        "answer": "吗",
+        "distractors": ["呢", "了", "吧"],
+        "english": "Do you have time?"
+      },
+      {
+        "sentence": "他是你的朋友___？",
+        "answer": "吗",
+        "distractors": ["呢", "了", "啊"],
+        "english": "Is he your friend?"
+      },
+      {
+        "sentence": "这是你的书___？",
+        "answer": "吗",
+        "distractors": ["呢", "了", "吧"],
+        "english": "Is this your book?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "你去学校吗？",
+        "wrong": ["你去吗学校？", "吗你去学校？", "你吗去学校？"],
+        "english": "Are you going to school?"
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_006",
+    "level": 1,
+    "title": "Follow-up questions with 呢 (ne)",
+    "pattern": "Noun/Pronoun + 呢？",
+    "explanation": "呢 is used to ask 'what about...?' or 'and...?' It refers back to a topic already discussed, asking the same question about a different subject.",
+    "examples": [
+      {
+        "simplified": "我很好，你呢？",
+        "traditional": "我很好，你呢？",
+        "pinyin": "Wǒ hěn hǎo, nǐ ne?",
+        "english": "I'm fine, and you?"
+      },
+      {
+        "simplified": "他是学生，她呢？",
+        "traditional": "他是學生，她呢？",
+        "pinyin": "Tā shì xuésheng, tā ne?",
+        "english": "He is a student, what about her?"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我喜欢苹果，你___？",
+        "answer": "呢",
+        "distractors": ["吗", "了", "吧"],
+        "english": "I like apples, what about you?"
+      },
+      {
+        "sentence": "我有书，他___？",
+        "answer": "呢",
+        "distractors": ["吗", "了", "啊"],
+        "english": "I have a book, what about him?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我去，你呢？",
+        "wrong": ["我去，你吗？", "我去，呢你？", "我去，你了？"],
+        "english": "I'm going, what about you?"
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_007",
+    "level": 1,
+    "title": "Completion with 了 (le)",
+    "pattern": "Verb + 了 (+ Object)",
+    "explanation": "了 placed directly after a verb indicates a completed action. It signals that something has been done. It is not strictly a past tense marker but a completion marker.",
+    "examples": [
+      {
+        "simplified": "我吃了早饭。",
+        "traditional": "我吃了早飯。",
+        "pinyin": "Wǒ chī le zǎofàn.",
+        "english": "I ate breakfast."
+      },
+      {
+        "simplified": "他买了一本书。",
+        "traditional": "他買了一本書。",
+        "pinyin": "Tā mǎi le yī běn shū.",
+        "english": "He bought a book."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "她喝___一杯水。",
+        "answer": "了",
+        "distractors": ["过", "着", "的"],
+        "english": "She drank a glass of water."
+      },
+      {
+        "sentence": "我看___那部电影。",
+        "answer": "了",
+        "distractors": ["过", "着", "得"],
+        "english": "I watched that movie."
+      },
+      {
+        "sentence": "他去___学校。",
+        "answer": "了",
+        "distractors": ["过", "在", "的"],
+        "english": "He went to school."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我写了作业。",
+        "wrong": ["我了写作业。", "我写作业了的。", "我写过了作业。"],
+        "english": "I did my homework."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_008",
+    "level": 1,
+    "title": "Basic measure words 个, 本, 张 (gè, běn, zhāng)",
+    "pattern": "Number + Measure Word + Noun",
+    "explanation": "Chinese requires measure words (量词) between a number and a noun. 个 is the most general; 本 is for bound objects like books; 张 is for flat objects like paper and tickets.",
+    "examples": [
+      {
+        "simplified": "三个学生",
+        "traditional": "三個學生",
+        "pinyin": "sān gè xuésheng",
+        "english": "three students"
+      },
+      {
+        "simplified": "两本书",
+        "traditional": "兩本書",
+        "pinyin": "liǎng běn shū",
+        "english": "two books"
+      },
+      {
+        "simplified": "一张纸",
+        "traditional": "一張紙",
+        "pinyin": "yī zhāng zhǐ",
+        "english": "one sheet of paper"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我有两___书。",
+        "answer": "本",
+        "distractors": ["个", "张", "只"],
+        "english": "I have two books."
+      },
+      {
+        "sentence": "他买了三___票。",
+        "answer": "张",
+        "distractors": ["个", "本", "只"],
+        "english": "He bought three tickets."
+      },
+      {
+        "sentence": "她有一___朋友。",
+        "answer": "个",
+        "distractors": ["本", "张", "只"],
+        "english": "She has a friend."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我有三本书。",
+        "wrong": ["我有三书。", "我有书三本。", "我有三的书。"],
+        "english": "I have three books."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_009",
+    "level": 1,
+    "title": "Basic Subject-Verb-Object structure",
+    "pattern": "Subject + Verb + Object",
+    "explanation": "Chinese follows Subject-Verb-Object (SVO) word order, similar to English. Time words and adverbs typically come before the verb, not at the end of the sentence.",
+    "examples": [
+      {
+        "simplified": "我喝水。",
+        "traditional": "我喝水。",
+        "pinyin": "Wǒ hē shuǐ.",
+        "english": "I drink water."
+      },
+      {
+        "simplified": "他看书。",
+        "traditional": "他看書。",
+        "pinyin": "Tā kàn shū.",
+        "english": "He reads books."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___中文。",
+        "answer": "学",
+        "distractors": ["是", "有", "在"],
+        "english": "I study Chinese."
+      },
+      {
+        "sentence": "她___苹果。",
+        "answer": "吃",
+        "distractors": ["是", "有", "很"],
+        "english": "She eats apples."
+      },
+      {
+        "sentence": "他们___足球。",
+        "answer": "踢",
+        "distractors": ["是", "有", "在"],
+        "english": "They play football."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我看电视。",
+        "wrong": ["我电视看。", "看我电视。", "电视我看。"],
+        "english": "I watch television."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_010",
+    "level": 1,
+    "title": "Adjectival predicates with 很 (hěn)",
+    "pattern": "Subject + 很 + Adjective",
+    "explanation": "In Chinese, adjectives can directly serve as predicates without a linking verb like 是. However, a bare adjective implies contrast, so 很 (meaning 'very' or acting as a neutral filler) is typically added.",
+    "examples": [
+      {
+        "simplified": "她很漂亮。",
+        "traditional": "她很漂亮。",
+        "pinyin": "Tā hěn piàoliang.",
+        "english": "She is very pretty."
+      },
+      {
+        "simplified": "今天很冷。",
+        "traditional": "今天很冷。",
+        "pinyin": "Jīntiān hěn lěng.",
+        "english": "Today is very cold."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这本书___有意思。",
+        "answer": "很",
+        "distractors": ["是", "有", "也"],
+        "english": "This book is very interesting."
+      },
+      {
+        "sentence": "他___高兴。",
+        "answer": "很",
+        "distractors": ["是", "有", "在"],
+        "english": "He is very happy."
+      },
+      {
+        "sentence": "中文___难。",
+        "answer": "很",
+        "distractors": ["是", "有", "不"],
+        "english": "Chinese is very difficult."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这个苹果很好吃。",
+        "wrong": ["这个苹果是好吃。", "这个苹果好吃很。", "这个苹果的很好吃。"],
+        "english": "This apple is very delicious."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_011",
+    "level": 1,
+    "title": "Also/too with 也 (yě)",
+    "pattern": "Subject + 也 + Verb/Adjective",
+    "explanation": "也 means 'also' or 'too' and must be placed directly before the verb or adjective, not at the end of the sentence like English 'too'.",
+    "examples": [
+      {
+        "simplified": "我也是学生。",
+        "traditional": "我也是學生。",
+        "pinyin": "Wǒ yě shì xuésheng.",
+        "english": "I am also a student."
+      },
+      {
+        "simplified": "她也喜欢音乐。",
+        "traditional": "她也喜歡音樂。",
+        "pinyin": "Tā yě xǐhuān yīnyuè.",
+        "english": "She also likes music."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___去，你去吗？",
+        "answer": "也",
+        "distractors": ["都", "还", "很"],
+        "english": "I'm also going. Are you going?"
+      },
+      {
+        "sentence": "他___会说中文。",
+        "answer": "也",
+        "distractors": ["都", "还", "很"],
+        "english": "He can also speak Chinese."
+      },
+      {
+        "sentence": "这个菜___很好吃。",
+        "answer": "也",
+        "distractors": ["都", "还", "非常"],
+        "english": "This dish is also very delicious."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我也喜欢喝茶。",
+        "wrong": ["我喜欢喝茶也。", "也我喜欢喝茶。", "我喜欢也喝茶。"],
+        "english": "I also like drinking tea."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk1_012",
+    "level": 1,
+    "title": "Numbers + Measure Words",
+    "pattern": "Number + Measure Word + Noun",
+    "explanation": "When specifying quantity in Chinese, numbers must be followed by the appropriate measure word before the noun. 两 (liǎng) is used instead of 二 (èr) when counting nouns with measure words.",
+    "examples": [
+      {
+        "simplified": "两个苹果",
+        "traditional": "兩個蘋果",
+        "pinyin": "liǎng gè píngguǒ",
+        "english": "two apples"
+      },
+      {
+        "simplified": "五杯咖啡",
+        "traditional": "五杯咖啡",
+        "pinyin": "wǔ bēi kāfēi",
+        "english": "five cups of coffee"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我喝了___杯水。",
+        "answer": "两",
+        "distractors": ["二", "一", "三"],
+        "english": "I drank two glasses of water."
+      },
+      {
+        "sentence": "桌子上有三___椅子。",
+        "answer": "把",
+        "distractors": ["个", "张", "本"],
+        "english": "There are three chairs on/by the table."
+      },
+      {
+        "sentence": "他买了四___苹果。",
+        "answer": "个",
+        "distractors": ["本", "张", "杯"],
+        "english": "He bought four apples."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我有两个妹妹。",
+        "wrong": ["我有二个妹妹。", "我有两妹妹。", "我有妹妹两个。"],
+        "english": "I have two younger sisters."
+      }
+    ]
+  }
+]

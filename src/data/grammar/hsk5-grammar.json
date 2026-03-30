@@ -1,0 +1,782 @@
+[
+  {
+    "id": "gr_hsk5_001",
+    "level": 5,
+    "title": "即使...也 (even if...still)",
+    "pattern": "即使 + hypothetical condition + 也 + result",
+    "explanation": "Expresses that the result holds true even in a hypothetical or extreme situation. Unlike 虽然...但是, 即使 introduces a condition that may not be real, emphasizing the unconditional nature of the outcome.",
+    "examples": [
+      {
+        "simplified": "即使很困难，我也要坚持。",
+        "traditional": "即使很困難，我也要堅持。",
+        "pinyin": "Jíshǐ hěn kùnnán, wǒ yě yào jiānchí.",
+        "english": "Even if it's very difficult, I will still persist."
+      },
+      {
+        "simplified": "即使下雨，比赛也不会取消。",
+        "traditional": "即使下雨，比賽也不會取消。",
+        "pinyin": "Jíshǐ xià yǔ, bǐsài yě bù huì qǔxiāo.",
+        "english": "Even if it rains, the match will not be cancelled."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___很困难，我也要坚持。",
+        "answer": "即使",
+        "distractors": ["因为", "虽然", "既然"],
+        "english": "Even if it's very difficult, I will still persist."
+      },
+      {
+        "sentence": "即使下雨，比赛___不会取消。",
+        "answer": "也",
+        "distractors": ["就", "才", "都"],
+        "english": "Even if it rains, the match will not be cancelled."
+      },
+      {
+        "sentence": "即使我不同意，他___会这样做。",
+        "answer": "也",
+        "distractors": ["就", "才", "还"],
+        "english": "Even if I disagree, he will still do it this way."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "即使失败了，我也不会放弃。",
+        "wrong": [
+          "即使失败了，我才不会放弃。",
+          "虽然失败了，我也不会放弃。",
+          "即使失败了，我就不会放弃。"
+        ],
+        "english": "Even if I fail, I will not give up."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_002",
+    "level": 5,
+    "title": "尽管...还是 (despite...still)",
+    "pattern": "尽管 + real obstacle + 还是/仍然 + result",
+    "explanation": "Used when the condition is real and acknowledged, yet the outcome remains unchanged. Unlike 即使 (hypothetical), 尽管 introduces an actual concession.",
+    "examples": [
+      {
+        "simplified": "尽管很累，他还是坚持工作。",
+        "traditional": "儘管很累，他還是堅持工作。",
+        "pinyin": "Jǐnguǎn hěn lèi, tā háishì jiānchí gōngzuò.",
+        "english": "Despite being very tired, he still insisted on working."
+      },
+      {
+        "simplified": "尽管困难重重，他们还是完成了任务。",
+        "traditional": "儘管困難重重，他們還是完成了任務。",
+        "pinyin": "Jǐnguǎn kùnnán chóngchóng, tāmen háishì wánchéng le rènwù.",
+        "english": "Despite numerous difficulties, they still completed the task."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___很累，他还是坚持工作。",
+        "answer": "尽管",
+        "distractors": ["因为", "只要", "所以"],
+        "english": "Despite being very tired, he still insisted on working."
+      },
+      {
+        "sentence": "尽管天气不好，他___出去跑步了。",
+        "answer": "还是",
+        "distractors": ["就", "才", "都"],
+        "english": "Despite the bad weather, he still went out to run."
+      },
+      {
+        "sentence": "尽管他解释了很多，我___不理解。",
+        "answer": "还是",
+        "distractors": ["就", "才", "又"],
+        "english": "Despite his many explanations, I still don't understand."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "尽管路很远，她还是每天来上班。",
+        "wrong": [
+          "尽管路很远，她才每天来上班。",
+          "因为路很远，她还是每天来上班。",
+          "尽管路很远，她都每天来上班。"
+        ],
+        "english": "Despite the long commute, she still comes to work every day."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_003",
+    "level": 5,
+    "title": "与其...不如 (rather than...better to)",
+    "pattern": "与其 + less preferred option + 不如 + preferred option",
+    "explanation": "Used to compare two options and express that the second is preferable to the first. It implies a recommendation or judgment that one course of action is wiser or more beneficial.",
+    "examples": [
+      {
+        "simplified": "与其抱怨，不如去解决问题。",
+        "traditional": "與其抱怨，不如去解決問題。",
+        "pinyin": "Yǔqí bàoyuàn, bùrú qù jiějué wèntí.",
+        "english": "Rather than complaining, it's better to go solve the problem."
+      },
+      {
+        "simplified": "与其等待，不如主动出击。",
+        "traditional": "與其等待，不如主動出擊。",
+        "pinyin": "Yǔqí děngdài, bùrú zhǔdòng chūjī.",
+        "english": "Rather than waiting, it's better to take the initiative."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___抱怨，不如去解决问题。",
+        "answer": "与其",
+        "distractors": ["因为", "虽然", "既然"],
+        "english": "Rather than complaining, it's better to go solve the problem."
+      },
+      {
+        "sentence": "与其等待，___主动出击。",
+        "answer": "不如",
+        "distractors": ["就", "都", "才"],
+        "english": "Rather than waiting, it's better to take the initiative."
+      },
+      {
+        "sentence": "与其花时间争论，___直接试试看。",
+        "answer": "不如",
+        "distractors": ["就", "都", "还"],
+        "english": "Rather than spending time arguing, it's better to just try it."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "与其买新的，不如修好旧的。",
+        "wrong": [
+          "与其买新的，就不买旧的。",
+          "因为买新的，不如修好旧的。",
+          "与其买新的，都不如修好旧的。"
+        ],
+        "english": "Rather than buying a new one, it's better to repair the old one."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_004",
+    "level": 5,
+    "title": "之所以...是因为 (the reason...is because)",
+    "pattern": "subject + 之所以 + result + 是因为 + cause",
+    "explanation": "A formal structure that explains the reason behind a known fact or outcome. The result is stated first with 之所以, and the cause is given after 是因为, creating an emphasis on explanation.",
+    "examples": [
+      {
+        "simplified": "他之所以成功，是因为努力。",
+        "traditional": "他之所以成功，是因為努力。",
+        "pinyin": "Tā zhī suǒyǐ chénggōng, shì yīnwèi nǔlì.",
+        "english": "The reason he succeeded is because he worked hard."
+      },
+      {
+        "simplified": "她之所以来中国，是因为想学汉语。",
+        "traditional": "她之所以來中國，是因為想學漢語。",
+        "pinyin": "Tā zhī suǒyǐ lái Zhōngguó, shì yīnwèi xiǎng xué Hànyǔ.",
+        "english": "The reason she came to China is because she wanted to learn Chinese."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他___成功，是因为努力。",
+        "answer": "之所以",
+        "distractors": ["所以", "因此", "因为"],
+        "english": "The reason he succeeded is because he worked hard."
+      },
+      {
+        "sentence": "他之所以成功，___努力。",
+        "answer": "是因为",
+        "distractors": ["所以", "就是", "因此"],
+        "english": "The reason he succeeded is because he worked hard."
+      },
+      {
+        "sentence": "这个项目___失败，是因为准备不足。",
+        "answer": "之所以",
+        "distractors": ["所以", "因此", "既然"],
+        "english": "The reason this project failed is because of insufficient preparation."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他之所以不来，是因为生病了。",
+        "wrong": [
+          "他所以不来，是因为生病了。",
+          "他之所以不来，因为生病了。",
+          "他因为不来，是所以生病了。"
+        ],
+        "english": "The reason he didn't come is because he was sick."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_005",
+    "level": 5,
+    "title": "固然...但是 (admittedly...but)",
+    "pattern": "固然 + acknowledged point + 但是/却 + contrasting point",
+    "explanation": "Used to concede a point while introducing a contrasting or limiting argument. The speaker acknowledges the truth of the first statement but asserts that the second point is more important or significant.",
+    "examples": [
+      {
+        "simplified": "这个计划固然好，但是代价太大。",
+        "traditional": "這個計劃固然好，但是代價太大。",
+        "pinyin": "Zhège jìhuà gùrán hǎo, dànshì dàijià tài dà.",
+        "english": "This plan is admittedly good, but the cost is too high."
+      },
+      {
+        "simplified": "钱固然重要，但健康更重要。",
+        "traditional": "錢固然重要，但健康更重要。",
+        "pinyin": "Qián gùrán zhòngyào, dàn jiànkāng gèng zhòngyào.",
+        "english": "Money is admittedly important, but health is even more important."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "这个计划___好，但是代价太大。",
+        "answer": "固然",
+        "distractors": ["虽然", "因为", "所以"],
+        "english": "This plan is admittedly good, but the cost is too high."
+      },
+      {
+        "sentence": "这道菜固然好吃，___热量太高。",
+        "answer": "但是",
+        "distractors": ["所以", "因为", "既然"],
+        "english": "This dish is admittedly delicious, but it's too high in calories."
+      },
+      {
+        "sentence": "他的方法___有效，但风险很大。",
+        "answer": "固然",
+        "distractors": ["虽然", "因为", "所以"],
+        "english": "His method is admittedly effective, but the risk is high."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这份工作固然累，但薪水很高。",
+        "wrong": [
+          "这份工作虽然累，固然薪水很高。",
+          "这份工作固然累，所以薪水很高。",
+          "这份工作固然累，因为薪水很高。"
+        ],
+        "english": "This job is admittedly tiring, but the salary is high."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_006",
+    "level": 5,
+    "title": "不是...而是 (not...but rather)",
+    "pattern": "不是 + incorrect/rejected claim + 而是 + correct/actual claim",
+    "explanation": "Used to correct a misconception or clarify the actual situation. It explicitly negates one possibility and replaces it with the true one, often for emphasis or clarification.",
+    "examples": [
+      {
+        "simplified": "他不是不想去，而是没有时间。",
+        "traditional": "他不是不想去，而是沒有時間。",
+        "pinyin": "Tā bú shì bù xiǎng qù, érshì méiyǒu shíjiān.",
+        "english": "It's not that he doesn't want to go, but rather that he has no time."
+      },
+      {
+        "simplified": "问题不是钱，而是态度。",
+        "traditional": "問題不是錢，而是態度。",
+        "pinyin": "Wèntí bú shì qián, érshì tàidu.",
+        "english": "The problem is not money, but rather attitude."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他___不想去，而是没有时间。",
+        "answer": "不是",
+        "distractors": ["虽然", "因为", "既然"],
+        "english": "It's not that he doesn't want to go, but rather that he has no time."
+      },
+      {
+        "sentence": "问题不是钱，___态度。",
+        "answer": "而是",
+        "distractors": ["就是", "但是", "所以"],
+        "english": "The problem is not money, but rather attitude."
+      },
+      {
+        "sentence": "他不是在休息，___在工作。",
+        "answer": "而是",
+        "distractors": ["就是", "但是", "所以"],
+        "english": "He is not resting, but rather working."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这不是巧合，而是计划好的。",
+        "wrong": [
+          "这不是巧合，就是计划好的。",
+          "这不是巧合，但是计划好的。",
+          "这虽然巧合，而是计划好的。"
+        ],
+        "english": "This is not a coincidence, but rather something planned."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_007",
+    "level": 5,
+    "title": "以...为 (use...as/take...as)",
+    "pattern": "以 + noun + 为 + role/standard",
+    "explanation": "A formal structure expressing using something as a standard, center, or basis. It is often found in written or formal Chinese to describe principles, criteria, or frameworks.",
+    "examples": [
+      {
+        "simplified": "他以学生为中心，设计课程。",
+        "traditional": "他以學生為中心，設計課程。",
+        "pinyin": "Tā yǐ xuéshēng wéi zhōngxīn, shèjì kèchéng.",
+        "english": "He designs the curriculum with students as the center."
+      },
+      {
+        "simplified": "这家公司以质量为第一，从不降低标准。",
+        "traditional": "這家公司以質量為第一，從不降低標準。",
+        "pinyin": "Zhè jiā gōngsī yǐ zhìliàng wéi dì yī, cóng bù jiàngdī biāozhǔn.",
+        "english": "This company takes quality as its top priority and never lowers its standards."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他___学生为中心，设计课程。",
+        "answer": "以",
+        "distractors": ["对", "从", "把"],
+        "english": "He designs the curriculum with students as the center."
+      },
+      {
+        "sentence": "这家公司以质量___第一。",
+        "answer": "为",
+        "distractors": ["是", "做", "当"],
+        "english": "This company takes quality as its top priority."
+      },
+      {
+        "sentence": "我们应该___诚信___做人的基本原则。",
+        "answer": "以",
+        "distractors": ["把", "对", "从"],
+        "english": "We should take honesty as a basic principle of conduct."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这所学校以培养创新人才为目标。",
+        "wrong": [
+          "这所学校把培养创新人才为目标。",
+          "这所学校以培养创新人才是目标。",
+          "这所学校对培养创新人才为目标。"
+        ],
+        "english": "This school takes cultivating innovative talent as its goal."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_008",
+    "level": 5,
+    "title": "在...下 (under the circumstances of)",
+    "pattern": "在 + condition/influence + 下 + result/action",
+    "explanation": "Indicates that something happens within a certain set of conditions, circumstances, or influences. The noun phrase between 在 and 下 describes the context or guiding factor.",
+    "examples": [
+      {
+        "simplified": "在老师的指导下，我进步很快。",
+        "traditional": "在老師的指導下，我進步很快。",
+        "pinyin": "Zài lǎoshī de zhǐdǎo xià, wǒ jìnbù hěn kuài.",
+        "english": "Under the guidance of my teacher, I improved quickly."
+      },
+      {
+        "simplified": "在这种情况下，我们别无选择。",
+        "traditional": "在這種情況下，我們別無選擇。",
+        "pinyin": "Zài zhè zhǒng qíngkuàng xià, wǒmen bié wú xuǎnzé.",
+        "english": "Under these circumstances, we have no other choice."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___老师的指导下，我进步很快。",
+        "answer": "在",
+        "distractors": ["对", "从", "把"],
+        "english": "Under the guidance of my teacher, I improved quickly."
+      },
+      {
+        "sentence": "在老师的指导___，我进步很快。",
+        "answer": "下",
+        "distractors": ["上", "里", "中"],
+        "english": "Under the guidance of my teacher, I improved quickly."
+      },
+      {
+        "sentence": "在大家的帮助___，他顺利完成了任务。",
+        "answer": "下",
+        "distractors": ["上", "里", "中"],
+        "english": "With everyone's help, he successfully completed the task."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "在压力下，他反而表现得更好。",
+        "wrong": [
+          "对压力下，他反而表现得更好。",
+          "在压力上，他反而表现得更好。",
+          "从压力下，他反而表现得更好。"
+        ],
+        "english": "Under pressure, he actually performed even better."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_009",
+    "level": 5,
+    "title": "对于 (regarding/as for)",
+    "pattern": "对于 + topic + verb phrase",
+    "explanation": "Introduces the topic or subject that is being addressed. More formal than 对, it is used to introduce matters under discussion, often in written or analytical contexts.",
+    "examples": [
+      {
+        "simplified": "对于这个问题，大家有不同意见。",
+        "traditional": "對於這個問題，大家有不同意見。",
+        "pinyin": "Duìyú zhège wèntí, dàjiā yǒu bùtóng yìjiàn.",
+        "english": "Regarding this issue, everyone has different opinions."
+      },
+      {
+        "simplified": "对于他的建议，我们应该认真考虑。",
+        "traditional": "對於他的建議，我們應該認真考慮。",
+        "pinyin": "Duìyú tā de jiànyì, wǒmen yīnggāi rènzhēn kǎolǜ.",
+        "english": "As for his suggestion, we should seriously consider it."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___这个问题，大家有不同意见。",
+        "answer": "对于",
+        "distractors": ["因为", "虽然", "所以"],
+        "english": "Regarding this issue, everyone has different opinions."
+      },
+      {
+        "sentence": "___他的建议，我们应该认真考虑。",
+        "answer": "对于",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "As for his suggestion, we should seriously consider it."
+      },
+      {
+        "sentence": "___环境保护，政府制定了新政策。",
+        "answer": "对于",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "Regarding environmental protection, the government has formulated new policies."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "对于这次失败，他没有感到后悔。",
+        "wrong": [
+          "因为这次失败，他没有感到后悔。",
+          "虽然这次失败，他没有感到后悔。",
+          "所以这次失败，他没有感到后悔。"
+        ],
+        "english": "Regarding this failure, he felt no regret."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_010",
+    "level": 5,
+    "title": "通过...来 (through...to achieve)",
+    "pattern": "通过 + method/means + 来 + goal",
+    "explanation": "Expresses achieving a goal through a particular means or method. 通过 introduces the instrument or process, and 来 links it to the intended outcome.",
+    "examples": [
+      {
+        "simplified": "通过练习来提高水平。",
+        "traditional": "通過練習來提高水平。",
+        "pinyin": "Tōngguò liànxí lái tígāo shuǐpíng.",
+        "english": "Improve your level through practice."
+      },
+      {
+        "simplified": "她通过努力学习来实现自己的梦想。",
+        "traditional": "她通過努力學習來實現自己的夢想。",
+        "pinyin": "Tā tōngguò nǔlì xuéxí lái shíxiàn zìjǐ de mèngxiǎng.",
+        "english": "She achieves her dreams through hard study."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___练习来提高水平。",
+        "answer": "通过",
+        "distractors": ["因为", "虽然", "所以"],
+        "english": "Improve your level through practice."
+      },
+      {
+        "sentence": "通过努力学习___实现梦想。",
+        "answer": "来",
+        "distractors": ["就", "才", "都"],
+        "english": "Achieve dreams through hard study."
+      },
+      {
+        "sentence": "我们___合作来解决这个问题。",
+        "answer": "通过",
+        "distractors": ["因为", "所以", "对于"],
+        "english": "We solve this problem through cooperation."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他通过阅读来扩大词汇量。",
+        "wrong": [
+          "他通过阅读才扩大词汇量。",
+          "因为阅读来扩大词汇量。",
+          "他通过阅读都扩大词汇量。"
+        ],
+        "english": "He expands his vocabulary through reading."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_011",
+    "level": 5,
+    "title": "除非...才 (unless...only then)",
+    "pattern": "除非 + required condition + 才 + result",
+    "explanation": "Expresses that the result can only happen if a very specific condition is met, implying that without this condition, the result is impossible. It presents an exclusive prerequisite.",
+    "examples": [
+      {
+        "simplified": "除非你道歉，我才会原谅你。",
+        "traditional": "除非你道歉，我才會原諒你。",
+        "pinyin": "Chúfēi nǐ dàoqiàn, wǒ cái huì yuánliàng nǐ.",
+        "english": "Unless you apologize, I won't forgive you."
+      },
+      {
+        "simplified": "除非下大雨，运动会才会取消。",
+        "traditional": "除非下大雨，運動會才會取消。",
+        "pinyin": "Chúfēi xià dà yǔ, yùndònghuì cái huì qǔxiāo.",
+        "english": "Only if it pours heavily will the sports meet be cancelled."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___你道歉，我才会原谅你。",
+        "answer": "除非",
+        "distractors": ["因为", "只要", "不管"],
+        "english": "Unless you apologize, I won't forgive you."
+      },
+      {
+        "sentence": "除非你道歉，我___会原谅你。",
+        "answer": "才",
+        "distractors": ["都", "就", "也"],
+        "english": "Unless you apologize, I won't forgive you."
+      },
+      {
+        "sentence": "除非有特别原因，他___缺席。",
+        "answer": "才会",
+        "distractors": ["都会", "就会", "也会"],
+        "english": "Unless there is a special reason, he will be absent."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "除非你认真努力，才能通过考试。",
+        "wrong": [
+          "除非你认真努力，就能通过考试。",
+          "只要你认真努力，才能通过考试。",
+          "除非你认真努力，都能通过考试。"
+        ],
+        "english": "Only if you work seriously hard can you pass the exam."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_012",
+    "level": 5,
+    "title": "反而 (on the contrary/instead)",
+    "pattern": "expected outcome negated + 反而 + actual opposite outcome",
+    "explanation": "Used when the result is the opposite of what was expected. 反而 introduces the surprising or counterintuitive outcome, often following a negative or adversative clause.",
+    "examples": [
+      {
+        "simplified": "他不但没有进步，反而退步了。",
+        "traditional": "他不但沒有進步，反而退步了。",
+        "pinyin": "Tā búdàn méiyǒu jìnbù, fǎn'ér tuìbù le.",
+        "english": "Not only did he not improve, but instead he regressed."
+      },
+      {
+        "simplified": "我越解释，他反而越不相信我。",
+        "traditional": "我越解釋，他反而越不相信我。",
+        "pinyin": "Wǒ yuè jiěshì, tā fǎn'ér yuè bù xiāngxìn wǒ.",
+        "english": "The more I explained, the less he believed me."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他不但没有进步，___退步了。",
+        "answer": "反而",
+        "distractors": ["所以", "因此", "虽然"],
+        "english": "Not only did he not improve, but instead he regressed."
+      },
+      {
+        "sentence": "吃了药，病___更严重了。",
+        "answer": "反而",
+        "distractors": ["所以", "因此", "因为"],
+        "english": "After taking the medicine, the illness actually got worse."
+      },
+      {
+        "sentence": "越减肥，体重___上升了。",
+        "answer": "反而",
+        "distractors": ["所以", "因此", "也"],
+        "english": "The more she tried to lose weight, the higher her weight went instead."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他帮了倒忙，反而让问题更复杂了。",
+        "wrong": [
+          "他帮了倒忙，所以让问题更复杂了。",
+          "他帮了倒忙，因此让问题更复杂了。",
+          "他帮了倒忙，虽然让问题更复杂了。"
+        ],
+        "english": "He tried to help but only made things worse, making the problem more complicated instead."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_013",
+    "level": 5,
+    "title": "相反 (on the contrary/opposite)",
+    "pattern": "statement A + 相反 + contrasting statement B",
+    "explanation": "Used to introduce a statement that is the opposite of what was just mentioned. It can appear at the beginning of a clause or sentence to signal a complete reversal.",
+    "examples": [
+      {
+        "simplified": "他们的观点完全相反。",
+        "traditional": "他們的觀點完全相反。",
+        "pinyin": "Tāmen de guāndiǎn wánquán xiāngfǎn.",
+        "english": "Their viewpoints are completely opposite."
+      },
+      {
+        "simplified": "我以为他会生气，相反，他笑了。",
+        "traditional": "我以為他會生氣，相反，他笑了。",
+        "pinyin": "Wǒ yǐwéi tā huì shēngqì, xiāngfǎn, tā xiào le.",
+        "english": "I thought he would be angry; on the contrary, he laughed."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他们的观点完全___。",
+        "answer": "相反",
+        "distractors": ["一样", "相同", "相似"],
+        "english": "Their viewpoints are completely opposite."
+      },
+      {
+        "sentence": "我以为他会失败，___，他成功了。",
+        "answer": "相反",
+        "distractors": ["所以", "因此", "因为"],
+        "english": "I thought he would fail; on the contrary, he succeeded."
+      },
+      {
+        "sentence": "这两种方法不是一样的，而是___的。",
+        "answer": "相反",
+        "distractors": ["相同", "一致", "类似"],
+        "english": "These two methods are not the same, but opposite."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我以为他会拒绝，相反，他接受了。",
+        "wrong": [
+          "我以为他会拒绝，因此，他接受了。",
+          "我以为他会拒绝，所以，他接受了。",
+          "我以为他会拒绝，虽然，他接受了。"
+        ],
+        "english": "I thought he would refuse; on the contrary, he accepted."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_014",
+    "level": 5,
+    "title": "甚至 (even/to the extent of)",
+    "pattern": "general statement + 甚至 + extreme example",
+    "explanation": "Used to introduce an extreme example that goes beyond what was previously stated, often to emphasize the degree or extent of something. It strengthens the main point by citing an extreme case.",
+    "examples": [
+      {
+        "simplified": "他甚至不知道自己错了。",
+        "traditional": "他甚至不知道自己錯了。",
+        "pinyin": "Tā shènzhì bù zhīdào zìjǐ cuò le.",
+        "english": "He didn't even know that he was wrong."
+      },
+      {
+        "simplified": "她太忙了，甚至没有时间吃饭。",
+        "traditional": "她太忙了，甚至沒有時間吃飯。",
+        "pinyin": "Tā tài máng le, shènzhì méiyǒu shíjiān chī fàn.",
+        "english": "She is so busy that she doesn't even have time to eat."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他___不知道自己错了。",
+        "answer": "甚至",
+        "distractors": ["所以", "因此", "虽然"],
+        "english": "He didn't even know that he was wrong."
+      },
+      {
+        "sentence": "她太忙了，___没有时间吃饭。",
+        "answer": "甚至",
+        "distractors": ["所以", "因此", "虽然"],
+        "english": "She is so busy that she doesn't even have time to eat."
+      },
+      {
+        "sentence": "他把所有的钱都花光了，___借了钱。",
+        "answer": "甚至",
+        "distractors": ["所以", "因此", "虽然"],
+        "english": "He spent all his money and even borrowed more."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他工作太努力了，甚至忘了休息。",
+        "wrong": [
+          "他工作太努力了，所以忘了休息。",
+          "他工作太努力了，因此忘了休息。",
+          "他工作甚至努力了，忘了休息。"
+        ],
+        "english": "He works so hard that he even forgets to rest."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk5_015",
+    "level": 5,
+    "title": "毕竟 (after all/in the end)",
+    "pattern": "毕竟 + underlying truth or reason",
+    "explanation": "Used to remind the listener of an underlying truth or fact that explains or justifies something. It often introduces a reason or concession that the speaker wants to emphasize as fundamental or inescapable.",
+    "examples": [
+      {
+        "simplified": "毕竟，大家都是为了同一个目标。",
+        "traditional": "畢竟，大家都是為了同一個目標。",
+        "pinyin": "Bìjìng, dàjiā dōu shì wèile tóng yī gè mùbiāo.",
+        "english": "After all, everyone is working toward the same goal."
+      },
+      {
+        "simplified": "他毕竟还年轻，需要多一些时间成长。",
+        "traditional": "他畢竟還年輕，需要多一些時間成長。",
+        "pinyin": "Tā bìjìng hái niánqīng, xūyào duō yīxiē shíjiān chéngzhǎng.",
+        "english": "After all, he is still young and needs more time to grow."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___，大家都是为了同一个目标。",
+        "answer": "毕竟",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "After all, everyone is working toward the same goal."
+      },
+      {
+        "sentence": "他___还年轻，需要多一些经验。",
+        "answer": "毕竟",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "After all, he is still young and needs more experience."
+      },
+      {
+        "sentence": "你应该原谅他，他___是你的朋友。",
+        "answer": "毕竟",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "You should forgive him; after all, he is your friend."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "毕竟是第一次尝试，出错是正常的。",
+        "wrong": [
+          "因为是第一次尝试，出错是正常的。",
+          "虽然是第一次尝试，出错是正常的。",
+          "毕竟是第一次尝试，出错是不正常的。"
+        ],
+        "english": "After all, it's the first attempt, so making mistakes is normal."
+      }
+    ]
+  }
+]

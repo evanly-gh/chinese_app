@@ -1,0 +1,782 @@
+[
+  {
+    "id": "gr_hsk4_001",
+    "level": 4,
+    "title": "不管...都 (no matter...still)",
+    "pattern": "不管 + condition + 都/也 + result",
+    "explanation": "Used to express that the result holds true regardless of circumstances. The clause after 不管 presents various possibilities, while 都/也 introduces the unchanged outcome.",
+    "examples": [
+      {
+        "simplified": "不管天气怎么样，我都会去。",
+        "traditional": "不管天氣怎麼樣，我都會去。",
+        "pinyin": "Bùguǎn tiānqì zěnmeyàng, wǒ dōu huì qù.",
+        "english": "No matter what the weather is like, I will still go."
+      },
+      {
+        "simplified": "不管多么困难，他都不放弃。",
+        "traditional": "不管多麼困難，他都不放棄。",
+        "pinyin": "Bùguǎn duōme kùnnán, tā dōu bù fàngqì.",
+        "english": "No matter how difficult it is, he never gives up."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___天气怎么样，我都会去。",
+        "answer": "不管",
+        "distractors": ["虽然", "因为", "只要"],
+        "english": "No matter what the weather is like, I will still go."
+      },
+      {
+        "sentence": "不管多么困难，他___不放弃。",
+        "answer": "都",
+        "distractors": ["很", "才", "又"],
+        "english": "No matter how difficult it is, he never gives up."
+      },
+      {
+        "sentence": "不管你去不去，我___去。",
+        "answer": "都",
+        "distractors": ["就", "才", "还是"],
+        "english": "No matter whether you go or not, I will go."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "不管发生什么，我都支持你。",
+        "wrong": [
+          "不管发生什么，我才支持你。",
+          "因为发生什么，我都支持你。",
+          "不管发生什么，我就支持你。"
+        ],
+        "english": "No matter what happens, I will support you."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_002",
+    "level": 4,
+    "title": "只要...就 (as long as...then)",
+    "pattern": "只要 + condition + 就 + result",
+    "explanation": "Expresses that the result will follow as long as the stated condition is met. It sets a sufficient condition for the outcome.",
+    "examples": [
+      {
+        "simplified": "只要你努力，就能成功。",
+        "traditional": "只要你努力，就能成功。",
+        "pinyin": "Zhǐyào nǐ nǔlì, jiù néng chénggōng.",
+        "english": "As long as you work hard, you will succeed."
+      },
+      {
+        "simplified": "只要有时间，我就去看你。",
+        "traditional": "只要有時間，我就去看你。",
+        "pinyin": "Zhǐyào yǒu shíjiān, wǒ jiù qù kàn nǐ.",
+        "english": "As long as I have time, I will come to see you."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___你努力，就能成功。",
+        "answer": "只要",
+        "distractors": ["虽然", "不管", "即使"],
+        "english": "As long as you work hard, you will succeed."
+      },
+      {
+        "sentence": "只要有时间，我___去看你。",
+        "answer": "就",
+        "distractors": ["都", "也", "才"],
+        "english": "As long as I have time, I will come to see you."
+      },
+      {
+        "sentence": "只要天气好，我们___去爬山。",
+        "answer": "就",
+        "distractors": ["都", "还", "又"],
+        "english": "As long as the weather is good, we will go hiking."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "只要你来，我就高兴。",
+        "wrong": [
+          "只要你来，我都高兴。",
+          "不管你来，我就高兴。",
+          "只要你来，我才高兴。"
+        ],
+        "english": "As long as you come, I will be happy."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_003",
+    "level": 4,
+    "title": "连...都/也 (even)",
+    "pattern": "连 + noun/pronoun + 都/也 + verb",
+    "explanation": "Used to emphasize an extreme or unexpected case. 连 highlights the subject or object as the most surprising example, and 都/也 reinforces the inclusiveness.",
+    "examples": [
+      {
+        "simplified": "连小孩子都会做这道题。",
+        "traditional": "連小孩子都會做這道題。",
+        "pinyin": "Lián xiǎo háizi dōu huì zuò zhè dào tí.",
+        "english": "Even small children can solve this problem."
+      },
+      {
+        "simplified": "他忙得连饭都没时间吃。",
+        "traditional": "他忙得連飯都沒時間吃。",
+        "pinyin": "Tā máng de lián fàn dōu méi shíjiān chī.",
+        "english": "He is so busy that he doesn't even have time to eat."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___小孩子都会做这道题。",
+        "answer": "连",
+        "distractors": ["虽然", "只要", "因为"],
+        "english": "Even small children can solve this problem."
+      },
+      {
+        "sentence": "他忙得连饭___没时间吃。",
+        "answer": "都",
+        "distractors": ["就", "才", "很"],
+        "english": "He is so busy that he doesn't even have time to eat."
+      },
+      {
+        "sentence": "连她___不知道答案。",
+        "answer": "也",
+        "distractors": ["就", "才", "都"],
+        "english": "Even she doesn't know the answer."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "连我妈妈都不知道这件事。",
+        "wrong": [
+          "连我妈妈才不知道这件事。",
+          "虽然我妈妈都不知道这件事。",
+          "连我妈妈就不知道这件事。"
+        ],
+        "english": "Even my mother doesn't know about this."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_004",
+    "level": 4,
+    "title": "既然...就 (since...then)",
+    "pattern": "既然 + established fact + 就 + conclusion/suggestion",
+    "explanation": "Used when drawing a logical conclusion or making a suggestion based on an already established or acknowledged fact. The 既然 clause presents the accepted premise.",
+    "examples": [
+      {
+        "simplified": "既然你来了，就留下来吃饭吧。",
+        "traditional": "既然你來了，就留下來吃飯吧。",
+        "pinyin": "Jìrán nǐ lái le, jiù liú xià lái chī fàn ba.",
+        "english": "Since you're already here, stay and have dinner."
+      },
+      {
+        "simplified": "既然决定了，就不要后悔。",
+        "traditional": "既然決定了，就不要後悔。",
+        "pinyin": "Jìrán juédìng le, jiù bùyào hòuhuǐ.",
+        "english": "Since you've already decided, don't regret it."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___你来了，就留下来吃饭吧。",
+        "answer": "既然",
+        "distractors": ["因为", "只要", "不管"],
+        "english": "Since you're already here, stay and have dinner."
+      },
+      {
+        "sentence": "既然决定了，___不要后悔。",
+        "answer": "就",
+        "distractors": ["都", "也", "才"],
+        "english": "Since you've already decided, don't regret it."
+      },
+      {
+        "sentence": "既然你不喜欢，___不要勉强。",
+        "answer": "就",
+        "distractors": ["都", "还", "很"],
+        "english": "Since you don't like it, then don't force yourself."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "既然你知道了，就告诉我吧。",
+        "wrong": [
+          "既然你知道了，才告诉我吧。",
+          "因为你知道了，就告诉我吧。",
+          "既然你知道了，都告诉我吧。"
+        ],
+        "english": "Since you already know, tell me."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_005",
+    "level": 4,
+    "title": "宁可...也不 (would rather...than)",
+    "pattern": "宁可 + preferred option + 也不 + rejected option",
+    "explanation": "Expresses a preference for one option over another, even if the preferred option is difficult or undesirable. The speaker chooses the lesser of two evils.",
+    "examples": [
+      {
+        "simplified": "我宁可走路，也不坐公共汽车。",
+        "traditional": "我寧可走路，也不坐公共汽車。",
+        "pinyin": "Wǒ nìngkě zǒulù, yě bù zuò gōnggòng qìchē.",
+        "english": "I would rather walk than take the bus."
+      },
+      {
+        "simplified": "她宁可饿着，也不吃那种食物。",
+        "traditional": "她寧可餓著，也不吃那種食物。",
+        "pinyin": "Tā nìngkě è zhe, yě bù chī nà zhǒng shíwù.",
+        "english": "She would rather go hungry than eat that kind of food."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "我___走路，也不坐公共汽车。",
+        "answer": "宁可",
+        "distractors": ["虽然", "因为", "不管"],
+        "english": "I would rather walk than take the bus."
+      },
+      {
+        "sentence": "他宁可自己做，___请别人帮忙。",
+        "answer": "也不",
+        "distractors": ["就", "才", "还"],
+        "english": "He would rather do it himself than ask others for help."
+      },
+      {
+        "sentence": "我宁可早起，___错过这次机会。",
+        "answer": "也不",
+        "distractors": ["就", "都", "还"],
+        "english": "I would rather get up early than miss this opportunity."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我宁可一个人住，也不跟陌生人同住。",
+        "wrong": [
+          "我宁可一个人住，才不跟陌生人同住。",
+          "我虽然一个人住，也不跟陌生人同住。",
+          "我宁可一个人住，都不跟陌生人同住。"
+        ],
+        "english": "I would rather live alone than share with a stranger."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_006",
+    "level": 4,
+    "title": "是...的 (emphasis on circumstances)",
+    "pattern": "是 + [time/place/manner] + verb + 的",
+    "explanation": "Used to emphasize the time, place, manner, or reason of a completed action. The action itself is assumed to have happened; the focus is on its circumstances.",
+    "examples": [
+      {
+        "simplified": "他是坐飞机来的。",
+        "traditional": "他是坐飛機來的。",
+        "pinyin": "Tā shì zuò fēijī lái de.",
+        "english": "He came by airplane. (emphasis on the mode of transport)"
+      },
+      {
+        "simplified": "这本书是在图书馆买的。",
+        "traditional": "這本書是在圖書館買的。",
+        "pinyin": "Zhè běn shū shì zài túshūguǎn mǎi de.",
+        "english": "This book was bought at the library. (emphasis on the location)"
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他是坐飞机来___。",
+        "answer": "的",
+        "distractors": ["了", "过", "着"],
+        "english": "He came by airplane."
+      },
+      {
+        "sentence": "这本书___在图书馆买的。",
+        "answer": "是",
+        "distractors": ["有", "都", "也"],
+        "english": "This book was bought at the library."
+      },
+      {
+        "sentence": "她___昨天离开的。",
+        "answer": "是",
+        "distractors": ["都", "很", "才"],
+        "english": "She left yesterday. (emphasis on when)"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我是在北京出生的。",
+        "wrong": [
+          "我在北京出生是的。",
+          "我是在北京出生了。",
+          "我都在北京出生的。"
+        ],
+        "english": "I was born in Beijing. (emphasis on location)"
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_007",
+    "level": 4,
+    "title": "越...越 (the more...the more)",
+    "pattern": "越 + adjective/verb + 越 + adjective/verb",
+    "explanation": "Expresses that as one quality or action increases, another quality or action increases proportionally. Both clauses can share the same or different subjects.",
+    "examples": [
+      {
+        "simplified": "越学越有意思。",
+        "traditional": "越學越有意思。",
+        "pinyin": "Yuè xué yuè yǒu yìsi.",
+        "english": "The more you study, the more interesting it becomes."
+      },
+      {
+        "simplified": "天气越来越冷了。",
+        "traditional": "天氣越來越冷了。",
+        "pinyin": "Tiānqì yuè lái yuè lěng le.",
+        "english": "The weather is getting colder and colder."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___学___有意思。",
+        "answer": "越",
+        "distractors": ["很", "都", "更"],
+        "english": "The more you study, the more interesting it becomes."
+      },
+      {
+        "sentence": "他越说，我___不明白。",
+        "answer": "越",
+        "distractors": ["都", "很", "才"],
+        "english": "The more he talks, the less I understand."
+      },
+      {
+        "sentence": "这里的食物越来越___了。",
+        "answer": "贵",
+        "distractors": ["贵了", "很贵", "不贵"],
+        "english": "The food here is getting more and more expensive."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "这本书越读越有意思。",
+        "wrong": [
+          "这本书很读很有意思。",
+          "这本书越读都有意思。",
+          "这本书读越越有意思。"
+        ],
+        "english": "The more you read this book, the more interesting it gets."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_008",
+    "level": 4,
+    "title": "一...就 (as soon as)",
+    "pattern": "subject + 一 + verb1 + 就 + verb2",
+    "explanation": "Expresses that one action happens immediately after another. The two events are closely linked in time, with the second following the first without delay.",
+    "examples": [
+      {
+        "simplified": "他一回家就开始工作。",
+        "traditional": "他一回家就開始工作。",
+        "pinyin": "Tā yī huíjiā jiù kāishǐ gōngzuò.",
+        "english": "As soon as he gets home, he starts working."
+      },
+      {
+        "simplified": "我一看见她就笑了。",
+        "traditional": "我一看見她就笑了。",
+        "pinyin": "Wǒ yī kànjiàn tā jiù xiào le.",
+        "english": "As soon as I saw her, I laughed."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "他___回家就开始工作。",
+        "answer": "一",
+        "distractors": ["只要", "不管", "因为"],
+        "english": "As soon as he gets home, he starts working."
+      },
+      {
+        "sentence": "他一回家___开始工作。",
+        "answer": "就",
+        "distractors": ["都", "才", "也"],
+        "english": "As soon as he gets home, he starts working."
+      },
+      {
+        "sentence": "她一听到消息，___哭了。",
+        "answer": "就",
+        "distractors": ["都", "才", "又"],
+        "english": "As soon as she heard the news, she cried."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "我一到家就给你打电话。",
+        "wrong": [
+          "我到家一就给你打电话。",
+          "我一到家才给你打电话。",
+          "我一到家都给你打电话。"
+        ],
+        "english": "As soon as I get home, I will call you."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_009",
+    "level": 4,
+    "title": "不仅...还/也 (not only...but also)",
+    "pattern": "不仅 + quality/action + 还/也 + additional quality/action",
+    "explanation": "Used to add extra information beyond what is already stated, expressing that the subject possesses more than one quality or performs more than one action.",
+    "examples": [
+      {
+        "simplified": "她不仅聪明，还很努力。",
+        "traditional": "她不僅聰明，還很努力。",
+        "pinyin": "Tā bùjǐn cōngmíng, hái hěn nǔlì.",
+        "english": "She is not only smart but also very hardworking."
+      },
+      {
+        "simplified": "这家餐厅不仅价格便宜，菜也很好吃。",
+        "traditional": "這家餐廳不僅價格便宜，菜也很好吃。",
+        "pinyin": "Zhè jiā cāntīng bùjǐn jiàgé piányí, cài yě hěn hǎochī.",
+        "english": "This restaurant is not only cheap but the food also tastes great."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "她___聪明，还很努力。",
+        "answer": "不仅",
+        "distractors": ["虽然", "因为", "如果"],
+        "english": "She is not only smart but also very hardworking."
+      },
+      {
+        "sentence": "他不仅会说中文，___会说日语。",
+        "answer": "还",
+        "distractors": ["就", "才", "都"],
+        "english": "He can not only speak Chinese but also Japanese."
+      },
+      {
+        "sentence": "这本书不仅有趣，___很有教育意义。",
+        "answer": "也",
+        "distractors": ["就", "才", "又"],
+        "english": "This book is not only interesting but also very educational."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "他不仅学习好，体育也很棒。",
+        "wrong": [
+          "他不仅学习好，体育就很棒。",
+          "他虽然学习好，体育也很棒。",
+          "他不仅学习好，体育才很棒。"
+        ],
+        "english": "He is not only good at studying but also great at sports."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_010",
+    "level": 4,
+    "title": "因为...所以 (because...therefore)",
+    "pattern": "因为 + cause + 所以 + result",
+    "explanation": "A common cause-and-effect structure. 因为 introduces the reason or cause, while 所以 introduces the result or consequence. Either conjunction can be omitted but not both.",
+    "examples": [
+      {
+        "simplified": "因为下雨，所以我们取消了计划。",
+        "traditional": "因為下雨，所以我們取消了計劃。",
+        "pinyin": "Yīnwèi xià yǔ, suǒyǐ wǒmen qǔxiāo le jìhuà.",
+        "english": "Because it rained, we cancelled our plans."
+      },
+      {
+        "simplified": "因为他生病了，所以没来上课。",
+        "traditional": "因為他生病了，所以沒來上課。",
+        "pinyin": "Yīnwèi tā shēngbìng le, suǒyǐ méi lái shàngkè.",
+        "english": "Because he was sick, he didn't come to class."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___下雨，所以我们取消了计划。",
+        "answer": "因为",
+        "distractors": ["虽然", "既然", "只要"],
+        "english": "Because it rained, we cancelled our plans."
+      },
+      {
+        "sentence": "因为他生病了，___没来上课。",
+        "answer": "所以",
+        "distractors": ["就", "都", "才"],
+        "english": "Because he was sick, he didn't come to class."
+      },
+      {
+        "sentence": "因为路上堵车，___我迟到了。",
+        "answer": "所以",
+        "distractors": ["就", "才", "也"],
+        "english": "Because there was traffic, I was late."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "因为天气太热，所以我不想出门。",
+        "wrong": [
+          "因为天气太热，才我不想出门。",
+          "因为天气太热，都我不想出门。",
+          "虽然天气太热，所以我不想出门。"
+        ],
+        "english": "Because the weather is too hot, I don't want to go out."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_011",
+    "level": 4,
+    "title": "对...来说 (for...speaking)",
+    "pattern": "对 + person/group + 来说 + statement",
+    "explanation": "Used to express a perspective or judgment from a particular person's or group's point of view. It introduces whose viewpoint is being expressed.",
+    "examples": [
+      {
+        "simplified": "对我来说，学习汉语很重要。",
+        "traditional": "對我來說，學習漢語很重要。",
+        "pinyin": "Duì wǒ lái shuō, xuéxí Hànyǔ hěn zhòngyào.",
+        "english": "For me, learning Chinese is very important."
+      },
+      {
+        "simplified": "对孩子们来说，玩是最快乐的事。",
+        "traditional": "對孩子們來說，玩是最快樂的事。",
+        "pinyin": "Duì háizimen lái shuō, wán shì zuì kuàilè de shì.",
+        "english": "For children, playing is the happiest thing."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___我来说，学习汉语很重要。",
+        "answer": "对",
+        "distractors": ["从", "在", "把"],
+        "english": "For me, learning Chinese is very important."
+      },
+      {
+        "sentence": "对我___，这个问题很简单。",
+        "answer": "来说",
+        "distractors": ["说来", "看来", "而言"],
+        "english": "For me, this problem is very simple."
+      },
+      {
+        "sentence": "对学生___，考试是很大的压力。",
+        "answer": "来说",
+        "distractors": ["说来", "看来", "而言"],
+        "english": "For students, exams are a lot of pressure."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "对她来说，家庭是最重要的。",
+        "wrong": [
+          "对她说来，家庭是最重要的。",
+          "从她来说，家庭是最重要的。",
+          "对于她说，家庭是最重要的。"
+        ],
+        "english": "For her, family is the most important thing."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_012",
+    "level": 4,
+    "title": "无论...都 (no matter...all)",
+    "pattern": "无论 + question word/A还是B + 都/也 + result",
+    "explanation": "Similar to 不管, 无论 expresses that the result remains unchanged regardless of any condition. It is slightly more formal in tone than 不管.",
+    "examples": [
+      {
+        "simplified": "无论发生什么，我都支持你。",
+        "traditional": "無論發生什麼，我都支持你。",
+        "pinyin": "Wúlùn fāshēng shénme, wǒ dōu zhīchí nǐ.",
+        "english": "No matter what happens, I will support you."
+      },
+      {
+        "simplified": "无论你在哪里，我都会想你。",
+        "traditional": "無論你在哪裡，我都會想你。",
+        "pinyin": "Wúlùn nǐ zài nǎlǐ, wǒ dōu huì xiǎng nǐ.",
+        "english": "No matter where you are, I will miss you."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___发生什么，我都支持你。",
+        "answer": "无论",
+        "distractors": ["虽然", "因为", "只要"],
+        "english": "No matter what happens, I will support you."
+      },
+      {
+        "sentence": "无论你在哪里，我___会想你。",
+        "answer": "都",
+        "distractors": ["就", "才", "很"],
+        "english": "No matter where you are, I will miss you."
+      },
+      {
+        "sentence": "无论多难，他___要完成任务。",
+        "answer": "都",
+        "distractors": ["就", "才", "会"],
+        "english": "No matter how difficult, he must complete the task."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "无论刮风还是下雨，他都按时上班。",
+        "wrong": [
+          "无论刮风还是下雨，他才按时上班。",
+          "虽然刮风还是下雨，他都按时上班。",
+          "无论刮风还是下雨，他就按时上班。"
+        ],
+        "english": "No matter if it's windy or raining, he goes to work on time."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_013",
+    "level": 4,
+    "title": "万一 (in case/what if)",
+    "pattern": "万一 + unlikely negative scenario + consequence/advice",
+    "explanation": "Used to raise an unlikely but possible negative scenario, often as a warning or precaution. It implies a low-probability event that one should prepare for.",
+    "examples": [
+      {
+        "simplified": "万一你迷路了，给我打电话。",
+        "traditional": "萬一你迷路了，給我打電話。",
+        "pinyin": "Wànyī nǐ mílù le, gěi wǒ dǎ diànhuà.",
+        "english": "In case you get lost, give me a call."
+      },
+      {
+        "simplified": "带把伞吧，万一下雨呢。",
+        "traditional": "帶把傘吧，萬一下雨呢。",
+        "pinyin": "Dài bǎ sǎn ba, wànyī xià yǔ ne.",
+        "english": "Take an umbrella, just in case it rains."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___你迷路了，给我打电话。",
+        "answer": "万一",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "In case you get lost, give me a call."
+      },
+      {
+        "sentence": "带点钱吧，___需要用。",
+        "answer": "万一",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "Take some money, in case you need it."
+      },
+      {
+        "sentence": "___他不来，我们怎么办？",
+        "answer": "万一",
+        "distractors": ["如果", "因为", "虽然"],
+        "english": "What if he doesn't come, what should we do?"
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "万一考试不及格，你有什么计划？",
+        "wrong": [
+          "因为考试不及格，你有什么计划？",
+          "虽然考试不及格，你有什么计划？",
+          "所以考试不及格，你有什么计划？"
+        ],
+        "english": "What if you fail the exam, what is your plan?"
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_014",
+    "level": 4,
+    "title": "把 (disposal construction)",
+    "pattern": "subject + 把 + object + verb + complement",
+    "explanation": "The 把 construction moves the object before the verb to emphasize what happens to it. It is used when an action has a definite result or effect on the object, often involving displacement or change of state.",
+    "examples": [
+      {
+        "simplified": "请把书放在桌子上。",
+        "traditional": "請把書放在桌子上。",
+        "pinyin": "Qǐng bǎ shū fàng zài zhuōzi shàng.",
+        "english": "Please put the book on the table."
+      },
+      {
+        "simplified": "他把作业做完了。",
+        "traditional": "他把作業做完了。",
+        "pinyin": "Tā bǎ zuòyè zuò wán le.",
+        "english": "He finished (doing) the homework."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "请___书放在桌子上。",
+        "answer": "把",
+        "distractors": ["对", "从", "在"],
+        "english": "Please put the book on the table."
+      },
+      {
+        "sentence": "他把作业___完了。",
+        "answer": "做",
+        "distractors": ["写", "读", "看"],
+        "english": "He finished doing the homework."
+      },
+      {
+        "sentence": "请你___门关上。",
+        "answer": "把",
+        "distractors": ["对", "从", "给"],
+        "english": "Please close the door."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "请把窗户打开。",
+        "wrong": [
+          "请打开把窗户。",
+          "请把窗户打。",
+          "请窗户把打开。"
+        ],
+        "english": "Please open the window."
+      }
+    ]
+  },
+  {
+    "id": "gr_hsk4_015",
+    "level": 4,
+    "title": "趁 (take advantage of/while)",
+    "pattern": "趁 + favorable condition + verb phrase",
+    "explanation": "Expresses seizing an opportunity while favorable conditions exist. It urges action before the opportunity passes, often implying urgency or timeliness.",
+    "examples": [
+      {
+        "simplified": "趁现在天气好，我们去公园吧。",
+        "traditional": "趁現在天氣好，我們去公園吧。",
+        "pinyin": "Chèn xiànzài tiānqì hǎo, wǒmen qù gōngyuán ba.",
+        "english": "While the weather is nice now, let's go to the park."
+      },
+      {
+        "simplified": "趁年轻，多学点东西。",
+        "traditional": "趁年輕，多學點東西。",
+        "pinyin": "Chèn niánqīng, duō xué diǎn dōngxi.",
+        "english": "While you're young, learn more things."
+      }
+    ],
+    "fillBlanks": [
+      {
+        "sentence": "___现在天气好，我们去公园吧。",
+        "answer": "趁",
+        "distractors": ["因为", "虽然", "不管"],
+        "english": "While the weather is nice now, let's go to the park."
+      },
+      {
+        "sentence": "___年轻，多学点东西。",
+        "answer": "趁",
+        "distractors": ["因为", "虽然", "只要"],
+        "english": "While you're young, learn more things."
+      },
+      {
+        "sentence": "___有时间，我们聊聊吧。",
+        "answer": "趁",
+        "distractors": ["因为", "所以", "虽然"],
+        "english": "While we have time, let's have a chat."
+      }
+    ],
+    "mcqSentences": [
+      {
+        "correct": "趁热打铁，我们赶紧完成这个项目。",
+        "wrong": [
+          "因为热打铁，我们赶紧完成这个项目。",
+          "趁热打铁，我们才完成这个项目。",
+          "虽然热打铁，我们赶紧完成这个项目。"
+        ],
+        "english": "Strike while the iron is hot—let's hurry and complete this project."
+      }
+    ]
+  }
+]
