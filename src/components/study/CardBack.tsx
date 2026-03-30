@@ -3,8 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemedText } from '../common/ThemedText';
 import { VocabCard } from '../../types/vocab';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 import { useSettings } from '../../hooks/useSettings';
 import { useTTS } from '../../hooks/useTTS';
 
@@ -13,8 +12,7 @@ interface CardBackProps {
 }
 
 export function CardBack({ card }: CardBackProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   const { settings } = useSettings();
   const { speak } = useTTS();
 

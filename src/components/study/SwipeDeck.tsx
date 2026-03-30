@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
@@ -8,15 +8,18 @@ import Animated, {
   withTiming,
   runOnJS,
   interpolate,
+  interpolateColor,
   Extrapolation,
 } from 'react-native-reanimated';
-import { ThemedText } from '../common/ThemedText';
 import { DifficultyRating } from '../../types/review';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
 
 const SWIPE_THRESHOLD = 100;
-const SCREEN_WIDTH = 400;
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
+// Glow colors: left swipe = known (green), right swipe = unknown (red)
+const GLOW_LEFT  = '#4CAF50';   // known / mastered
+const GLOW_RIGHT = '#F44336';   // unknown / don't know
+const GLOW_NONE  = 'transparent';
 
 interface SwipeDeckProps {
   children: React.ReactNode;
@@ -26,8 +29,6 @@ interface SwipeDeckProps {
 }
 
 export function SwipeDeck({ children, onSwipe, isFlipped, enabled = true }: SwipeDeckProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
 
@@ -56,9 +57,11 @@ export function SwipeDeck({ children, onSwipe, isFlipped, enabled = true }: Swip
     })
     .onEnd(e => {
       if (e.translationX < -SWIPE_THRESHOLD) {
-        runOnJS(flyOff)('left', 'again');
+        // Left swipe = Mastered / known
+        runOnJS(flyOff)('left', 'known');
       } else if (e.translationX > SWIPE_THRESHOLD) {
-        runOnJS(flyOff)('right', 'easy');
+        // Right swipe = Don't Know / unknown
+        runOnJS(flyOff)('right', 'unknown');
       } else {
         translateX.value = withSpring(0, { damping: 20 });
         translateY.value = withSpring(0, { damping: 20 });
@@ -81,23 +84,33 @@ export function SwipeDeck({ children, onSwipe, isFlipped, enabled = true }: Swip
     };
   });
 
-  const againOpacity = useAnimatedStyle(() => ({
-    opacity: interpolate(translateX.value, [-SWIPE_THRESHOLD, -20, 0], [1, 0.3, 0], Extrapolation.CLAMP),
-  }));
+  // Left edge glow: lights up green when swiping left (mastered)
+  const leftGlowStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(
+      translateX.value,
+      [-SWIPE_THRESHOLD, -20, 0],
+      [0.9, 0.2, 0],
+      Extrapolation.CLAMP,
+    );
+    return { opacity };
+  });
 
-  const easyOpacity = useAnimatedStyle(() => ({
-    opacity: interpolate(translateX.value, [0, 20, SWIPE_THRESHOLD], [0, 0.3, 1], Extrapolation.CLAMP),
-  }));
+  // Right edge glow: lights up red when swiping right (unknown)
+  const rightGlowStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(
+      translateX.value,
+      [0, 20, SWIPE_THRESHOLD],
+      [0, 0.2, 0.9],
+      Extrapolation.CLAMP,
+    );
+    return { opacity };
+  });
 
   return (
     <View style={styles.wrapper}>
-      {/* Swipe hint labels */}
-      <Animated.View style={[styles.hintLeft, againOpacity]}>
-        <ThemedText style={[styles.hintText, { color: colors.again }]}>AGAIN</ThemedText>
-      </Animated.View>
-      <Animated.View style={[styles.hintRight, easyOpacity]}>
-        <ThemedText style={[styles.hintText, { color: colors.easy }]}>EASY</ThemedText>
-      </Animated.View>
+      {/* Edge glow overlays */}
+      <Animated.View style={[styles.glowLeft, leftGlowStyle]} pointerEvents="none" />
+      <Animated.View style={[styles.glowRight, rightGlowStyle]} pointerEvents="none" />
 
       <GestureDetector gesture={panGesture}>
         <Animated.View style={[styles.card, cardStyle]}>
@@ -117,31 +130,24 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
   },
-  hintLeft: {
+  glowLeft: {
     position: 'absolute',
-    left: 24,
-    top: '40%',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 8,
+    backgroundColor: GLOW_LEFT,
+    borderRadius: 4,
     zIndex: 10,
-    borderWidth: 3,
-    borderColor: '#F44336',
-    borderRadius: 8,
-    padding: 8,
-    transform: [{ rotate: '-15deg' }],
   },
-  hintRight: {
+  glowRight: {
     position: 'absolute',
-    right: 24,
-    top: '40%',
+    right: 0,
+    top: 0,
+    bottom: 0,
+    width: 8,
+    backgroundColor: GLOW_RIGHT,
+    borderRadius: 4,
     zIndex: 10,
-    borderWidth: 3,
-    borderColor: '#4CAF50',
-    borderRadius: 8,
-    padding: 8,
-    transform: [{ rotate: '15deg' }],
-  },
-  hintText: {
-    fontWeight: '900',
-    fontSize: 20,
-    letterSpacing: 2,
   },
 });

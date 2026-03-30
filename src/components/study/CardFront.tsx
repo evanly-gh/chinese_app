@@ -3,8 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemedText } from '../common/ThemedText';
 import { VocabCard } from '../../types/vocab';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 import { useSettings } from '../../hooks/useSettings';
 import { useTTS } from '../../hooks/useTTS';
 
@@ -13,8 +12,7 @@ interface CardFrontProps {
 }
 
 export function CardFront({ card }: CardFrontProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   const { settings } = useSettings();
   const { speak } = useTTS();
 
@@ -29,7 +27,6 @@ export function CardFront({ card }: CardFrontProps) {
       {settings.showPinyin && (
         <ThemedText style={[styles.pinyin, { color: colors.textSecondary }]}>{card.pinyin}</ThemedText>
       )}
-      <ThemedText type="secondary" style={styles.hint}>tap to reveal</ThemedText>
       <TouchableOpacity
         onPress={() => speak(hanzi)}
         style={[styles.ttsButton, { backgroundColor: colors.border }]}
@@ -64,10 +61,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 8,
     fontWeight: '400',
-  },
-  hint: {
-    marginTop: 16,
-    fontSize: 14,
   },
   ttsButton: {
     position: 'absolute',

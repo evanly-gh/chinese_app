@@ -1,13 +1,17 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { VocabCard } from '../types/vocab';
+import { SRSState } from '../types/vocab';
 import { DifficultyRating } from '../types/review';
 import { FlashcardSessionConfig } from '../types/settings';
 import { applySM2, newSRSState } from '../algorithms/sm2';
 import { buildSessionQueue, buildConfiguredQueue } from '../utils/cardUtils';
 import { getCardsForLevel, getAllCardIds } from '../data';
 import { getAllSRSStates, saveSRSState } from '../storage/cardStateStorage';
-import { appendReviewEvent } from '../storage/reviewHistoryStorage';
+import { appendReviewEvent, getDailyLog } from '../storage/reviewHistoryStorage';
 import { getSettings } from '../storage/settingsStorage';
+import { supabase } from '../lib/supabase';
+import { pushSRSStates, pushDailyLog } from '../storage/cloudSync';
+import { today } from '../utils/dateUtils';
 
 interface SessionStats {
   total: number;
@@ -38,6 +42,7 @@ export function useStudySession(
   const [stats, setStats] = useState<SessionStats>({ total: 0, completed: 0, correct: 0 });
   const cardStartTime = useRef(Date.now());
   const newCardIds = useRef<Set<string>>(new Set());
+  const touchedStates = useRef<SRSState[]>([]);
 
   const loadSession = useCallback(async () => {
     setLoading(true);
@@ -71,6 +76,7 @@ export function useStudySession(
       );
     }
 
+    touchedStates.current = [];
     setQueue(sessionQueue);
     setCurrentIndex(0);
     setIsFlipped(false);
@@ -101,13 +107,17 @@ export function useStudySession(
     const isFirstSeen = existingState.repetition === 0;
     const newState = applySM2(existingState, rating, isFirstSeen);
     await saveSRSState(newState);
+    touchedStates.current.push(newState);
 
     await appendReviewEvent(
       { cardId: card.id, rating, timestamp: Date.now(), responseTimeMs },
       isNew,
     );
 
-    const isCorrect = rating === 'good' || rating === 'easy';
+    const isCorrect = rating === 'known';
+    const nextCompleted = (currentIndex) + 1; // cards rated so far after this one
+    const isLastCard = nextCompleted >= queue.length;
+
     setStats(prev => ({
       ...prev,
       completed: prev.completed + 1,
@@ -117,6 +127,17 @@ export function useStudySession(
     setIsFlipped(false);
     setCurrentIndex(prev => prev + 1);
     cardStartTime.current = Date.now();
+
+    // Push to cloud when the session finishes
+    if (isLastCard) {
+      const { data } = await supabase.auth.getSession();
+      const uid = data.session?.user?.id;
+      if (uid) {
+        const log = await getDailyLog(today());
+        pushSRSStates(uid, touchedStates.current).catch(() => {});
+        pushDailyLog(uid, log).catch(() => {});
+      }
+    }
   }, [queue, currentIndex]);
 
   const sessionComplete = !loading && currentIndex >= queue.length;

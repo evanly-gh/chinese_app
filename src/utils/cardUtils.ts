@@ -86,15 +86,28 @@ export function getWorkingSet(
   states: Record<string, SRSState>,
   windowSize: number,
 ): VocabCard[] {
-  // Find first unmastered card index to determine window start
-  const firstUnmastered = cards.findIndex(
-    c => !states[c.id] || !isMastered(states[c.id]),
-  );
-  if (firstUnmastered === -1) return []; // all mastered
+  // A card is "active" in the working set if:
+  // - Never seen (no state), OR
+  // - Seen but not yet at interval >= 6 (hasn't graduated to weekly SRS schedule)
+  // Cards with interval >= 6 have been reviewed enough to leave the active window.
+  // Cards with interval >= 21 are mastered.
+  const isActive = (c: VocabCard) => {
+    const s = states[c.id];
+    if (!s) return true;              // unseen — active
+    if (isMastered(s)) return false;  // mastered — not in working set
+    return s.interval < 6;           // only keep in active set until weekly interval
+  };
 
-  return cards.slice(firstUnmastered, firstUnmastered + windowSize).filter(
-    c => !states[c.id] || !isMastered(states[c.id]),
-  );
+  // Find first active card to establish window position
+  const firstActive = cards.findIndex(isActive);
+  if (firstActive === -1) return [];
+
+  // Collect up to windowSize active cards scanning forward from that position
+  const result: VocabCard[] = [];
+  for (let i = firstActive; i < cards.length && result.length < windowSize; i++) {
+    if (isActive(cards[i])) result.push(cards[i]);
+  }
+  return result;
 }
 
 export function getReviewCards(

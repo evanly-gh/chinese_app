@@ -1,4 +1,4 @@
-export type FlashcardSortMode = 'familiarity' | 'difficulty' | 'random' | 'sequential' | 'due-first';
+export type FlashcardSortMode = 'familiarity' | 'difficulty' | 'random' | 'due-first';
 
 export interface FlashcardSessionConfig {
   sessionSize: number;
@@ -12,12 +12,15 @@ export interface AppSettings {
   dailyGoal: number;
   ttsEnabled: boolean;
   useTraditional: boolean;
-  darkModeOverride: 'system' | 'light' | 'dark';
+  theme: 'light' | 'dark' | 'custom';
+  customTheme: { primary: string; base: 'light' | 'dark' };
   newCardsPerSession: number;
   showPinyin: boolean;
   listenExercisesEnabled: boolean;
   workingSetSize: number;
   flashcardConfig: FlashcardSessionConfig;
+  exerciseLevelFilter: number[];
+  exerciseContentType: 'vocabulary' | 'grammar' | 'mixed';
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
@@ -26,7 +29,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
   dailyGoal: 20,
   ttsEnabled: true,
   useTraditional: false,
-  darkModeOverride: 'system',
+  theme: 'light',
+  customTheme: { primary: '#D32F2F', base: 'light' },
   newCardsPerSession: 10,
   showPinyin: true,
   listenExercisesEnabled: true,
@@ -36,4 +40,6 @@ export const DEFAULT_SETTINGS: AppSettings = {
     levelFilter: [1],
     sortMode: 'due-first',
   },
+  exerciseLevelFilter: [1],
+  exerciseContentType: 'vocabulary',
 };

@@ -4,10 +4,9 @@ import { addDays, today } from '../utils/dateUtils';
 
 function ratingToGrade(rating: DifficultyRating): number {
   switch (rating) {
-    case 'again': return 0;
-    case 'hard':  return 2;
-    case 'good':  return 4;
-    case 'easy':  return 5;
+    case 'unknown':     return 0;
+    case 'in_progress': return 2;
+    case 'known':       return 5;
   }
 }
 
@@ -25,8 +24,8 @@ export function applySM2(
   const grade = ratingToGrade(rating);
   const now = today();
 
-  // First-time "easy/know" instantly masters the card
-  if (isFirstSeen && rating === 'easy') {
+  // First-time "known" instantly masters the card
+  if (isFirstSeen && rating === 'known') {
     return {
       ...state,
       interval: MASTERY_INTERVAL,

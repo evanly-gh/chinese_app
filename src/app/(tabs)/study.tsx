@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { ThemedView } from '../../components/common/ThemedView';
 import { ThemedText } from '../../components/common/ThemedText';
 import { FlashCard } from '../../components/study/FlashCard';
@@ -14,8 +15,8 @@ import { DifficultyButtons } from '../../components/study/DifficultyButtons';
 import { SwipeDeck } from '../../components/study/SwipeDeck';
 import { SessionProgressBar } from '../../components/study/SessionProgressBar';
 import { SessionConfigModal } from '../../components/study/SessionConfigModal';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { QuickSettingsPopover } from '../../components/common/QuickSettingsPopover';
+import { useTheme } from '../../hooks/useTheme';
 import { useStudySession } from '../../hooks/useStudySession';
 import { useSettings } from '../../hooks/useSettings';
 import { DifficultyRating } from '../../types/review';
@@ -26,6 +27,8 @@ import { getMasteredCards, getWorkingSet } from '../../utils/cardUtils';
 import { getLastTestResult } from '../../storage/testResultStorage';
 import ExercisesScreen from '../../screens/ExercisesScreen';
 import TestScreen from '../../screens/TestScreen';
+
+type FlashPhase = 'pre-flip' | 'post-flip';
 
 type StudyMode = 'picker' | 'flashcards' | 'exercises' | 'test';
 
@@ -44,8 +47,7 @@ function ModePickerScreen({
 }: {
   onSelect: (mode: Exclude<StudyMode, 'picker'>) => void;
 }) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { scheme, colors } = useTheme();
   const { settings } = useSettings();
   const [workingInfo, setWorkingInfo] = useState<{ working: number; mastered: number } | null>(null);
   const [lastTest, setLastTest] = useState<{ score: number; total: number } | null>(null);
@@ -131,25 +133,31 @@ function ModePickerScreen({
 // ─── Flashcard Mode ──────────────────────────────────────────────────────────
 
 function FlashcardMode({ onBack }: { onBack: () => void }) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { scheme, colors } = useTheme();
   const { settings, updateSetting } = useSettings();
   const [configVisible, setConfigVisible] = useState(true);
   const [sessionConfig, setSessionConfig] = useState<FlashcardSessionConfig>(
     settings.flashcardConfig,
   );
   const [sessionKey, setSessionKey] = useState(0);
+  const [flashPhase, setFlashPhase] = useState<FlashPhase>('pre-flip');
+  const [pendingRating, setPendingRating] = useState<DifficultyRating | null>(null);
+  const [quickSettingsVisible, setQuickSettingsVisible] = useState(false);
 
   const {
     currentCard,
     stats,
-    isFlipped,
     loading,
     sessionComplete,
     flipCard,
     rateCard,
     resetSession,
   } = useStudySession(sessionConfig, sessionKey);
+
+  useEffect(() => {
+    setFlashPhase('pre-flip');
+    setPendingRating(null);
+  }, [currentCard?.id]);
 
   const handleConfigStart = useCallback(
     (cfg: FlashcardSessionConfig) => {
@@ -160,6 +168,35 @@ function FlashcardMode({ onBack }: { onBack: () => void }) {
     },
     [updateSetting],
   );
+
+  const handlePreFlipRate = useCallback((rating: DifficultyRating) => {
+    setPendingRating(rating);
+    setFlashPhase('post-flip');
+    flipCard();
+  }, [flipCard]);
+
+  const handleContinue = useCallback(() => {
+    if (!pendingRating) return;
+    rateCard(pendingRating);
+    setFlashPhase('pre-flip');
+    setPendingRating(null);
+  }, [pendingRating, rateCard]);
+
+  const handleMistaken = useCallback(() => {
+    if (!pendingRating) return;
+    const downgraded: DifficultyRating =
+      pendingRating === 'known' ? 'in_progress' :
+      pendingRating === 'in_progress' ? 'unknown' : 'unknown';
+    rateCard(downgraded);
+    setFlashPhase('pre-flip');
+    setPendingRating(null);
+  }, [pendingRating, rateCard]);
+
+  const handleSwipe = useCallback((rating: DifficultyRating) => {
+    rateCard(rating);
+    setFlashPhase('pre-flip');
+    setPendingRating(null);
+  }, [rateCard]);
 
   if (configVisible) {
     return (
@@ -239,27 +276,34 @@ function FlashcardMode({ onBack }: { onBack: () => void }) {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.top}>
-          <TouchableOpacity onPress={onBack} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-            <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
-          </TouchableOpacity>
+          <View style={styles.topRow}>
+            <TouchableOpacity onPress={onBack} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+              <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setQuickSettingsVisible(v => !v)} style={styles.gearButton}>
+              <Ionicons name="settings-outline" size={22} color={colors.tint} />
+            </TouchableOpacity>
+          </View>
           <SessionProgressBar completed={stats.completed} total={stats.total} />
         </View>
+        {quickSettingsVisible && <QuickSettingsPopover onClose={() => setQuickSettingsVisible(false)} />}
         <View style={styles.deckContainer}>
           <SwipeDeck
-            onSwipe={(rating: DifficultyRating) => rateCard(rating)}
-            isFlipped={isFlipped}
-            enabled={isFlipped}
+            onSwipe={handleSwipe}
+            isFlipped={flashPhase === 'post-flip'}
+            enabled={flashPhase === 'pre-flip'}
           >
-            <FlashCard card={currentCard} isFlipped={isFlipped} onFlip={flipCard} />
+            <FlashCard card={currentCard} isFlipped={flashPhase === 'post-flip'} />
           </SwipeDeck>
         </View>
         <View style={styles.bottom}>
-          {!isFlipped && (
-            <ThemedText type="secondary" style={styles.swipeHint}>
-              Swipe ← Don't Know · Swipe → Know · Tap for more options
-            </ThemedText>
-          )}
-          <DifficultyButtons onRate={rateCard} visible={isFlipped} mode="flashcard" />
+          <DifficultyButtons
+            onRate={handlePreFlipRate}
+            onContinue={handleContinue}
+            onMistaken={handleMistaken}
+            visible={true}
+            mode={flashPhase === 'pre-flip' ? 'pre-flip' : 'post-flip'}
+          />
         </View>
       </SafeAreaView>
     </ThemedView>
@@ -309,9 +353,10 @@ const styles = StyleSheet.create({
 
   // Flashcard layout
   top: { paddingTop: 12, paddingHorizontal: 16, gap: 8 },
+  topRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   deckContainer: { flex: 1, paddingHorizontal: 20 },
   bottom: { minHeight: 100, justifyContent: 'flex-end', paddingBottom: 8 },
-  swipeHint: { textAlign: 'center', fontSize: 12, paddingHorizontal: 20, marginBottom: 8 },
+  gearButton: { padding: 4 },
 
   // Back button
   backButton: { padding: 16 },

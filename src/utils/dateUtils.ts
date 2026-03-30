@@ -25,3 +25,11 @@ export function last14Days(): string[] {
   }
   return days;
 }
+
+export function last28Days(): string[] {
+  const days: string[] = [];
+  for (let i = 27; i >= 0; i--) {
+    days.push(addDays(today(), -i));
+  }
+  return days;
+}

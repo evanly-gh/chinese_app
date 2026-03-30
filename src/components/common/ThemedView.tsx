@@ -1,15 +1,13 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 
 interface ThemedViewProps extends ViewProps {
   variant?: 'background' | 'card';
 }
 
 export function ThemedView({ style, variant = 'background', ...props }: ThemedViewProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   return (
     <View
       style={[{ backgroundColor: variant === 'card' ? colors.card : colors.background }, style]}

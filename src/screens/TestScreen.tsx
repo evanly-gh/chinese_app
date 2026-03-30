@@ -5,12 +5,13 @@ import { ThemedView } from '../components/common/ThemedView';
 import { ThemedText } from '../components/common/ThemedText';
 import { ExerciseHost } from '../components/exercise/ExerciseHost';
 import { SessionProgressBar } from '../components/study/SessionProgressBar';
-import { Colors } from '../theme/colors';
-import { useColorScheme } from '../hooks/useColorScheme';
+import { useTheme } from '../hooks/useTheme';
 import { useSettings } from '../hooks/useSettings';
 import { VocabCard } from '../types/vocab';
 import { getCardsForLevel } from '../data';
 import { saveTestResult } from '../storage/testResultStorage';
+import { supabase } from '../lib/supabase';
+import { pushTestResult } from '../storage/cloudSync';
 import {
   Exercise,
   buildWordCnEn,
@@ -29,8 +30,7 @@ interface TestScreenProps {
 }
 
 export default function TestScreen({ onBack }: TestScreenProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   const { settings } = useSettings();
 
   const [testState, setTestState] = useState<TestState>('config');
@@ -70,12 +70,17 @@ export default function TestScreen({ onBack }: TestScreenProps) {
     if (next >= questions.length) {
       // Save result
       const score = answers.filter(Boolean).length + (correct ? 1 : 0);
-      saveTestResult({
+      const result = {
         date: today(),
         level: settings.activeLevel,
         score,
         total: questions.length,
         incorrect: incorrectCards.concat(!correct ? [card] : []).map(c => c.id),
+      };
+      saveTestResult(result);
+      supabase.auth.getSession().then(({ data }) => {
+        const uid = data.session?.user?.id;
+        if (uid) pushTestResult(uid, result).catch(() => {});
       });
       setTestState('results');
     } else {

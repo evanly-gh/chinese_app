@@ -6,7 +6,16 @@ export async function getSettings(): Promise<AppSettings> {
   try {
     const raw = await AsyncStorage.getItem(KEYS.SETTINGS);
     if (!raw) return { ...DEFAULT_SETTINGS };
-    return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+
+    // Migrate darkModeOverride → theme
+    if ('darkModeOverride' in parsed && !('theme' in parsed)) {
+      const override = parsed.darkModeOverride as string;
+      parsed.theme = override === 'dark' ? 'dark' : 'light';
+      delete parsed.darkModeOverride;
+    }
+
+    return { ...DEFAULT_SETTINGS, ...parsed };
   } catch {
     return { ...DEFAULT_SETTINGS };
   }

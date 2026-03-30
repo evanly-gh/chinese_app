@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DailyLog, ReviewEvent } from '../types/review';
-import { last14Days, today } from '../utils/dateUtils';
+import { last14Days, last28Days, today } from '../utils/dateUtils';
 import { KEYS } from './keys';
 
 function logKey(date: string): string {
@@ -32,6 +32,20 @@ export async function getLast14DaysLogs(): Promise<DailyLog[]> {
     if (value) return JSON.parse(value) as DailyLog;
     return { date: dates[i], newCards: 0, reviewedCards: 0, events: [] };
   });
+}
+
+export async function getLast28DaysLogs(): Promise<DailyLog[]> {
+  const dates = last28Days();
+  const keys = dates.map(logKey);
+  const pairs = await AsyncStorage.multiGet(keys);
+  return pairs.map(([key, value], i) => {
+    if (value) return JSON.parse(value) as DailyLog;
+    return { date: dates[i], newCards: 0, reviewedCards: 0, events: [] };
+  });
+}
+
+export function getLast28DaysList(): string[] {
+  return last28Days();
 }
 
 export interface StreakData {

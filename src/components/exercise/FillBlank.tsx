@@ -3,8 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { ThemedText } from '../common/ThemedText';
 import { ThemedView } from '../common/ThemedView';
 import { Exercise } from '../../utils/exerciseUtils';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 import { useSettings } from '../../hooks/useSettings';
 import { useTTS } from '../../hooks/useTTS';
 import { Ionicons } from '@expo/vector-icons';
@@ -15,8 +14,7 @@ interface FillBlankProps {
 }
 
 export function FillBlank({ exercise, onAnswer }: FillBlankProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   const { settings } = useSettings();
   const { speak } = useTTS();
   const [selected, setSelected] = useState<number | null>(null);

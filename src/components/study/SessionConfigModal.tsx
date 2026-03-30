@@ -10,8 +10,7 @@ import {
 import { ThemedText } from '../common/ThemedText';
 import { ThemedView } from '../common/ThemedView';
 import { FlashcardSessionConfig, FlashcardSortMode } from '../../types/settings';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 import { getCardsForLevel } from '../../data';
 
 interface SessionConfigModalProps {
@@ -28,7 +27,6 @@ const SORT_MODES: { mode: FlashcardSortMode; label: string; description: string 
   { mode: 'familiarity', label: 'Least Familiar', description: 'Cards you have practiced least' },
   { mode: 'difficulty', label: 'Hardest First', description: 'Cards with lowest ease factor' },
   { mode: 'random', label: 'Random', description: 'Shuffled order' },
-  { mode: 'sequential', label: 'Sequential', description: 'Curriculum order from the database' },
 ];
 
 const AVAILABLE_LEVELS = [1, 2, 3, 4, 5];
@@ -39,8 +37,7 @@ export function SessionConfigModal({
   onStart,
   onDismiss,
 }: SessionConfigModalProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
 
   const [draft, setDraft] = useState<FlashcardSessionConfig>(config);
 

@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { ThemedView } from '../components/common/ThemedView';
 import { ThemedText } from '../components/common/ThemedText';
 import { ExerciseHost } from '../components/exercise/ExerciseHost';
@@ -8,8 +9,8 @@ import { SessionProgressBar } from '../components/study/SessionProgressBar';
 import { FlashCard } from '../components/study/FlashCard';
 import { DifficultyButtons } from '../components/study/DifficultyButtons';
 import { SwipeDeck } from '../components/study/SwipeDeck';
-import { Colors } from '../theme/colors';
-import { useColorScheme } from '../hooks/useColorScheme';
+import { QuickSettingsPopover } from '../components/common/QuickSettingsPopover';
+import { useTheme } from '../hooks/useTheme';
 import { useSettings } from '../hooks/useSettings';
 import { VocabCard } from '../types/vocab';
 import { DifficultyRating } from '../types/review';
@@ -19,6 +20,10 @@ import { appendReviewEvent } from '../storage/reviewHistoryStorage';
 import { applySM2, newSRSState } from '../algorithms/sm2';
 import { getWorkingSet, getReviewCards, getMasteredCards } from '../utils/cardUtils';
 import { Exercise, buildExerciseForCard } from '../utils/exerciseUtils';
+import { GrammarExercise as GrammarExerciseType, buildGrammarExercise } from '../utils/grammarUtils';
+import { getAllGrammarForLevels } from '../data/grammar';
+
+type FlashPhase = 'pre-flip' | 'post-flip';
 
 type Phase = 'loading' | 'flashcards' | 'exercises' | 'complete';
 
@@ -27,39 +32,46 @@ interface ExercisesScreenProps {
 }
 
 export default function ExercisesScreen({ onBack }: ExercisesScreenProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   const { settings } = useSettings();
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [flashcardQueue, setFlashcardQueue] = useState<VocabCard[]>([]);
   const [flashIndex, setFlashIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [flashPhase, setFlashPhase] = useState<FlashPhase>('pre-flip');
+  const [pendingRating, setPendingRating] = useState<DifficultyRating | null>(null);
+  const [quickSettingsVisible, setQuickSettingsVisible] = useState(false);
   const [missedCards, setMissedCards] = useState<VocabCard[]>([]);
 
-  const [exercises, setExercises] = useState<Exercise[]>([]);
+  const [exercises, setExercises] = useState<Array<Exercise | GrammarExerciseType>>([]);
   const [exIndex, setExIndex] = useState(0);
   const [exScore, setExScore] = useState({ correct: 0, total: 0 });
 
   const [flashStats, setFlashStats] = useState({ completed: 0, total: 0 });
 
   const load = useCallback(async () => {
-    const cards = getCardsForLevel(settings.activeLevel);
-    const ids = getAllCardIds(settings.activeLevel);
-    const states = await getAllSRSStates(ids);
+    const levels = settings.exerciseLevelFilter ?? [settings.activeLevel];
+    const allCards: VocabCard[] = [];
+    const allIds: string[] = [];
+    for (const level of levels) {
+      allCards.push(...getCardsForLevel(level));
+      allIds.push(...getAllCardIds(level));
+    }
+    const states = await getAllSRSStates(allIds);
 
-    const working = getWorkingSet(cards, states, settings.workingSetSize);
-    const mastered = getMasteredCards(cards, states);
+    const working = getWorkingSet(allCards, states, settings.workingSetSize);
+    const mastered = getMasteredCards(allCards, states);
     const reviewSample = getReviewCards(mastered, Math.max(1, Math.floor(working.length * 0.15)));
     const queue = [...working, ...reviewSample];
 
     setFlashcardQueue(queue);
     setFlashStats({ completed: 0, total: queue.length });
     setFlashIndex(0);
-    setIsFlipped(false);
+    setFlashPhase('pre-flip');
+    setPendingRating(null);
     setMissedCards([]);
     setPhase(queue.length > 0 ? 'flashcards' : 'exercises');
-  }, [settings.activeLevel, settings.workingSetSize]);
+  }, [settings.exerciseLevelFilter, settings.activeLevel, settings.workingSetSize]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -78,37 +90,83 @@ export default function ExercisesScreen({ onBack }: ExercisesScreenProps) {
       !states[card.id],
     );
 
-    if (rating !== 'easy') {
+    const missed = rating !== 'known';
+    if (missed) {
       setMissedCards(prev => [...prev, card]);
     }
 
     const nextIndex = flashIndex + 1;
     setFlashStats(prev => ({ ...prev, completed: prev.completed + 1 }));
-    setIsFlipped(false);
+    setFlashPhase('pre-flip');
+    setPendingRating(null);
 
     if (nextIndex >= flashcardQueue.length) {
       // Move to exercise phase
-      buildExercises(missedCards.concat(rating !== 'easy' ? [card] : []));
+      buildExercises(missedCards.concat(missed ? [card] : []));
     } else {
       setFlashIndex(nextIndex);
     }
   }, [flashcardQueue, flashIndex, missedCards]);
 
   const buildExercises = useCallback((cardsToExercise: VocabCard[]) => {
-    const cards = getCardsForLevel(settings.activeLevel);
-    const pool = cards;
-    if (cardsToExercise.length === 0) {
+    const levels = settings.exerciseLevelFilter ?? [settings.activeLevel];
+    const pool: VocabCard[] = levels.flatMap(l => getCardsForLevel(l));
+    const contentType = settings.exerciseContentType ?? 'vocabulary';
+
+    const built: Array<Exercise | GrammarExerciseType> = [];
+
+    if (contentType !== 'grammar') {
+      for (const card of cardsToExercise) {
+        built.push(buildExerciseForCard(card, pool, settings.useTraditional, settings.listenExercisesEnabled));
+      }
+    }
+
+    if (contentType !== 'vocabulary') {
+      // Add grammar exercises (~25% of session or min 2)
+      const grammarRules = getAllGrammarForLevels(levels);
+      const grammarCount = contentType === 'grammar'
+        ? Math.max(cardsToExercise.length, 5)
+        : Math.max(2, Math.floor(built.length * 0.25));
+      const shuffledRules = grammarRules.slice().sort(() => Math.random() - 0.5);
+      for (let i = 0; i < Math.min(grammarCount, shuffledRules.length); i++) {
+        const ex = buildGrammarExercise(shuffledRules[i]);
+        if (ex) built.push(ex);
+      }
+    }
+
+    if (built.length === 0) {
       setPhase('complete');
       return;
     }
-    const built: Exercise[] = cardsToExercise.flatMap(card => [
-      buildExerciseForCard(card, pool, settings.useTraditional, settings.listenExercisesEnabled),
-    ]);
-    setExercises(built);
+    // Shuffle the combined exercises
+    const shuffled = built.slice().sort(() => Math.random() - 0.5);
+    setExercises(shuffled);
     setExIndex(0);
-    setExScore({ correct: 0, total: built.length });
+    setExScore({ correct: 0, total: shuffled.length });
     setPhase('exercises');
   }, [settings]);
+
+  const handlePreFlipRate = useCallback((rating: DifficultyRating) => {
+    setPendingRating(rating);
+    setFlashPhase('post-flip');
+  }, []);
+
+  const handleContinue = useCallback(() => {
+    if (!pendingRating) return;
+    rateFlashcard(pendingRating);
+  }, [pendingRating, rateFlashcard]);
+
+  const handleMistaken = useCallback(() => {
+    if (!pendingRating) return;
+    const downgraded: DifficultyRating =
+      pendingRating === 'known' ? 'in_progress' :
+      pendingRating === 'in_progress' ? 'unknown' : 'unknown';
+    rateFlashcard(downgraded);
+  }, [pendingRating, rateFlashcard]);
+
+  const handleSwipe = useCallback((rating: DifficultyRating) => {
+    rateFlashcard(rating);
+  }, [rateFlashcard]);
 
   const handleExerciseAnswer = useCallback((correct: boolean) => {
     setExScore(prev => ({
@@ -164,28 +222,35 @@ export default function ExercisesScreen({ onBack }: ExercisesScreenProps) {
       <ThemedView style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.top}>
-            <TouchableOpacity onPress={onBack} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-              <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
-            </TouchableOpacity>
-            <ThemedText type="secondary" style={styles.phaseLabel}>Phase 1 · Flashcards</ThemedText>
+            <View style={styles.topRow}>
+              <TouchableOpacity onPress={onBack} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                <ThemedText style={[styles.backText, { color: colors.tint }]}>‹ Back</ThemedText>
+              </TouchableOpacity>
+              <ThemedText type="secondary" style={styles.phaseLabel}>Phase 1 · Flashcards</ThemedText>
+              <TouchableOpacity onPress={() => setQuickSettingsVisible(v => !v)} style={styles.gearButton}>
+                <Ionicons name="settings-outline" size={22} color={colors.tint} />
+              </TouchableOpacity>
+            </View>
             <SessionProgressBar completed={flashStats.completed} total={flashStats.total} />
           </View>
+          {quickSettingsVisible && <QuickSettingsPopover onClose={() => setQuickSettingsVisible(false)} />}
           <View style={styles.deckContainer}>
             <SwipeDeck
-              onSwipe={(r: DifficultyRating) => rateFlashcard(r)}
-              isFlipped={isFlipped}
-              enabled={isFlipped}
+              onSwipe={handleSwipe}
+              isFlipped={flashPhase === 'post-flip'}
+              enabled={flashPhase === 'pre-flip'}
             >
-              <FlashCard card={currentCard} isFlipped={isFlipped} onFlip={() => setIsFlipped(f => !f)} />
+              <FlashCard card={currentCard} isFlipped={flashPhase === 'post-flip'} />
             </SwipeDeck>
           </View>
           <View style={styles.bottom}>
-            {!isFlipped && (
-              <ThemedText type="secondary" style={styles.swipeHint}>
-                Swipe ← Don't Know · Swipe → Know
-              </ThemedText>
-            )}
-            <DifficultyButtons onRate={rateFlashcard} visible={isFlipped} mode="flashcard" />
+            <DifficultyButtons
+              onRate={handlePreFlipRate}
+              onContinue={handleContinue}
+              onMistaken={handleMistaken}
+              visible={true}
+              mode={flashPhase === 'pre-flip' ? 'pre-flip' : 'post-flip'}
+            />
           </View>
         </SafeAreaView>
       </ThemedView>
@@ -219,10 +284,11 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, gap: 8 },
   centered: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   top: { paddingTop: 12, paddingHorizontal: 16, gap: 6 },
+  topRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   phaseLabel: { fontSize: 12, letterSpacing: 0.5, textTransform: 'uppercase' },
   deckContainer: { flex: 1, paddingHorizontal: 20 },
   bottom: { minHeight: 100, justifyContent: 'flex-end', paddingBottom: 8 },
-  swipeHint: { textAlign: 'center', fontSize: 12, paddingHorizontal: 20, marginBottom: 8 },
+  gearButton: { padding: 4 },
   backText: { fontSize: 18, fontWeight: '600' },
   backButtonAbs: { position: 'absolute', top: 16, left: 16 },
   completeInner: { alignItems: 'center', gap: 12, padding: 32 },

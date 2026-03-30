@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Pressable, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -7,8 +7,7 @@ import Animated, {
   interpolate,
   Extrapolation,
 } from 'react-native-reanimated';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 import { VocabCard } from '../../types/vocab';
 import { CardFront } from './CardFront';
 import { CardBack } from './CardBack';
@@ -16,12 +15,10 @@ import { CardBack } from './CardBack';
 interface FlashCardProps {
   card: VocabCard;
   isFlipped: boolean;
-  onFlip: () => void;
 }
 
-export function FlashCard({ card, isFlipped, onFlip }: FlashCardProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+export function FlashCard({ card, isFlipped }: FlashCardProps) {
+  const { colors } = useTheme();
   const rotateY = useSharedValue(0);
 
   useEffect(() => {
@@ -47,7 +44,7 @@ export function FlashCard({ card, isFlipped, onFlip }: FlashCardProps) {
   });
 
   return (
-    <Pressable onPress={onFlip} style={styles.container}>
+    <View style={styles.container}>
       {/* Front face */}
       <Animated.View
         style={[
@@ -70,7 +67,7 @@ export function FlashCard({ card, isFlipped, onFlip }: FlashCardProps) {
       >
         <CardBack card={card} />
       </Animated.View>
-    </Pressable>
+    </View>
   );
 }
 

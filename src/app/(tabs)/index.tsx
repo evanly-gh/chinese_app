@@ -4,18 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { ThemedView } from '../../components/common/ThemedView';
 import { ThemedText } from '../../components/common/ThemedText';
-import { StreakBadge } from '../../components/common/StreakBadge';
+import { StreakCalendar } from '../../components/common/StreakCalendar';
 import { ProgressBar } from '../../components/common/ProgressBar';
-import { useStreak } from '../../hooks/useStreak';
 import { useProgress } from '../../hooks/useProgress';
 import { useSettings } from '../../hooks/useSettings';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 
 export default function HomeScreen() {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
-  const { streak } = useStreak();
+  const { scheme, colors } = useTheme();
   const { data, reload } = useProgress();
   const { settings } = useSettings();
 
@@ -34,8 +30,14 @@ export default function HomeScreen() {
               <ThemedText type="secondary" style={styles.greeting}>Learning</ThemedText>
               <ThemedText type="title" style={styles.title}>HSK {settings.activeLevel}</ThemedText>
             </View>
-            <StreakBadge streak={streak} />
           </View>
+
+          {/* Streak Calendar */}
+          <StreakCalendar
+            goalMetDays={data?.goalMetDays ?? []}
+            streak={data?.streak ?? 0}
+            dailyGoal={settings.dailyGoal}
+          />
 
           {/* Daily Goal Card */}
           <ThemedView variant="card" style={[styles.card, { shadowColor: colors.cardShadow }]}>

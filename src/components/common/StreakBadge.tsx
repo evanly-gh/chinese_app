@@ -2,16 +2,14 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemedText } from './ThemedText';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 
 interface StreakBadgeProps {
   streak: number;
 }
 
 export function StreakBadge({ streak }: StreakBadgeProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   return (
     <View style={styles.container}>
       <Ionicons name="flame" size={28} color="#FF6D00" />

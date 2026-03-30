@@ -1,4 +1,4 @@
-export type DifficultyRating = 'again' | 'hard' | 'good' | 'easy';
+export type DifficultyRating = 'unknown' | 'in_progress' | 'known';
 
 export interface ReviewEvent {
   cardId: string;

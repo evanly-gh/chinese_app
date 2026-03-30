@@ -1,15 +1,13 @@
 import React from 'react';
 import { Text, TextProps, StyleSheet } from 'react-native';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 
 interface ThemedTextProps extends TextProps {
   type?: 'default' | 'secondary' | 'title' | 'caption';
 }
 
 export function ThemedText({ style, type = 'default', ...props }: ThemedTextProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   return (
     <Text
       style={[

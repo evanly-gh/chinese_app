@@ -25,6 +25,7 @@ export interface ProgressData {
   todayCount: number;
   dailyGoal: number;
   weakCards: Array<VocabCard & { efactor: number; lapses: number }>;
+  goalMetDays: string[];
 }
 
 export function useProgress(): { data: ProgressData | null; loading: boolean; reload: () => void } {
@@ -53,6 +54,10 @@ export function useProgress(): { data: ProgressData | null; loading: boolean; re
     const todayLog = logs[logs.length - 1];
     const todayCount = todayLog?.reviewedCards ?? 0;
 
+    const goalMetDays = logs
+      .filter((log: DailyLog) => log.reviewedCards >= settings.dailyGoal)
+      .map((log: DailyLog) => log.date);
+
     setData({
       dailyPoints,
       learned,
@@ -64,6 +69,7 @@ export function useProgress(): { data: ProgressData | null; loading: boolean; re
       todayCount,
       dailyGoal: settings.dailyGoal,
       weakCards: getWeakCards(cards, states),
+      goalMetDays,
     });
     setLoading(false);
   }, []);

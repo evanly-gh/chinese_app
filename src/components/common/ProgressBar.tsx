@@ -6,8 +6,7 @@ import Animated, {
   withTiming,
   Easing,
 } from 'react-native-reanimated';
-import { Colors } from '../../theme/colors';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { useTheme } from '../../hooks/useTheme';
 
 interface ProgressBarProps {
   progress: number; // 0-1
@@ -15,8 +14,7 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ progress, height = 8 }: ProgressBarProps) {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme];
+  const { colors } = useTheme();
   const width = useSharedValue(0);
 
   useEffect(() => {

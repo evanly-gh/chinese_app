@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { AppSettings, DEFAULT_SETTINGS } from '../types/settings';
 import { getSettings, saveSettings } from '../storage/settingsStorage';
+import { supabase } from '../lib/supabase';
+import { pushSettings } from '../storage/cloudSync';
 
 interface UseSettingsReturn {
   settings: AppSettings;
@@ -26,6 +28,10 @@ export function useSettings(): UseSettingsReturn {
     const updated = { ...settings, [key]: value };
     setSettings(updated);
     await saveSettings(updated);
+    supabase.auth.getSession().then(({ data }) => {
+      const uid = data.session?.user?.id;
+      if (uid) pushSettings(uid, updated).catch(() => {});
+    });
   }, [settings]);
 
   return { settings, updateSetting, loading };
