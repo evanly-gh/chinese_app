@@ -62,9 +62,9 @@ export function useStudySession(
       newCardIds.current = newIds;
       sessionQueue = buildConfiguredQueue(allCards, states, sessionConfig);
     } else {
-      // Default session: active level, SRS queue
-      const cards = getCardsForLevel(settings.activeLevel);
-      const cardIds = getAllCardIds(settings.activeLevel);
+      // Default session: active levels, SRS queue
+      const cards = settings.activeLevels.flatMap(l => getCardsForLevel(l));
+      const cardIds = settings.activeLevels.flatMap(l => getAllCardIds(l));
       const states = await getAllSRSStates(cardIds);
       const newIds = new Set(cards.filter(c => !states[c.id]).map(c => c.id));
       newCardIds.current = newIds;

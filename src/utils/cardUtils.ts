@@ -107,6 +107,11 @@ export function getWorkingSet(
   for (let i = firstActive; i < cards.length && result.length < windowSize; i++) {
     if (isActive(cards[i])) result.push(cards[i]);
   }
+  // Shuffle so study sessions aren't always in curriculum order
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
   return result;
 }
 

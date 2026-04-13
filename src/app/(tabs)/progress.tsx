@@ -8,6 +8,7 @@ import {
   FlatList,
   Modal,
   Pressable,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from 'expo-router';
@@ -19,10 +20,13 @@ import { useSettings } from '../../hooks/useSettings';
 import { useTheme } from '../../hooks/useTheme';
 import { ThemeColors } from '../../theme/colors';
 import { getAllCardIds, getCardsForLevel } from '../../data';
-import { getAllSRSStates } from '../../storage/cardStateStorage';
+import { getAllSRSStates, saveSRSStates } from '../../storage/cardStateStorage';
 import { getLevelStats, getWeakCards, getWorkingSet } from '../../utils/cardUtils';
-import { isMastered } from '../../algorithms/sm2';
+import { isMastered, MASTERY_INTERVAL } from '../../algorithms/sm2';
 import { VocabCard, SRSState } from '../../types/vocab';
+import { today, addDays } from '../../utils/dateUtils';
+import { supabase } from '../../lib/supabase';
+import { pushSRSStates } from '../../storage/cloudSync';
 
 const HSK_LEVELS = [1, 2, 3, 4, 5];
 
@@ -156,11 +160,13 @@ export default function ProgressScreen() {
   const { data, loading, reload } = useProgress();
   const { settings } = useSettings();
 
-  const [selectedLevel, setSelectedLevel] = useState(settings.activeLevel);
+  const [selectedLevel, setSelectedLevel] = useState(settings.activeLevels[0] ?? 1);
   const [levelStates, setLevelStates] = useState<Record<string, SRSState>>({});
   const [levelLoading, setLevelLoading] = useState(false);
   const [weakExpanded, setWeakExpanded] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
+
+  const [levelReloadKey, setLevelReloadKey] = useState(0);
 
   useFocusEffect(useCallback(() => { reload(); }, [reload]));
 
@@ -178,7 +184,41 @@ export default function ProgressScreen() {
     }
     loadLevelStates();
     return () => { cancelled = true; };
-  }, [selectedLevel]);
+  }, [selectedLevel, levelReloadKey]);
+
+  const handleMasterAll = useCallback(() => {
+    const cards = getCardsForLevel(selectedLevel);
+    Alert.alert(
+      `Master All HSK ${selectedLevel}?`,
+      `This will mark all ${cards.length} cards as mastered. This cannot be undone.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Master All',
+          style: 'destructive',
+          onPress: async () => {
+            const now = today();
+            const states: SRSState[] = cards.map(card => ({
+              cardId: card.id,
+              interval: MASTERY_INTERVAL,
+              repetition: 3,
+              efactor: 2.5,
+              dueDate: addDays(now, MASTERY_INTERVAL),
+              firstSeenDate: levelStates[card.id]?.firstSeenDate ?? now,
+              lastReviewDate: now,
+              lapses: levelStates[card.id]?.lapses ?? 0,
+            }));
+            await saveSRSStates(states);
+            const { data } = await supabase.auth.getSession();
+            const uid = data.session?.user?.id;
+            if (uid) pushSRSStates(uid, states).catch(() => {});
+            setLevelReloadKey(k => k + 1);
+            reload();
+          },
+        },
+      ],
+    );
+  }, [selectedLevel, levelStates, reload]);
 
   if (loading) {
     return (
@@ -222,7 +262,7 @@ export default function ProgressScreen() {
             </ThemedView>
             <ThemedView variant="card" style={styles.statCard}>
               <ThemedText style={[styles.statNumber, { color: colors.tint }]}>{data.completionPct}%</ThemedText>
-              <ThemedText type="secondary" style={styles.statLabel}>HSK {settings.activeLevel}</ThemedText>
+              <ThemedText type="secondary" style={styles.statLabel}>HSK {settings.activeLevels.join(', ')}</ThemedText>
             </ThemedView>
           </View>
 
@@ -270,6 +310,15 @@ export default function ProgressScreen() {
                   <ThemedText type="secondary" style={styles.miniStat}>Mastered: {selMastered}</ThemedText>
                   <ThemedText type="secondary" style={styles.miniStat}>Not started: {selTotal - selLearned}</ThemedText>
                 </View>
+                {selMastered < selTotal && (
+                  <TouchableOpacity
+                    onPress={handleMasterAll}
+                    style={[styles.masterAllBtn, { backgroundColor: colors.tint }]}
+                    activeOpacity={0.8}
+                  >
+                    <ThemedText style={styles.masterAllText}>Master All</ThemedText>
+                  </TouchableOpacity>
+                )}
               </ThemedView>
 
               {/* Working Set */}
@@ -305,11 +354,18 @@ export default function ProgressScreen() {
                 </ThemedView>
               )}
 
-              {/* All characters in selected level */}
+              {/* All characters in selected level — sorted by mastery then pinyin */}
               <ThemedView variant="card" style={styles.card}>
                 <ThemedText style={styles.cardTitle}>All HSK {selectedLevel} Characters</ThemedText>
                 <FlatList
-                  data={selectedCards}
+                  data={[...selectedCards].sort((a, b) => {
+                    const sa = levelStates[a.id];
+                    const sb = levelStates[b.id];
+                    const groupA = !sa ? 2 : isMastered(sa) ? 0 : 1;
+                    const groupB = !sb ? 2 : isMastered(sb) ? 0 : 1;
+                    if (groupA !== groupB) return groupA - groupB;
+                    return a.pinyin.localeCompare(b.pinyin);
+                  })}
                   keyExtractor={c => c.id}
                   renderItem={({ item }) => (
                     <CardRow card={item} state={levelStates[item.id]} colors={colors} />
@@ -411,6 +467,8 @@ const styles = StyleSheet.create({
   cardTitleRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   cardRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   miniStat: { fontSize: 12 },
+  masterAllBtn: { borderRadius: 10, paddingVertical: 10, alignItems: 'center', marginTop: 4 },
+  masterAllText: { color: '#FFFFFF', fontSize: 14, fontWeight: '700' },
   // Working set
   chipRow: { gap: 8 },
   chipLegend: { flexDirection: 'row', gap: 16 },

@@ -28,7 +28,7 @@ export default function HomeScreen() {
           <View style={styles.header}>
             <View>
               <ThemedText type="secondary" style={styles.greeting}>Learning</ThemedText>
-              <ThemedText type="title" style={styles.title}>HSK {settings.activeLevel}</ThemedText>
+              <ThemedText type="title" style={styles.title}>HSK {settings.activeLevels.join(', ')}</ThemedText>
             </View>
           </View>
 
@@ -60,7 +60,7 @@ export default function HomeScreen() {
             <ThemedView variant="card" style={styles.card}>
               <ThemedText style={styles.cardTitle}>Level Progress</ThemedText>
               <View style={styles.cardRow}>
-                <ThemedText type="secondary">HSK {settings.activeLevel} words learned</ThemedText>
+                <ThemedText type="secondary">HSK {settings.activeLevels.join(', ')} words learned</ThemedText>
                 <ThemedText style={{ color: colors.tint, fontWeight: '700' }}>
                   {data.completionPct}%
                 </ThemedText>

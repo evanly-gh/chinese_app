@@ -1,16 +1,22 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { AppSettings, DEFAULT_SETTINGS } from '../types/settings';
 import { getSettings, saveSettings } from '../storage/settingsStorage';
 import { supabase } from '../lib/supabase';
 import { pushSettings } from '../storage/cloudSync';
 
-interface UseSettingsReturn {
+interface SettingsContextValue {
   settings: AppSettings;
   updateSetting: <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => Promise<void>;
   loading: boolean;
 }
 
-export function useSettings(): UseSettingsReturn {
+const SettingsContext = createContext<SettingsContextValue>({
+  settings: DEFAULT_SETTINGS,
+  updateSetting: async () => {},
+  loading: true,
+});
+
+export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(DEFAULT_SETTINGS);
   const [loading, setLoading] = useState(true);
 
@@ -25,14 +31,24 @@ export function useSettings(): UseSettingsReturn {
     key: K,
     value: AppSettings[K],
   ) => {
-    const updated = { ...settings, [key]: value };
-    setSettings(updated);
-    await saveSettings(updated);
-    supabase.auth.getSession().then(({ data }) => {
-      const uid = data.session?.user?.id;
-      if (uid) pushSettings(uid, updated).catch(() => {});
+    setSettings(prev => {
+      const updated = { ...prev, [key]: value };
+      saveSettings(updated);
+      supabase.auth.getSession().then(({ data }) => {
+        const uid = data.session?.user?.id;
+        if (uid) pushSettings(uid, updated).catch(() => {});
+      });
+      return updated;
     });
-  }, [settings]);
+  }, []);
 
-  return { settings, updateSetting, loading };
+  return React.createElement(
+    SettingsContext.Provider,
+    { value: { settings, updateSetting, loading } },
+    children,
+  );
+}
+
+export function useSettings(): SettingsContextValue {
+  return useContext(SettingsContext);
 }

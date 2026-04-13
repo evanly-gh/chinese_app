@@ -35,9 +35,9 @@ export function useProgress(): { data: ProgressData | null; loading: boolean; re
   const load = useCallback(async () => {
     setLoading(true);
     const settings = await getSettings();
-    const level = settings.activeLevel;
-    const cardIds = getAllCardIds(level);
-    const cards = getCardsForLevel(level);
+    const levels = settings.activeLevels ?? [1];
+    const cardIds = levels.flatMap(l => getAllCardIds(l));
+    const cards = levels.flatMap(l => getCardsForLevel(l));
     const [logs, states, streakData] = await Promise.all([
       getLast14DaysLogs(),
       getAllSRSStates(cardIds),

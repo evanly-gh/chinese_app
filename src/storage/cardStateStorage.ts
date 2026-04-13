@@ -15,6 +15,11 @@ export async function saveSRSState(state: SRSState): Promise<void> {
   await AsyncStorage.setItem(srsKey(state.cardId), JSON.stringify(state));
 }
 
+export async function saveSRSStates(states: SRSState[]): Promise<void> {
+  const pairs: [string, string][] = states.map(s => [srsKey(s.cardId), JSON.stringify(s)]);
+  await AsyncStorage.multiSet(pairs);
+}
+
 export async function getAllSRSStates(cardIds: string[]): Promise<Record<string, SRSState>> {
   const keys = cardIds.map(srsKey);
   const pairs = await AsyncStorage.multiGet(keys);

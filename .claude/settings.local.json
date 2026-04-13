@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /c/Users/evanl/OneDrive/Documents/VSCode/Personal/chinese_app/src/data/hsk/*.json)",
+      "Bash(xargs grep:*)",
+      "Bash*",
+      "Bash(npx tsc:*)",
+      "Bash(node_modules/.bin/tsc --noEmit)",
+      "Bash(where node:*)",
+      "Bash(where npm:*)"
+    ],
+    "defaultMode": "bypassPermissions"
+  }
+}

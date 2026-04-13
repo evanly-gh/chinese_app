@@ -50,7 +50,7 @@ export default function ExercisesScreen({ onBack }: ExercisesScreenProps) {
   const [flashStats, setFlashStats] = useState({ completed: 0, total: 0 });
 
   const load = useCallback(async () => {
-    const levels = settings.exerciseLevelFilter ?? [settings.activeLevel];
+    const levels = settings.exerciseLevelFilter ?? settings.activeLevels;
     const allCards: VocabCard[] = [];
     const allIds: string[] = [];
     for (const level of levels) {
@@ -71,7 +71,7 @@ export default function ExercisesScreen({ onBack }: ExercisesScreenProps) {
     setPendingRating(null);
     setMissedCards([]);
     setPhase(queue.length > 0 ? 'flashcards' : 'exercises');
-  }, [settings.exerciseLevelFilter, settings.activeLevel, settings.workingSetSize]);
+  }, [settings.exerciseLevelFilter, settings.activeLevels, settings.workingSetSize]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -109,7 +109,7 @@ export default function ExercisesScreen({ onBack }: ExercisesScreenProps) {
   }, [flashcardQueue, flashIndex, missedCards]);
 
   const buildExercises = useCallback((cardsToExercise: VocabCard[]) => {
-    const levels = settings.exerciseLevelFilter ?? [settings.activeLevel];
+    const levels = settings.exerciseLevelFilter ?? settings.activeLevels;
     const pool: VocabCard[] = levels.flatMap(l => getCardsForLevel(l));
     const contentType = settings.exerciseContentType ?? 'vocabulary';
 

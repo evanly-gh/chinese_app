@@ -6,13 +6,14 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, NotoSansSC_400Regular, NotoSansSC_700Bold } from '@expo-google-fonts/noto-sans-sc';
 import { runMigrations } from '../storage/migrations';
 import { useTheme } from '../hooks/useTheme';
+import { SettingsProvider } from '../hooks/useSettings';
 import { supabase } from '../lib/supabase';
 import { pullAll } from '../storage/cloudSync';
 import AuthScreen from '../screens/AuthScreen';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function RootLayoutInner() {
   const { colors } = useTheme();
   const [migrationsRan, setMigrationsRan] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
@@ -69,5 +70,13 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
       <Stack screenOptions={{ headerShown: false }} />
     </GestureHandlerRootView>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <SettingsProvider>
+      <RootLayoutInner />
+    </SettingsProvider>
   );
 }

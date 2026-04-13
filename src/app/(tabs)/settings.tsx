@@ -52,18 +52,37 @@ export default function SettingsScreen() {
         <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
           <ThemedText type="title" style={styles.pageTitle}>Settings</ThemedText>
 
-          {/* HSK Level */}
+          {/* HSK Level (multi-select) */}
           <ThemedView variant="card" style={styles.card}>
-            <ThemedText style={styles.sectionTitle}>HSK Level</ThemedText>
+            <ThemedText style={styles.sectionTitle}>HSK Levels</ThemedText>
+            <ThemedText type="secondary" style={styles.rowSublabel}>
+              Select one or more levels to study
+            </ThemedText>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.levelRow}>
                 {levels.map(level => {
                   const hasCards = getCardsForLevel(level).length > 0;
-                  const isActive = settings.activeLevel === level;
+                  const isActive = settings.activeLevels.includes(level);
                   return (
                     <TouchableOpacity
                       key={level}
-                      onPress={() => hasCards && updateSetting('activeLevel', level)}
+                      onPress={() => {
+                        if (!hasCards) return;
+                        let newLevels: number[];
+                        if (isActive) {
+                          if (settings.activeLevels.length === 1) return; // keep at least one
+                          newLevels = settings.activeLevels.filter(l => l !== level);
+                        } else {
+                          newLevels = [...settings.activeLevels, level].sort((a, b) => a - b);
+                        }
+                        // Sync all level filters at once
+                        updateSetting('activeLevels', newLevels);
+                        updateSetting('exerciseLevelFilter', newLevels);
+                        updateSetting('flashcardConfig', {
+                          ...settings.flashcardConfig,
+                          levelFilter: newLevels,
+                        });
+                      }}
                       style={[
                         styles.levelChip,
                         isActive && { backgroundColor: colors.tint },

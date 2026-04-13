@@ -8,7 +8,7 @@ export interface FlashcardSessionConfig {
 
 export interface AppSettings {
   schemaVersion: number;
-  activeLevel: number;
+  activeLevels: number[];
   dailyGoal: number;
   ttsEnabled: boolean;
   useTraditional: boolean;
@@ -25,7 +25,7 @@ export interface AppSettings {
 
 export const DEFAULT_SETTINGS: AppSettings = {
   schemaVersion: 1,
-  activeLevel: 1,
+  activeLevels: [1],
   dailyGoal: 20,
   ttsEnabled: true,
   useTraditional: false,

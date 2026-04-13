@@ -12,6 +12,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#D32F2F"
     },
+    "updates": {
+      "url": "https://u.expo.dev/355e088a-b97a-47e0-8f3f-4fe2b7209def"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.chineselearning.app"
@@ -26,6 +32,7 @@
     "plugins": [
       "expo-router",
       "expo-font",
+      "expo-updates",
       [
         "expo-splash-screen",
         {

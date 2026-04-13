@@ -27,10 +27,11 @@ import { getMasteredCards, getWorkingSet } from '../../utils/cardUtils';
 import { getLastTestResult } from '../../storage/testResultStorage';
 import ExercisesScreen from '../../screens/ExercisesScreen';
 import TestScreen from '../../screens/TestScreen';
+import ChatScreen from '../../screens/ChatScreen';
 
 type FlashPhase = 'pre-flip' | 'post-flip';
 
-type StudyMode = 'picker' | 'flashcards' | 'exercises' | 'test';
+type StudyMode = 'picker' | 'flashcards' | 'exercises' | 'test' | 'chat';
 
 // ─── Mode Picker ────────────────────────────────────────────────────────────
 
@@ -56,19 +57,19 @@ function ModePickerScreen({
     useCallback(() => {
       let active = true;
       (async () => {
-        const cards = getCardsForLevel(settings.activeLevel);
-        const ids = getAllCardIds(settings.activeLevel);
-        const states = await getAllSRSStates(ids);
+        const allCards = settings.activeLevels.flatMap(l => getCardsForLevel(l));
+        const allIds = settings.activeLevels.flatMap(l => getAllCardIds(l));
+        const states = await getAllSRSStates(allIds);
         if (!active) return;
-        const mastered = getMasteredCards(cards, states).length;
-        const working = getWorkingSet(cards, states, settings.workingSetSize).length;
+        const mastered = getMasteredCards(allCards, states).length;
+        const working = getWorkingSet(allCards, states, settings.workingSetSize).length;
         setWorkingInfo({ working, mastered });
 
-        const last = await getLastTestResult(settings.activeLevel);
+        const last = await getLastTestResult(settings.activeLevels[0]);
         if (last) setLastTest({ score: last.score, total: last.total });
       })();
       return () => { active = false; };
-    }, [settings.activeLevel, settings.workingSetSize]),
+    }, [settings.activeLevels, settings.workingSetSize]),
   );
 
   const modes: ModeCardData[] = [
@@ -97,6 +98,13 @@ function ModePickerScreen({
       mode: 'test',
       color: colors.hard,
     },
+    {
+      title: 'AI Chat',
+      subtitle: 'Practice conversation with an AI tutor',
+      icon: '💬',
+      mode: 'chat',
+      color: '#7B1FA2',
+    },
   ];
 
   return (
@@ -105,7 +113,7 @@ function ModePickerScreen({
         <View style={styles.pickerContent}>
           <ThemedText type="title" style={styles.pickerTitle}>Study</ThemedText>
           <ThemedText type="secondary" style={styles.pickerSubtitle}>
-            HSK {settings.activeLevel}
+            HSK {settings.activeLevels.join(', ')}
           </ThemedText>
           {modes.map(m => (
             <TouchableOpacity
@@ -323,6 +331,9 @@ export default function StudyTab() {
   }
   if (mode === 'test') {
     return <TestScreen onBack={() => setMode('picker')} />;
+  }
+  if (mode === 'chat') {
+    return <ChatScreen onBack={() => setMode('picker')} />;
   }
 
   return <ModePickerScreen onSelect={setMode} />;

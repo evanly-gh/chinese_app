@@ -41,7 +41,7 @@ export default function TestScreen({ onBack }: TestScreenProps) {
   const [incorrectCards, setIncorrectCards] = useState<VocabCard[]>([]);
 
   const buildTest = useCallback(() => {
-    const cards = getCardsForLevel(settings.activeLevel);
+    const cards = settings.activeLevels.flatMap(l => getCardsForLevel(l));
     if (cards.length === 0) return;
     const pool = cards;
     const shuffledCards = shuffle(cards).slice(0, testSize);
@@ -58,7 +58,7 @@ export default function TestScreen({ onBack }: TestScreenProps) {
     setAnswers([]);
     setIncorrectCards([]);
     setTestState('running');
-  }, [settings.activeLevel, settings.useTraditional, testSize]);
+  }, [settings.activeLevels, settings.useTraditional, testSize]);
 
   const handleAnswer = useCallback((correct: boolean) => {
     const card = questions[current].card;
@@ -72,7 +72,7 @@ export default function TestScreen({ onBack }: TestScreenProps) {
       const score = answers.filter(Boolean).length + (correct ? 1 : 0);
       const result = {
         date: today(),
-        level: settings.activeLevel,
+        level: settings.activeLevels[0],
         score,
         total: questions.length,
         incorrect: incorrectCards.concat(!correct ? [card] : []).map(c => c.id),
@@ -86,7 +86,7 @@ export default function TestScreen({ onBack }: TestScreenProps) {
     } else {
       setCurrent(next);
     }
-  }, [current, questions, answers, incorrectCards, settings.activeLevel]);
+  }, [current, questions, answers, incorrectCards, settings.activeLevels]);
 
   const score = answers.filter(Boolean).length;
   const pct = questions.length > 0 ? Math.round((score / questions.length) * 100) : 0;
@@ -105,7 +105,7 @@ export default function TestScreen({ onBack }: TestScreenProps) {
           <View style={styles.configContent}>
             <ThemedText type="title" style={styles.configTitle}>Test</ThemedText>
             <ThemedText type="secondary" style={styles.configSubtitle}>
-              Full HSK {settings.activeLevel} assessment — Chinese↔English and sentence translation
+              Full HSK {settings.activeLevels.join(', ')} assessment — Chinese↔English and sentence translation
             </ThemedText>
             <ThemedText style={styles.configLabel}>Number of Questions</ThemedText>
             <View style={styles.sizeRow}>
@@ -175,7 +175,7 @@ export default function TestScreen({ onBack }: TestScreenProps) {
             {score} / {questions.length}
           </ThemedText>
           <ThemedText type="secondary" style={styles.resultPct}>
-            {pct}% — HSK {settings.activeLevel}
+            {pct}% — HSK {settings.activeLevels.join(', ')}
           </ThemedText>
 
           {incorrectCards.length > 0 && (

@@ -15,6 +15,12 @@ export async function getSettings(): Promise<AppSettings> {
       delete parsed.darkModeOverride;
     }
 
+    // Migrate activeLevel (number) → activeLevels (number[])
+    if ('activeLevel' in parsed && !('activeLevels' in parsed)) {
+      parsed.activeLevels = [parsed.activeLevel];
+      delete parsed.activeLevel;
+    }
+
     return { ...DEFAULT_SETTINGS, ...parsed };
   } catch {
     return { ...DEFAULT_SETTINGS };

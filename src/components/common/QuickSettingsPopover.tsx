@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Switch, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Switch, Pressable } from 'react-native';
 import { ThemedView } from './ThemedView';
 import { ThemedText } from './ThemedText';
 import { useSettings } from '../../hooks/useSettings';
@@ -14,8 +14,8 @@ export function QuickSettingsPopover({ onClose }: QuickSettingsPopoverProps) {
   const { settings, updateSetting } = useSettings();
 
   return (
-    <TouchableOpacity style={styles.overlay} onPress={onClose} activeOpacity={1}>
-      <TouchableOpacity activeOpacity={1} onPress={() => {}}>
+    <Pressable style={styles.overlay} onPress={onClose}>
+      <Pressable onPress={e => e.stopPropagation()} style={styles.popoverAnchor}>
         <ThemedView variant="card" style={[styles.popover, { borderColor: colors.border }]}>
           <View style={styles.row}>
             <ThemedText style={styles.label}>Show Pinyin</ThemedText>
@@ -37,8 +37,8 @@ export function QuickSettingsPopover({ onClose }: QuickSettingsPopoverProps) {
             />
           </View>
         </ThemedView>
-      </TouchableOpacity>
-    </TouchableOpacity>
+      </Pressable>
+    </Pressable>
   );
 }
 
@@ -48,15 +48,17 @@ const styles = StyleSheet.create({
     top: 0, left: 0, right: 0, bottom: 0,
     zIndex: 100,
   },
-  popover: {
+  popoverAnchor: {
     position: 'absolute',
-    top: 52,
+    top: 80,
     right: 16,
+    zIndex: 101,
+  },
+  popover: {
     width: 220,
     borderRadius: 12,
     borderWidth: 1,
     padding: 4,
-    zIndex: 101,
     shadowColor: '#000',
     shadowOpacity: 0.15,
     shadowRadius: 8,

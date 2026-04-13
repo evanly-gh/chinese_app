@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -20,10 +20,18 @@ interface FlashCardProps {
 export function FlashCard({ card, isFlipped }: FlashCardProps) {
   const { colors } = useTheme();
   const rotateY = useSharedValue(0);
+  const prevCardId = useRef(card.id);
 
   useEffect(() => {
-    rotateY.value = withTiming(isFlipped ? 180 : 0, { duration: 350 });
-  }, [isFlipped]);
+    if (card.id !== prevCardId.current) {
+      // New card — snap to front instantly (no animation, no answer leak)
+      rotateY.value = 0;
+      prevCardId.current = card.id;
+    } else {
+      // Same card — animate the flip
+      rotateY.value = withTiming(isFlipped ? 180 : 0, { duration: 350 });
+    }
+  }, [isFlipped, card.id]);
 
   const frontStyle = useAnimatedStyle(() => {
     const rotate = interpolate(rotateY.value, [0, 180], [0, 180], Extrapolation.CLAMP);
